@@ -87,7 +87,7 @@ export function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-surface-low border-t border-white/8 px-4 py-4 flex flex-col gap-4">
+        <nav aria-label="Mobile navigation" className="md:hidden bg-surface-low border-t border-white/8 px-4 py-4 flex flex-col gap-4">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -115,7 +115,7 @@ export function Header() {
               <InstagramIcon />
             </a>
           </div>
-        </div>
+        </nav>
       )}
     </header>
   )

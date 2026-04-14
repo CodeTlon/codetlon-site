@@ -33,10 +33,6 @@ export const metadata: Metadata = {
   },
   description:
     'Desarrollamos sitios, ecommerce, dashboards y automatizaciones. 9 niveles de servicio, stack moderno, metodología propia. Basados en Córdoba.',
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-  },
   openGraph: {
     type: 'website',
     locale: 'es_AR',

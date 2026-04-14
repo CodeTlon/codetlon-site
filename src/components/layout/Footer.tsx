@@ -43,13 +43,13 @@ export function Footer() {
 
           {/* Brand & Socials - Aumentamos el margen negativo (-ml-3 / -ml-4) */}
           <div className="md:col-span-2 flex flex-col items-start gap-6">
-            <Link href="/" className="inline-block group -ml-3 md:-ml-4">
+            <Link href="/" className="inline-block group">
               <Image
                 src="/logos/codetlon-crema.png"
                 alt="CodeTlon"
-                width={160}
-                height={40}
-                className="w-32 md:w-40 h-auto opacity-90 group-hover:opacity-100 transition-opacity duration-500 object-left"
+                width={140}
+                height={36}
+                className="w-28 md:w-36 h-auto opacity-90 group-hover:opacity-100 transition-opacity duration-500"
               />
             </Link>
             <p className="font-body text-sm text-foreground/50 leading-relaxed max-w-sm font-light text-left">

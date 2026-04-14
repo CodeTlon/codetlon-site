@@ -4,8 +4,6 @@ import { Resend } from 'resend'
 import { createClient } from '@supabase/supabase-js'
 import { contactSchema } from '@/lib/validations/contact'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 // service_role para bypassear RLS en insert
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL ?? 'https://placeholder.supabase.co',
@@ -14,6 +12,7 @@ const supabase = createClient(
 
 // Bug #5: prevState OBLIGATORIO como primer parámetro
 export async function sendContact(prevState: unknown, formData: FormData) {
+  const resend = new Resend(process.env.RESEND_API_KEY)
   const parsed = contactSchema.safeParse({
     name: formData.get('name'),
     email: formData.get('email'),

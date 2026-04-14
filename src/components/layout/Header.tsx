@@ -31,14 +31,14 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          <Link href="/" aria-label="Ir al inicio — CodeTlon" className="flex items-center shrink-0 group z-10 -ml-3 md:-ml-4">
+          <Link href="/" aria-label="Ir al inicio — CodeTlon" className="flex items-center shrink-0 group z-10">
             <Image
               src="/logos/codetlon-crema.png"
               alt="CodeTlon"
-              width={160}
-              height={40}
-              className="w-32 sm:w-36 md:w-40 h-auto opacity-90 group-hover:opacity-100 transition-opacity duration-500 object-left"
-              priority 
+              width={140}
+              height={36}
+              className="w-28 sm:w-32 md:w-36 h-auto opacity-90 group-hover:opacity-100 transition-opacity duration-500"
+              priority
             />
           </Link>
 

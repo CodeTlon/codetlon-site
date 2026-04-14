@@ -17,23 +17,51 @@ const newsreader = Newsreader({
   style: ['normal', 'italic'],
 })
 
-// Bug #1: viewport SIEMPRE separado de metadata
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
+  themeColor: '#0e1516',
 }
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://codetlon.com.ar'
+
 export const metadata: Metadata = {
-  title: 'CodeTlon | Software Factory en Córdoba, Argentina',
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: 'CodeTlon | Software Factory en Córdoba, Argentina',
+    template: '%s | CodeTlon',
+  },
   description:
     'Desarrollamos sitios, ecommerce, dashboards y automatizaciones. 9 niveles de servicio, stack moderno, metodología propia. Basados en Córdoba.',
-  icons: { icon: '/favicon.ico' },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+  },
   openGraph: {
     type: 'website',
     locale: 'es_AR',
-    url: 'https://codetlon.com',
+    url: BASE_URL,
     siteName: 'CodeTlon Software Factory',
-    images: [{ url: '/images/og-home.jpg', width: 1200, height: 630 }],
+    images: [
+      {
+        url: '/logos/codetlon-naranja.png',
+        width: 1200,
+        height: 630,
+        alt: 'CodeTlon Software Factory',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'CodeTlon | Software Factory en Córdoba, Argentina',
+    description:
+      'Desarrollamos sitios, ecommerce, dashboards y automatizaciones. 9 niveles de servicio, stack moderno, metodología propia.',
+    images: ['/logos/codetlon-naranja.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' },
   },
 }
 
@@ -48,8 +76,14 @@ export default function RootLayout({
       className={`${inter.variable} ${newsreader.variable} dark`}
     >
       <body className="bg-background text-foreground antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-[#ffb690] focus:text-[#0e1516] focus:font-bold focus:rounded"
+        >
+          Saltar al contenido
+        </a>
         <Header />
-        <main className="pt-16">
+        <main id="main-content" className="pt-16">
           {children}
         </main>
         <Footer />

@@ -31,8 +31,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* Logo - Aumentamos el margen negativo para contrarrestar el espacio transparente del PNG */}
-          <Link href="/" className="flex items-center shrink-0 group z-10 -ml-3 md:-ml-4">
+          <Link href="/" aria-label="Ir al inicio — CodeTlon" className="flex items-center shrink-0 group z-10 -ml-3 md:-ml-4">
             <Image
               src="/logos/codetlon-crema.png"
               alt="CodeTlon"
@@ -52,6 +51,7 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  aria-current={pathname === link.href ? 'page' : undefined}
                   className={cn(
                     'font-body text-sm font-medium capitalize transition-colors duration-500',
                     pathname === link.href ? 'text-[#ffb690]' : 'text-foreground/70 hover:text-foreground'
@@ -66,6 +66,8 @@ export function Header() {
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
               className="md:hidden text-foreground/70 hover:text-[#ffb690] transition-colors p-1"
             >
               {menuOpen ? <X size={26} strokeWidth={1.5} /> : <Menu size={26} strokeWidth={1.5} />}
@@ -76,18 +78,21 @@ export function Header() {
       </div>
 
       {/* Mobile menu */}
-      <div 
+      <div
+        id="mobile-menu"
+        aria-hidden={!menuOpen}
         className={cn(
           'md:hidden absolute top-full left-0 w-full overflow-hidden transition-all duration-500 bg-background/95 backdrop-blur-xl',
           menuOpen ? 'max-h-screen border-t border-white/[0.04] py-8' : 'max-h-0 py-0'
         )}
       >
-        <nav className="flex flex-col gap-6 px-6" aria-label="Mobile navigation">
+        <nav className="flex flex-col gap-6 px-6" aria-label="Menú móvil">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
+              aria-current={pathname === link.href ? 'page' : undefined}
               className={cn(
                 'font-display text-xl capitalize transition-colors duration-500',
                 pathname === link.href ? 'text-[#ffb690] italic' : 'text-foreground/60 hover:text-foreground'

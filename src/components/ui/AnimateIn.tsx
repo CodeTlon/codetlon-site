@@ -9,6 +9,8 @@ interface AnimateInProps {
   /** Milliseconds to wait after element enters viewport */
   delay?: number
   variant?: 'up' | 'left' | 'fade'
+  /** IntersectionObserver threshold (0–1). Default: 0.08 */
+  threshold?: number
 }
 
 export function AnimateIn({
@@ -16,6 +18,7 @@ export function AnimateIn({
   className,
   delay = 0,
   variant = 'up',
+  threshold = 0.08,
 }: AnimateInProps) {
   const ref = useRef<HTMLDivElement>(null)
 
@@ -34,7 +37,7 @@ export function AnimateIn({
           observer.unobserve(el)
         }
       },
-      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+      { threshold, rootMargin: '0px 0px -40px 0px' }
     )
 
     observer.observe(el)
@@ -42,7 +45,7 @@ export function AnimateIn({
       observer.disconnect()
       clearTimeout(timer)
     }
-  }, [delay])
+  }, [delay, threshold])
 
   return (
     <div

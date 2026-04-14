@@ -88,7 +88,7 @@ export default function NosotrosPage() {
                 <div key={v.title} className="group flex flex-col md:flex-row md:items-start gap-4 md:gap-16 py-12 md:py-16 border-b border-white/10 hover:bg-white/[0.01] transition-colors duration-500">
                   <div className="flex flex-col md:w-5/12 shrink-0">
                     <span className="font-body text-[10px] font-bold text-white/20 group-hover:text-[#ffb690] transition-colors duration-500 tracking-[0.2em] mb-4">
-                      0{i + 1} // PRINCIPIO
+                      {`0${i + 1} // PRINCIPIO`}
                     </span>
                     <h3 className="font-display text-3xl md:text-4xl text-foreground/80 group-hover:translate-x-2 group-hover:text-foreground transition-all duration-500">
                       {v.title}

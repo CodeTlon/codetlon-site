@@ -1,8 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import { useFormState, useFormStatus } from 'react-dom'
 import { CheckCircle2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { sendContact } from '@/app/actions/contact'
 
 const PROJECT_TYPES = [
   'Web Institucional',
@@ -12,23 +14,27 @@ const PROJECT_TYPES = [
   'Aún no lo sé'
 ]
 
+function SubmitButton() {
+  const { pending } = useFormStatus()
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="group relative flex items-center justify-between gap-8 px-8 py-5 bg-[#ffb690] text-[#0e1516] overflow-hidden w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
+      <span className="relative z-10 font-body text-[13px] font-bold uppercase tracking-[0.25em]">
+        {pending ? 'Enviando...' : 'Enviar propuesta'}
+      </span>
+    </button>
+  )
+}
+
 export function ContactForm() {
   const [selectedType, setSelectedType] = useState<string>('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [state, formAction] = useFormState(sendContact, null)
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
-    // Simulamos un envío de 1 segundo
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    
-    setIsSubmitting(false)
-    setIsSuccess(true)
-  }
-
-  if (isSuccess) {
+  if (state?.success) {
     return (
       <div className="flex flex-col items-start justify-center p-12 border border-white/10 bg-white/[0.02]">
         <div className="w-12 h-12 rounded-full bg-[#ffb690]/10 flex items-center justify-center mb-6 border border-[#ffb690]/30">
@@ -43,8 +49,9 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-8">
-      
+    <form action={formAction} className="flex flex-col gap-8">
+      <input type="hidden" name="serviceInterest" value={selectedType} />
+
       {/* 1. Selección de Idea General */}
       <div className="flex flex-col gap-4">
         <label className="font-body text-xs font-bold text-[#ffb690]/70 uppercase tracking-[0.2em]">
@@ -76,7 +83,7 @@ export function ContactForm() {
         <label className="font-body text-xs font-bold text-[#ffb690]/70 uppercase tracking-[0.2em]">
           2. Detalles del proyecto
         </label>
-        
+
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="flex flex-col gap-2">
             <input
@@ -109,20 +116,13 @@ export function ContactForm() {
         </div>
       </div>
 
+      {state?.error && (
+        <p className="font-body text-sm text-red-400">{state.error}</p>
+      )}
+
       {/* Submit Button */}
       <div className="pt-4">
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="group relative flex items-center justify-between gap-8 px-8 py-5 bg-[#ffb690] text-[#0e1516] overflow-hidden w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
-          
-          <span className="relative z-10 font-body text-[13px] font-bold uppercase tracking-[0.25em]">
-            {isSubmitting ? 'Enviando...' : 'Enviar propuesta'}
-          </span>
-          
-        </button>
+        <SubmitButton />
       </div>
     </form>
   )

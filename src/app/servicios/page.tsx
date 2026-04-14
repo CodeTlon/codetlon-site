@@ -3,7 +3,6 @@ import { PageHero } from '@/components/sections/PageHero'
 import { CoreCapabilities } from '@/components/sections/CoreCapabilities'
 import { EvolucionContinua } from '@/components/sections/EvolucionContinua'
 import { CTABanner } from '@/components/sections/CTABanner'
-import { AnimateIn } from '@/components/ui/AnimateIn'
 import { WHATSAPP_CTA_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {

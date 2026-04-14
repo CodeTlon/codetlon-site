@@ -10,7 +10,6 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY ?? 'placeholder'
 )
 
-// Bug #5: prevState OBLIGATORIO como primer parámetro
 export async function sendContact(prevState: unknown, formData: FormData) {
   const resend = new Resend(process.env.RESEND_API_KEY)
   const parsed = contactSchema.safeParse({
@@ -27,7 +26,6 @@ export async function sendContact(prevState: unknown, formData: FormData) {
 
   const { name, email, company, serviceInterest, message } = parsed.data
 
-  // Guardar en DB primero — si el email falla, el lead no se pierde
   const { error: dbError } = await supabase.from('contact_leads').insert({
     name,
     email,
@@ -56,20 +54,20 @@ export async function sendContact(prevState: unknown, formData: FormData) {
     :root { color-scheme: light dark; supported-color-schemes: light dark; }
   </style>
 </head>
-<body style="margin:0;padding:0;background:#0a0f10;font-family:'Helvetica Neue',Arial,sans-serif">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0a0f10;padding:40px 16px">
+<body style="margin:0;padding:0;background-color:#0a0f10;background-image:linear-gradient(#0a0f10,#0a0f10);font-family:'Helvetica Neue',Arial,sans-serif">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#0a0f10;background-image:linear-gradient(#0a0f10,#0a0f10);padding:40px 16px">
     <tr><td align="center">
       <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%">
 
         <tr>
-          <td style="background:#0e1516;border:1px solid #1e2d2e;border-bottom:none;padding:28px 36px 20px">
+          <td style="background-color:#0e1516;background-image:linear-gradient(#0e1516,#0e1516);border:1px solid #1e2d2e;border-bottom:none;padding:28px 36px 20px">
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
                 <td>
                   <img src="https://i.ibb.co/PZrqYfxx/codetlon-blanco.png" alt="CodeTlon" height="20" style="display:block;height:20px;width:auto">
                 </td>
                 <td align="right">
-                  <span style="display:inline-block;background:#ffb690;color:#0e1516;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:4px 10px">Nuevo Lead</span>
+                  <span style="display:inline-block;background-color:#ffb690;background-image:linear-gradient(#ffb690,#ffb690);color:#0e1516;font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:4px 10px">Nuevo Lead</span>
                 </td>
               </tr>
             </table>
@@ -77,7 +75,7 @@ export async function sendContact(prevState: unknown, formData: FormData) {
         </tr>
 
         <tr>
-          <td style="background:#0e1516;border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;padding:0 36px 28px">
+          <td style="background-color:#0e1516;background-image:linear-gradient(#0e1516,#0e1516);border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;padding:0 36px 28px">
             <h1 style="margin:0;font-size:28px;font-weight:700;color:#e8ddd4;letter-spacing:-0.02em">${name}</h1>
             <p style="margin:6px 0 0;font-size:14px;color:#8a9b9c">
               <a href="mailto:${email}" style="color:#a4cddb;text-decoration:none">${email}</a>
@@ -88,33 +86,33 @@ export async function sendContact(prevState: unknown, formData: FormData) {
 
         ${serviceInterest ? `
         <tr>
-          <td style="background:#0e1516;border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;padding:0 36px 24px">
+          <td style="background-color:#0e1516;background-image:linear-gradient(#0e1516,#0e1516);border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;padding:0 36px 24px">
             <span style="display:inline-block;border:1px solid #ffb690;color:#ffb690;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:5px 12px">${serviceInterest}</span>
           </td>
         </tr>` : ''}
 
         <tr>
-          <td style="background:#0e1516;border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;padding:0 36px">
-            <div style="height:1px;background:#1e2d2e"></div>
+          <td style="background-color:#0e1516;background-image:linear-gradient(#0e1516,#0e1516);border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;padding:0 36px">
+            <div style="height:1px;background-color:#1e2d2e;background-image:linear-gradient(#1e2d2e,#1e2d2e);"></div>
           </td>
         </tr>
 
         <tr>
-          <td style="background:#0e1516;border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;padding:24px 36px 32px">
+          <td style="background-color:#0e1516;background-image:linear-gradient(#0e1516,#0e1516);border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;padding:24px 36px 32px">
             <p style="margin:0 0 10px;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#4a5556">Mensaje</p>
             <p style="margin:0;font-size:15px;line-height:1.7;color:#c8bdb4;white-space:pre-wrap">${message}</p>
           </td>
         </tr>
 
         <tr>
-          <td style="background:#111a1b;border:1px solid #1e2d2e;border-top:none;padding:20px 36px">
+          <td style="background-color:#111a1b;background-image:linear-gradient(#111a1b,#111a1b);border:1px solid #1e2d2e;border-top:none;padding:20px 36px">
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
                 <td style="font-size:12px;color:#4a5556">
                   Respondé directamente a este email para contactar a ${name}.
                 </td>
                 <td align="right">
-                  <a href="mailto:${email}" style="display:inline-block;background:#ffb690;color:#0e1516;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:10px 20px;text-decoration:none">Responder</a>
+                  <a href="mailto:${email}" style="display:inline-block;background-color:#ffb690;background-image:linear-gradient(#ffb690,#ffb690);color:#0e1516;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:10px 20px;text-decoration:none">Responder</a>
                 </td>
               </tr>
             </table>
@@ -157,19 +155,19 @@ export async function sendContact(prevState: unknown, formData: FormData) {
     :root { color-scheme: light dark; supported-color-schemes: light dark; }
   </style>
 </head>
-<body style="margin:0;padding:0;background:#0a0f10;font-family:'Helvetica Neue',Arial,sans-serif">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#0a0f10;padding:40px 16px">
+<body style="margin:0;padding:0;background-color:#0a0f10;background-image:linear-gradient(#0a0f10,#0a0f10);font-family:'Helvetica Neue',Arial,sans-serif">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#0a0f10;background-image:linear-gradient(#0a0f10,#0a0f10);padding:40px 16px">
     <tr><td align="center">
       <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%">
 
         <tr>
-          <td style="background:#ffb690;padding:16px 36px">
+          <td style="background-color:#ffb690;background-image:linear-gradient(#ffb690,#ffb690);padding:16px 36px">
             <img src="https://i.ibb.co/jPzdpxWT/codetlon-azul.png" alt="CodeTlon" height="20" style="display:block;height:20px;width:auto">
           </td>
         </tr>
 
         <tr>
-          <td style="background:#0e1516;border:1px solid #1e2d2e;border-top:none;padding:44px 36px 36px">
+          <td style="background-color:#0e1516;background-image:linear-gradient(#0e1516,#0e1516);border:1px solid #1e2d2e;border-top:none;padding:44px 36px 36px">
             <p style="margin:0 0 6px;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#ffb690">Confirmación de consulta</p>
             <h1 style="margin:0 0 16px;font-size:30px;font-weight:700;color:#e8ddd4;letter-spacing:-0.02em;line-height:1.2">
               Hola, ${name.split(' ')[0]}.<br>Ya recibimos tu mensaje.
@@ -182,7 +180,7 @@ export async function sendContact(prevState: unknown, formData: FormData) {
 
         ${serviceInterest ? `
         <tr>
-          <td style="background:#111a1b;border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;padding:20px 36px">
+          <td style="background-color:#111a1b;background-image:linear-gradient(#111a1b,#111a1b);border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;padding:20px 36px">
             <table cellpadding="0" cellspacing="0">
               <tr>
                 <td style="padding-right:14px;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#4a5556;white-space:nowrap">Servicio consultado</td>
@@ -193,30 +191,30 @@ export async function sendContact(prevState: unknown, formData: FormData) {
         </tr>` : ''}
 
         <tr>
-          <td style="background:#0e1516;border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;padding:0 36px">
-            <div style="height:1px;background:#1e2d2e"></div>
+          <td style="background-color:#0e1516;background-image:linear-gradient(#0e1516,#0e1516);border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;padding:0 36px">
+            <div style="height:1px;background-color:#1e2d2e;background-image:linear-gradient(#1e2d2e,#1e2d2e);"></div>
           </td>
         </tr>
 
         <tr>
-          <td style="background:#0e1516;border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;border-bottom:1px solid #1e2d2e;padding:28px 36px 52px">
+          <td style="background-color:#0e1516;background-image:linear-gradient(#0e1516,#0e1516);border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;border-bottom:1px solid #1e2d2e;padding:28px 36px 52px">
             <p style="margin:0 0 20px;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#4a5556">Qué sigue</p>
             <table cellpadding="0" cellspacing="0" width="100%">
               <tr>
                 <td style="vertical-align:top;padding:0 0 18px">
-                  <span style="display:inline-block;width:22px;height:22px;background:#ffb690;color:#0e1516;font-size:11px;font-weight:700;text-align:center;line-height:22px;margin-right:12px">1</span>
+                  <span style="display:inline-block;width:22px;height:22px;background-color:#ffb690;background-image:linear-gradient(#ffb690,#ffb690);color:#0e1516;font-size:11px;font-weight:700;text-align:center;line-height:22px;margin-right:12px">1</span>
                   <span style="font-size:14px;color:#c8bdb4">Revisamos los detalles de tu proyecto</span>
                 </td>
               </tr>
               <tr>
                 <td style="vertical-align:top;padding:0 0 18px">
-                  <span style="display:inline-block;width:22px;height:22px;background:#ffb690;color:#0e1516;font-size:11px;font-weight:700;text-align:center;line-height:22px;margin-right:12px">2</span>
+                  <span style="display:inline-block;width:22px;height:22px;background-color:#ffb690;background-image:linear-gradient(#ffb690,#ffb690);color:#0e1516;font-size:11px;font-weight:700;text-align:center;line-height:22px;margin-right:12px">2</span>
                   <span style="font-size:14px;color:#c8bdb4">Te contactamos para agendar una llamada</span>
                 </td>
               </tr>
               <tr>
                 <td style="vertical-align:top">
-                  <span style="display:inline-block;width:22px;height:22px;background:#ffb690;color:#0e1516;font-size:11px;font-weight:700;text-align:center;line-height:22px;margin-right:12px">3</span>
+                  <span style="display:inline-block;width:22px;height:22px;background-color:#ffb690;background-image:linear-gradient(#ffb690,#ffb690);color:#0e1516;font-size:11px;font-weight:700;text-align:center;line-height:22px;margin-right:12px">3</span>
                   <span style="font-size:14px;color:#c8bdb4">Armamos una propuesta a medida</span>
                 </td>
               </tr>

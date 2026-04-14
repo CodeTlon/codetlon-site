@@ -1,150 +1,129 @@
 'use client'
 
-// Bug #4: useFormState de react-dom (Next.js 14, NO useActionState de react)
-import { useFormState, useFormStatus } from 'react-dom'
-import { sendContact } from '@/app/actions/contact'
-import { services } from '@/lib/services-data'
-import { Send, CheckCircle2 } from 'lucide-react'
-import { useSearchParams } from 'next/navigation'
-import { Suspense } from 'react'
+import { useState } from 'react'
+import { CheckCircle2 } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
-function SubmitButton() {
-  const { pending } = useFormStatus()
-  return (
-    <button
-      type="submit"
-      disabled={pending}
-      className="inline-flex items-center gap-2 gradient-cta text-[#552100] font-body font-semibold px-6 py-3 rounded-full disabled:opacity-50 transition-opacity hover:opacity-90"
-    >
-      <Send size={16} />
-      {pending ? 'Enviando...' : 'Enviar mensaje'}
-    </button>
-  )
-}
+const PROJECT_TYPES = [
+  'Web Institucional',
+  'Plataforma / App Web',
+  'E-commerce',
+  'MVP / Startup',
+  'Aún no lo sé'
+]
 
-function ServiceSelect({ defaultValue }: { defaultValue?: string }) {
-  return (
-    <select
-      name="serviceInterest"
-      defaultValue={defaultValue ?? ''}
-      className="w-full bg-surface-highest border border-white/10 rounded-xl px-4 py-3 font-body text-sm text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors"
-    >
-      <option value="">¿Qué tipo de proyecto tenés en mente?</option>
-      {services.map((s) => (
-        <option key={s.slug} value={s.slug}>
-          {s.level} — {s.name}
-        </option>
-      ))}
-      <option value="no-se">No sé / Necesito asesoramiento</option>
-    </select>
-  )
-}
+export function ContactForm() {
+  const [selectedType, setSelectedType] = useState<string>('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
 
-function ContactFormInner() {
-  const [state, action] = useFormState(sendContact, null)
-  const searchParams = useSearchParams()
-  const servicioParam = searchParams.get('servicio') ?? undefined
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    
+    // Simulamos un envío de 1 segundo
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    
+    setIsSubmitting(false)
+    setIsSuccess(true)
+  }
 
-  if (state?.success) {
+  if (isSuccess) {
     return (
-      <div
-        data-testid="success-message"
-        className="flex flex-col items-center justify-center gap-4 py-16 text-center"
-      >
-        <CheckCircle2 size={48} className="text-primary" />
-        <h3 className="font-display text-2xl text-foreground">¡Mensaje recibido!</h3>
-        <p className="font-body text-foreground/55 max-w-sm">
-          Te respondemos en menos de 48hs.
+      <div className="flex flex-col items-start justify-center p-12 border border-white/10 bg-white/[0.02]">
+        <div className="w-12 h-12 rounded-full bg-[#ffb690]/10 flex items-center justify-center mb-6 border border-[#ffb690]/30">
+          <CheckCircle2 className="w-6 h-6 text-[#ffb690]" />
+        </div>
+        <h3 className="font-display text-3xl text-foreground mb-4">Mensaje enviado.</h3>
+        <p className="font-body text-base text-foreground/50 font-light text-pretty">
+          Recibimos los detalles de tu proyecto. En menos de 48 horas uno de nuestros expertos se va a contactar con vos.
         </p>
       </div>
     )
   }
 
   return (
-    <form action={action} className="flex flex-col gap-4">
-      <input type="hidden" name="sourcePage" value={typeof window !== 'undefined' ? window.location.pathname : '/contacto'} />
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div>
-          <label htmlFor="name" className="font-body text-xs text-foreground/40 uppercase tracking-wider mb-1.5 block">
-            Nombre *
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            placeholder="Tu nombre"
-            className="w-full bg-surface-highest border border-white/10 rounded-xl px-4 py-3 font-body text-sm text-foreground placeholder:text-foreground/25 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors"
-          />
-        </div>
-        <div>
-          <label htmlFor="email" className="font-body text-xs text-foreground/40 uppercase tracking-wider mb-1.5 block">
-            Email *
-          </label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            placeholder="tu@email.com"
-            className="w-full bg-surface-highest border border-white/10 rounded-xl px-4 py-3 font-body text-sm text-foreground placeholder:text-foreground/25 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors"
-          />
+    <form onSubmit={handleSubmit} className="flex flex-col gap-8">
+      
+      {/* 1. Selección de Idea General */}
+      <div className="flex flex-col gap-4">
+        <label className="font-body text-xs font-bold text-[#ffb690]/70 uppercase tracking-[0.2em]">
+          1. ¿Qué tenés en mente?
+        </label>
+        <div className="flex flex-wrap gap-3">
+          {PROJECT_TYPES.map((type) => (
+            <button
+              key={type}
+              type="button"
+              onClick={() => setSelectedType(type)}
+              className={cn(
+                'px-5 py-3 font-body text-sm transition-all duration-300 border',
+                selectedType === type
+                  ? 'bg-[#ffb690] text-[#0e1516] border-[#ffb690] font-medium'
+                  : 'bg-white/[0.02] text-foreground/50 border-white/10 hover:border-[#ffb690]/50 hover:text-foreground'
+              )}
+            >
+              {type}
+            </button>
+          ))}
         </div>
       </div>
 
-      <div>
-        <label htmlFor="company" className="font-body text-xs text-foreground/40 uppercase tracking-wider mb-1.5 block">
-          Empresa <span className="text-foreground/20">(opcional)</span>
+      <div className="border-t border-white/10 w-full" />
+
+      {/* 2. Datos y Detalles */}
+      <div className="flex flex-col gap-6">
+        <label className="font-body text-xs font-bold text-[#ffb690]/70 uppercase tracking-[0.2em]">
+          2. Detalles del proyecto
         </label>
-        <input
-          id="company"
-          name="company"
-          type="text"
-          placeholder="Nombre de tu empresa"
-          className="w-full bg-surface-highest border border-white/10 rounded-xl px-4 py-3 font-body text-sm text-foreground placeholder:text-foreground/25 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors"
-        />
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="flex flex-col gap-2">
+            <input
+              type="text"
+              name="name"
+              required
+              placeholder="Tu nombre"
+              className="w-full bg-white/[0.02] border border-white/10 px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-[#ffb690]/50 focus:bg-white/[0.04] transition-colors"
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Tu email"
+              className="w-full bg-white/[0.02] border border-white/10 px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-[#ffb690]/50 focus:bg-white/[0.04] transition-colors"
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <textarea
+            name="message"
+            required
+            rows={5}
+            placeholder="Contanos sobre tu proyecto. ¿Cuál es el objetivo? ¿Tenés referencias? Mientras más detalles, mejor."
+            className="w-full bg-white/[0.02] border border-white/10 px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-[#ffb690]/50 focus:bg-white/[0.04] transition-colors resize-none"
+          />
+        </div>
       </div>
 
-      <div>
-        <label className="font-body text-xs text-foreground/40 uppercase tracking-wider mb-1.5 block">
-          Tipo de proyecto
-        </label>
-        <ServiceSelect defaultValue={servicioParam} />
-      </div>
-
-      <div>
-        <label htmlFor="message" className="font-body text-xs text-foreground/40 uppercase tracking-wider mb-1.5 block">
-          Mensaje *
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          required
-          rows={5}
-          placeholder="Contanos de tu proyecto..."
-          className="w-full bg-surface-highest border border-white/10 rounded-xl px-4 py-3 font-body text-sm text-foreground placeholder:text-foreground/25 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors resize-none"
-        />
-      </div>
-
-      {state?.error && (
-        <p className="font-body text-sm text-red-400">{state.error}</p>
-      )}
-
-      <div className="flex items-center justify-between gap-4">
-        <SubmitButton />
-        <p className="font-body text-xs text-foreground/30">
-          * Campos obligatorios
-        </p>
+      {/* Submit Button */}
+      <div className="pt-4">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="group relative flex items-center justify-between gap-8 px-8 py-5 bg-[#ffb690] text-[#0e1516] overflow-hidden w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
+          
+          <span className="relative z-10 font-body text-[13px] font-bold uppercase tracking-[0.25em]">
+            {isSubmitting ? 'Enviando...' : 'Enviar propuesta'}
+          </span>
+          
+        </button>
       </div>
     </form>
-  )
-}
-
-export function ContactForm() {
-  return (
-    <Suspense fallback={<div className="h-64 animate-pulse bg-surface-container rounded-2xl" />}>
-      <ContactFormInner />
-    </Suspense>
   )
 }

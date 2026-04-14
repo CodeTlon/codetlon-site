@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
-import { PageHero } from '@/components/sections/PageHero'
 import { CTABanner } from '@/components/sections/CTABanner'
-import { CheckCircle2 } from 'lucide-react'
+import { AnimateIn } from '@/components/ui/AnimateIn'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 
 export const metadata: Metadata = {
@@ -31,7 +30,7 @@ const phases = [
   {
     number: '03',
     title: 'Diseño',
-    duration: '1-2 días',
+    duration: '1–2 días',
     description:
       'Construimos el sistema de diseño: paleta de colores, tipografías, componentes base. Sin templates. Todo basado en tu marca e identidad.',
     deliverables: ['Design system', 'Mockups de secciones clave', 'Aprobación de identidad visual'],
@@ -50,12 +49,12 @@ const phases = [
     duration: '1 día',
     description:
       'Corremos los tests E2E en 3 viewports, hacemos auditoría Lighthouse y revisamos accesibilidad. Nada llega a producción sin pasar el filtro.',
-    deliverables: ['Tests E2E pasando', 'Lighthouse Performance ≥ 85, SEO ≥ 95', 'Ajustes finales'],
+    deliverables: ['Tests E2E pasando', 'Lighthouse Performance ≥ 85', 'SEO ≥ 95'],
   },
   {
     number: '06',
     title: 'Lanzamiento',
-    duration: '4-8 horas',
+    duration: '4–8 horas',
     description:
       'Deploy en Vercel o VPS Docker, configuración de dominio, variables de entorno en producción, verificación final en vivo. El inicio, no el final.',
     deliverables: ['Deploy en producción', 'Dominio configurado', 'Documentación entregada'],
@@ -65,124 +64,201 @@ const phases = [
 const faqs = [
   {
     q: '¿Cuánto tarda un proyecto?',
-    a: 'Depende del nivel. Una landing (L1) puede estar lista en 4-5 días. Un sitio institucional (L2) en 7-10 días. Para proyectos más complejos (L3-L9) coordinamos el tiempo en la propuesta.',
+    a: 'Al ser desarrollos a medida, el tiempo depende íntegramente de la complejidad técnica y el alcance. Una experiencia web corporativa puede tomar un par de semanas, mientras que plataformas B2B o sistemas web a medida se ejecutan en fases de varios meses. El cronograma exacto lo definimos juntos en la propuesta técnica.',
   },
   {
     q: '¿Cómo me involucro durante el proceso?',
-    a: 'Tenemos puntos de revisión definidos en las fases de Diseño y Revisión. No te molestamos con decisiones técnicas, pero tus aprobaciones en los entregables clave son importantes.',
+    a: 'Establecemos puntos de revisión estratégicos en las fases de Descubrimiento, Diseño y Revisión. No te abrumamos con decisiones técnicas del día a día, pero tus validaciones en los entregables clave son fundamentales para avanzar.',
   },
   {
     q: '¿Qué pasa después del lanzamiento?',
-    a: 'Activamos el Plan de Evolución Continua: monitoreo, actualizaciones y mejoras iterativas. No desaparecemos después de entregar.',
+    a: 'El lanzamiento es solo el día uno. Activamos el Plan de Evolución Continua: monitoreo de rendimiento, actualizaciones de seguridad y mejoras iterativas basadas en métricas reales de tus usuarios.',
   },
   {
     q: '¿Trabajan con clientes fuera de Córdoba?',
-    a: 'Sí, todos nuestros proyectos son 100% remotos. Trabajamos con clientes de todo el país y el exterior.',
+    a: 'Sí, nuestra operación es 100% remota. Trabajamos con clientes de todo el país y el exterior, manteniendo una comunicación asincrónica fluida y reuniones de avance estructuradas.',
   },
   {
-    q: '¿Puedo cambiar algo durante el desarrollo?',
-    a: 'Cambios menores en la fase de desarrollo son absorbidos. Cambios de alcance significativos generan una propuesta adicional. Lo aclaramos desde el inicio para evitar sorpresas.',
+    q: '¿Puedo cambiar o agregar funciones durante el desarrollo?',
+    a: 'Entendemos que los proyectos mutan. Cambios menores de diseño son absorbidos sin problema. Si surgen nuevas funcionalidades o un cambio de alcance significativo (pivot), armamos una propuesta adicional para no comprometer el cronograma original.',
   },
 ]
 
 const continuoItems = [
-  'Monitoreo de uptime y alertas automáticas',
-  'Actualizaciones de seguridad y dependencias',
-  'Mejoras de performance basadas en métricas reales',
-  'Soporte prioritario ante incidencias',
-  'Optimización continua de SEO y conversiones',
-  'Incorporación de nuevas funcionalidades',
+  'Monitoreo de uptime y alertas',
+  'Actualizaciones de seguridad',
+  'Mejoras de performance',
+  'Soporte prioritario',
+  'Optimización continua de SEO',
 ]
 
 export default function ProcesoPage() {
   return (
     <>
-      <PageHero
-        badge="Metodología propia"
-        title="El FOS Method"
-        subtitle="Factory Operating System. El proceso que seguimos en cada proyecto, sin excepciones. Predecible, documentado, orientado a resultados."
-      />
+      {/* Hero Refinado */}
+      <section className="relative min-h-[60vh] lg:min-h-[65vh] flex flex-col justify-center overflow-hidden bg-background pt-32 pb-16 md:pt-40 md:pb-24">
+        <div
+          className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none"
+          style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
+        />
+        
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-4xl">
+            <div className="flex items-center gap-4 mb-8 anim-fade-up anim-d1">
+              <div className="w-10 h-[1px] bg-[#ffb690]/50" />
+              <span className="font-body text-xs sm:text-sm font-semibold text-[#ffb690] uppercase tracking-[0.25em]">
+                Metodología propia
+              </span>
+            </div>
+            
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-foreground leading-[1.05] tracking-tight text-balance anim-fade-up anim-d2">
+              El{' '}
+              <em className="italic text-[#ffb690] font-light">FOS Method</em>
+            </h1>
+            
+            <p className="font-body text-lg sm:text-xl text-foreground/50 mt-8 max-w-2xl leading-relaxed font-light text-pretty anim-fade-up anim-d3">
+              Factory Operating System. El proceso que seguimos en cada proyecto, sin excepciones.
+              Predecible, documentado y orientado a resultados.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      {/* Fases */}
-      <section className="py-16 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-8">
+      {/* Fases 01 a 06 */}
+      <section className="py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="border-t border-white/10">
             {phases.map((phase, i) => (
-              <div
-                key={phase.number}
-                className="grid grid-cols-1 lg:grid-cols-[200px_1fr_240px] gap-6 items-start pb-8 border-b border-white/8 last:border-0"
-              >
-                <div className="flex items-center gap-4 lg:flex-col lg:items-start">
-                  <span className="font-display text-5xl font-bold text-primary/20 leading-none">
-                    {phase.number}
-                  </span>
-                  <div>
-                    <h2 className="font-display text-xl text-foreground">{phase.title}</h2>
-                    <p className="font-body text-xs text-foreground/30 mt-0.5">{phase.duration}</p>
+              <AnimateIn key={phase.number} delay={i * 50}>
+                <div className="group flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-16 py-12 md:py-16 border-b border-white/10 transition-all duration-500">
+                  
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-12 w-full lg:w-5/12 shrink-0">
+                    <span className="font-display italic text-6xl md:text-7xl text-white/5 group-hover:text-[#ffb690] transition-colors duration-500 leading-none">
+                      {phase.number}
+                    </span>
+                    <div className="flex flex-col">
+                      <h2 className="font-display text-3xl text-foreground group-hover:translate-x-2 transition-transform duration-500 mb-2">
+                        {phase.title}
+                      </h2>
+                      <span className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-[#ffb690]/60">
+                        Duración // {phase.duration}
+                      </span>
+                    </div>
                   </div>
+
+                  <div className="w-full lg:w-4/12">
+                    <p className="font-body text-base text-foreground/50 leading-relaxed font-light text-pretty group-hover:text-foreground/70 transition-colors duration-500">
+                      {phase.description}
+                    </p>
+                  </div>
+
+                  <div className="w-full lg:w-3/12 flex flex-col gap-3">
+                    {phase.deliverables.map((d) => (
+                      <div key={d} className="flex items-start gap-3">
+                        <div className="w-1 h-1 bg-[#ffb690]/40 mt-[9px] shrink-0 group-hover:bg-[#ffb690] transition-colors duration-500" />
+                        <span className="font-body text-xs text-foreground/40 leading-relaxed group-hover:text-foreground/60 transition-colors duration-500">
+                          {d}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
                 </div>
-                <p className="font-body text-foreground/60 leading-relaxed">{phase.description}</p>
-                <ul className="flex flex-col gap-2">
-                  {phase.deliverables.map((d) => (
-                    <li key={d} className="flex items-start gap-2">
-                      <CheckCircle2 size={14} className="text-primary shrink-0 mt-0.5" />
-                      <span className="font-body text-xs text-foreground/50">{d}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </AnimateIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Evolución Continua */}
-      <section className="py-16 bg-surface-low border-y border-white/8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div>
-              <p className="font-body text-xs font-semibold uppercase tracking-widest text-foreground/30 mb-4">
-                Fase 07 — continua
-              </p>
-              <h2 className="font-display text-3xl text-foreground mb-4">
-                Plan de Evolución Continua
-              </h2>
-              <p className="font-body text-foreground/55 leading-relaxed">
-                El lanzamiento no es el fin del proceso. Es el inicio de la siguiente etapa. Cada
-                proyecto entregado sigue siendo nuestro: lo monitoreamos, lo actualizamos y lo
-                mejoramos.
-              </p>
+      {/* Fase 07 - Ahora con el mismo Layout visual que las otras fases, pero fondo oscuro */}
+      <section className="relative pt-24 pb-32 bg-[#050505] overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-background to-transparent pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+          <AnimateIn>
+            <div className="flex items-center gap-4 mb-16">
+              <div className="w-10 h-[1px] bg-[#ffb690]/50" />
+              <span className="font-body text-xs sm:text-sm font-semibold text-[#ffb690] uppercase tracking-[0.25em]">
+                Post-Lanzamiento
+              </span>
             </div>
-            <ul className="flex flex-col gap-3 pt-8 lg:pt-0">
-              {continuoItems.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
-                  <span className="font-body text-sm text-foreground/65">{item}</span>
-                </li>
-              ))}
-            </ul>
+          </AnimateIn>
+
+          <div className="border-t border-white/10">
+            <AnimateIn delay={100}>
+              <div className="group flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-16 py-12 md:py-16 border-b border-white/10 transition-all duration-500">
+                
+                {/* Mismo estilo de Número y Título */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-12 w-full lg:w-5/12 shrink-0">
+                  <span className="font-display italic text-6xl md:text-7xl text-white/5 group-hover:text-[#ffb690] transition-colors duration-500 leading-none">
+                    07
+                  </span>
+                  <div className="flex flex-col">
+                    <h2 className="font-display text-3xl text-foreground group-hover:translate-x-2 transition-transform duration-500 mb-2">
+                      Continua
+                    </h2>
+                    <span className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-[#ffb690]/60">
+                      Duración // Permanente
+                    </span>
+                  </div>
+                </div>
+
+                {/* Descripción alineada */}
+                <div className="w-full lg:w-4/12">
+                  <p className="font-body text-base text-foreground/50 leading-relaxed font-light text-pretty group-hover:text-foreground/70 transition-colors duration-500">
+                    El lanzamiento no es el fin del proceso. Es el inicio de la siguiente etapa. Activamos un plan integral para escalar el proyecto y mantenerlo optimizado.
+                  </p>
+                </div>
+
+                {/* Entregables / Items continuos */}
+                <div className="w-full lg:w-3/12 flex flex-col gap-3">
+                  {continuoItems.map((item) => (
+                    <div key={item} className="flex items-start gap-3">
+                      <div className="w-1 h-1 bg-[#ffb690]/40 mt-[9px] shrink-0 group-hover:bg-[#ffb690] transition-colors duration-500" />
+                      <span className="font-body text-xs text-foreground/40 leading-relaxed group-hover:text-foreground/60 transition-colors duration-500">
+                        {item}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+              </div>
+            </AnimateIn>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-16 bg-background">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-display text-3xl text-foreground mb-10">Preguntas frecuentes</h2>
-          <Accordion type="single" collapsible className="flex flex-col gap-2">
+      <section className="pb-32 bg-[#050505]">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8">
+          <AnimateIn>
+            <div className="flex items-center gap-4 mb-16">
+              <div className="w-8 h-[1px] bg-[#ffb690]/40" />
+              <span className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
+                Preguntas frecuentes
+              </span>
+            </div>
+          </AnimateIn>
+
+          {/* 1. Quitamos type="single" y collapsible porque Base UI no los necesita */}
+          <Accordion className="border-t border-white/10">
             {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`faq-${i}`}
-                className="bg-surface-container rounded-xl border border-white/6 px-4 data-[state=open]:border-primary/20"
-              >
-                <AccordionTrigger className="font-body text-sm font-medium text-foreground py-4 hover:no-underline">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="font-body text-sm text-foreground/55 leading-relaxed pb-4">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
+              <AnimateIn key={i} delay={i * 40}>
+                <AccordionItem
+                  value={`faq-${i}`}
+                  // 2. Cambiamos data-[state=open] por data-open
+                  className="border-b border-white/10 data-[state-open]:border-[#ffb690]/20 transition-colors duration-500"
+                >
+                  <AccordionTrigger className="font-display text-xl md:text-2xl text-foreground/50 hover:text-foreground py-8 hover:no-underline data-open:text-[#ffb690] text-left transition-colors duration-500">
+                    {faq.q}
+                  </AccordionTrigger>
+                  
+                  {/* 3. Limpiamos las clases extra porque tu accordion.tsx ya las maneja súper bien */}
+                  <AccordionContent className="font-body text-base text-foreground/40 leading-relaxed font-light text-pretty pb-8 pt-2">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              </AnimateIn>
             ))}
           </Accordion>
         </div>

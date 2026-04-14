@@ -3,9 +3,7 @@ import { HeroHome } from '@/components/sections/HeroHome'
 import { LogoStrip } from '@/components/sections/LogoStrip'
 import { ServicesTeaser } from '@/components/sections/ServicesTeaser'
 import { FOSMethod } from '@/components/sections/FOSMethod'
-import { MetricsStrip } from '@/components/sections/MetricsStrip'
 import { WhyCodeTlon } from '@/components/sections/WhyCodeTlon'
-import { EvolucionContinua } from '@/components/sections/EvolucionContinua'
 import { CTABanner } from '@/components/sections/CTABanner'
 import { JsonLd } from '@/components/seo/JsonLd'
 
@@ -48,9 +46,7 @@ export default function Home() {
       <LogoStrip />
       <ServicesTeaser />
       <FOSMethod />
-      <MetricsStrip />
       <WhyCodeTlon />
-      <EvolucionContinua />
       <CTABanner />
     </>
   )

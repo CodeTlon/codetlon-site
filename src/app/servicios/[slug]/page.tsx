@@ -4,12 +4,11 @@ import { services, getServiceBySlug, getRelatedServices } from '@/lib/services-d
 import { PageHero } from '@/components/sections/PageHero'
 import { EvolucionContinua } from '@/components/sections/EvolucionContinua'
 import { CTABanner } from '@/components/sections/CTABanner'
-import { CheckCircle2, ArrowRight } from 'lucide-react'
+import { AnimateIn } from '@/components/ui/AnimateIn'
 import { GradientButton } from '@/components/ui/GradientButton'
 import { JsonLd } from '@/components/seo/JsonLd'
 import Link from 'next/link'
 
-// Bug #24: try/catch en generateStaticParams
 export async function generateStaticParams() {
   try {
     return services.map((s) => ({ slug: s.slug }))
@@ -62,78 +61,103 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
       />
 
       {/* Descripción + Para quién */}
-      <section className="py-16 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <p className="font-body text-xs font-semibold uppercase tracking-widest text-foreground/30 mb-4">
-              Descripción
-            </p>
-            <p className="font-body text-foreground/70 leading-relaxed text-lg">
-              {service.longDescription}
-            </p>
-          </div>
-          <div>
-            <p className="font-body text-xs font-semibold uppercase tracking-widest text-foreground/30 mb-4">
-              Para quién es
-            </p>
-            <p className="font-body text-foreground/70 leading-relaxed">{service.problemStatement}</p>
-            <GradientButton
-              href={`/contacto?servicio=${service.slug}`}
-              className="mt-6"
-            >
-              Consultar por este servicio
-            </GradientButton>
+      <section className="py-24 md:py-32 bg-background">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 border-t border-white/[0.04] pt-16">
+            <AnimateIn>
+              <span className="font-body text-xs font-medium text-foreground/30 uppercase tracking-[0.2em] block mb-6">
+                Descripción
+              </span>
+              <p className="font-body text-lg text-foreground/60 leading-relaxed font-light">
+                {service.longDescription}
+              </p>
+            </AnimateIn>
+            <AnimateIn delay={100}>
+              <span className="font-body text-xs font-medium text-foreground/30 uppercase tracking-[0.2em] block mb-6">
+                Para quién es
+              </span>
+              <p className="font-body text-base text-foreground/50 leading-relaxed font-light mb-8">
+                {service.problemStatement}
+              </p>
+              <GradientButton href={`/contacto?servicio=${service.slug}`}>
+                Consultar por este servicio
+              </GradientButton>
+            </AnimateIn>
           </div>
         </div>
       </section>
 
       {/* Qué incluye */}
-      <section className="py-16 bg-surface-low border-y border-white/8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-display text-2xl text-foreground mb-8">Qué incluye</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl">
-            {service.whatYouGet.map((item) => (
-              <div key={item} className="flex items-start gap-3">
-                <CheckCircle2 size={16} className="text-primary shrink-0 mt-0.5" />
-                <span className="font-body text-sm text-foreground/70">{item}</span>
-              </div>
+      <section className="py-24 bg-[#050505]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <AnimateIn>
+            <div className="flex items-center gap-4 mb-16">
+              <div className="w-8 h-[1px] bg-[#ffb690]/40" />
+              <span className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
+                Qué incluye
+              </span>
+            </div>
+          </AnimateIn>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 max-w-3xl border-t border-white/[0.04]">
+            {service.whatYouGet.map((item, i) => (
+              <AnimateIn key={item} delay={i * 40}>
+                <div className="flex items-start gap-4 py-5 border-b border-white/[0.04]">
+                  <span className="text-[#ffb690]/40 mt-0.5 shrink-0 text-sm">—</span>
+                  <span className="font-body text-sm text-foreground/60 leading-relaxed">
+                    {item}
+                  </span>
+                </div>
+              </AnimateIn>
             ))}
           </div>
         </div>
       </section>
 
       {/* Stack + Timeline */}
-      <section className="py-16 bg-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div>
-            <h2 className="font-display text-2xl text-foreground mb-6">Stack técnico</h2>
-            <div className="flex flex-wrap gap-2">
+      <section className="py-24 bg-background">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+          <AnimateIn>
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-8 h-[1px] bg-[#ffb690]/40" />
+              <span className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
+                Stack técnico
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-x-8 gap-y-3">
               {service.techStack.map((tech) => (
                 <span
                   key={tech}
-                  className="font-body text-sm px-3 py-1 rounded-full bg-secondary/10 text-secondary border border-secondary/20"
+                  className="font-display italic text-xl text-foreground/40 hover:text-[#ffb690] transition-colors duration-500 cursor-default"
                 >
                   {tech}
                 </span>
               ))}
             </div>
-          </div>
-          <div>
-            <h2 className="font-display text-2xl text-foreground mb-6">Proceso</h2>
-            <ol className="flex flex-col gap-4">
+          </AnimateIn>
+
+          <AnimateIn delay={100}>
+            <div className="flex items-center gap-4 mb-10">
+              <div className="w-8 h-[1px] bg-[#ffb690]/40" />
+              <span className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
+                Proceso
+              </span>
+            </div>
+            <div className="border-t border-white/[0.04]">
               {service.timeline.map((t, i) => (
-                <li key={t.step} className="flex items-start gap-4">
-                  <span className="font-display text-3xl font-bold text-primary/20 leading-none w-8 shrink-0">
+                <div key={t.step} className="flex items-start gap-6 py-5 border-b border-white/[0.04]">
+                  <span className="font-display italic text-2xl text-[#ffb690]/30 shrink-0 leading-none mt-0.5">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <div>
-                    <p className="font-body text-sm font-medium text-foreground">{t.step}</p>
-                    <p className="font-body text-xs text-foreground/40">{t.duration}</p>
+                    <p className="font-body text-sm font-medium text-foreground/70">{t.step}</p>
+                    <p className="font-body text-xs text-foreground/30 mt-1">{t.duration}</p>
                   </div>
-                </li>
+                </div>
               ))}
-            </ol>
-          </div>
+            </div>
+          </AnimateIn>
+
         </div>
       </section>
 
@@ -141,27 +165,36 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
 
       {/* Servicios relacionados */}
       {related.length > 0 && (
-        <section className="py-16 bg-surface-low border-t border-white/8">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="font-display text-2xl text-foreground mb-8">También podrías necesitar</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {related.map((r) => (
-                <Link
-                  key={r.slug}
-                  href={`/servicios/${r.slug}`}
-                  className="group flex items-center justify-between bg-surface-container rounded-xl px-5 py-4 border border-white/6 hover:border-primary/30 transition-all"
-                >
-                  <div>
-                    <span className="font-body text-xs font-bold text-primary uppercase tracking-wider">
-                      {r.level}
+        <section className="py-20 bg-[#050505]">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+            <AnimateIn>
+              <div className="flex items-center gap-4 mb-12">
+                <div className="w-8 h-[1px] bg-[#ffb690]/40" />
+                <span className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
+                  También podrías necesitar
+                </span>
+              </div>
+            </AnimateIn>
+            <div className="border-t border-white/[0.04]">
+              {related.map((r, i) => (
+                <AnimateIn key={r.slug} delay={i * 60}>
+                  <Link
+                    href={`/servicios/${r.slug}`}
+                    className="group flex items-center justify-between py-7 border-b border-white/[0.04] hover:bg-white/[0.01] transition-colors duration-500"
+                  >
+                    <div className="flex items-baseline gap-6">
+                      <span className="font-body text-xs text-[#ffb690]/40 group-hover:text-[#ffb690] transition-colors duration-500 uppercase tracking-[0.15em]">
+                        {r.level}
+                      </span>
+                      <span className="font-display text-xl text-foreground/70 group-hover:text-foreground transition-colors duration-500">
+                        {r.name}
+                      </span>
+                    </div>
+                    <span className="text-foreground/20 group-hover:text-[#ffb690] group-hover:translate-x-1 transition-all duration-500 text-sm">
+                      →
                     </span>
-                    <p className="font-body text-sm text-foreground mt-0.5">{r.name}</p>
-                  </div>
-                  <ArrowRight
-                    size={16}
-                    className="text-foreground/20 group-hover:text-primary group-hover:translate-x-1 transition-all"
-                  />
-                </Link>
+                  </Link>
+                </AnimateIn>
               ))}
             </div>
           </div>
@@ -170,8 +203,8 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
 
       <CTABanner
         headline={`¿Necesitás un ${service.name}?`}
-        primaryLabel="Hablemos de tu proyecto"
-        primaryHref={`/contacto?servicio=${service.slug}`}
+        ctaLabel="Hablemos de tu proyecto"
+        ctaHref={`/contacto?servicio=${service.slug}`}
       />
     </>
   )

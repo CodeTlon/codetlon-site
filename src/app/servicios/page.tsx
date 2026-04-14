@@ -1,14 +1,15 @@
 import type { Metadata } from 'next'
 import { PageHero } from '@/components/sections/PageHero'
-import { ServicesGrid } from '@/components/sections/ServicesGrid'
+import { CoreCapabilities } from '@/components/sections/CoreCapabilities'
 import { EvolucionContinua } from '@/components/sections/EvolucionContinua'
 import { CTABanner } from '@/components/sections/CTABanner'
+import { AnimateIn } from '@/components/ui/AnimateIn'
 import { WHATSAPP_CTA_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Servicios de desarrollo web | CodeTlon — 9 niveles',
+  title: 'Capacidades Tecnológicas | CodeTlon',
   description:
-    'Desde landings de alta conversión hasta sitios con IA integrada. Elegí el nivel que necesita tu negocio. Sin precios fijos: cada proyecto es único.',
+    'Desarrollo a medida. Desde plataformas complejas hasta arquitecturas escalables en la nube. Construimos la tecnología que tu visión demanda.',
   alternates: { canonical: 'https://codetlon.com/servicios' },
 }
 
@@ -16,36 +17,34 @@ export default function ServiciosPage() {
   return (
     <>
       <PageHero
-        badge="Soluciones digitales"
-        title="9 niveles. Un mismo estándar."
-        subtitle="No existe una sola forma de hacer presencia digital. Cada negocio tiene un punto de partida diferente."
+        badge="Nuestras Capacidades"
+        title={
+          <>
+            Desarrollo a medida.{' '}
+            <em className="font-display italic text-[#ffb690] font-light">Sin límites técnicos.</em>
+          </>
+        }
+        subtitle="No trabajamos con plantillas ni soluciones enlatadas. Entendemos la complejidad de tu negocio y construimos la arquitectura exacta para escalarlo."
       />
-      <ServicesGrid />
 
-      {/* Hint de nivel */}
-      <section className="py-12 bg-surface-low border-y border-white/8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div>
-            <p className="font-display text-xl text-foreground mb-1">
-              ¿No sabés qué nivel necesitás?
-            </p>
-            <p className="font-body text-sm text-foreground/50">
-              Contanos de tu proyecto y te asesoramos sin compromiso.
-            </p>
-          </div>
-          <a
-            href={WHATSAPP_CTA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-body text-sm font-medium text-primary hover:underline"
-          >
-            Consultar por WhatsApp →
-          </a>
-        </div>
+      {/* Todo esto transcurre en el fondo Petróleo (bg-background) */}
+      <CoreCapabilities />
+
+      {/* Puente Narrativo: Acá ocurre la bajada hacia la oscuridad total (Negro) */}
+      <section className="relative py-24 bg-[#050505] overflow-hidden">
+        
+        {/* Fundido de Petróleo (background) a Negro (#050505) */}
+        <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-background to-transparent pointer-events-none" />
       </section>
 
+      {/* A partir de acá, la página ya es 100% Negra */}
       <EvolucionContinua />
-      <CTABanner headline="Tu proyecto merece el stack correcto." />
+      
+      <CTABanner 
+        headline="Tu proyecto merece el stack correcto." 
+        ctaLabel="ASESORAMIENTO TÉCNICO"
+        ctaHref={WHATSAPP_CTA_URL} 
+      />
     </>
   )
 }

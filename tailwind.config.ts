@@ -43,8 +43,24 @@ const config: Config = {
         "gradient-cta": "linear-gradient(135deg, #ffb690 0%, #4f1e00 100%)",
         "gradient-hero": "linear-gradient(180deg, #080f10 0%, #0e1516 100%)",
       },
+      // Animaciones agregadas para el Acordeón
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
     },
   },
   plugins: [],
 };
+
 export default config;

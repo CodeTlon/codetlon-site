@@ -43,7 +43,7 @@ export async function sendContact(prevState: unknown, formData: FormData) {
   const { error: emailError } = await resend.emails.send({
     from: `${process.env.RESEND_FROM_NAME ?? 'CodeTlon'} <${process.env.RESEND_FROM_EMAIL ?? 'onboarding@resend.dev'}>`,
     to: process.env.COMPANY_EMAIL ?? 'hola@codetlon.com',
-    reply_to: email,
+    replyTo: email,
     subject: `Nuevo lead: ${name}${serviceInterest ? ` — ${serviceInterest}` : ''}`,
     html: `
       <div style="font-family:Inter,sans-serif;background:#0e1516;color:#e8ddd4;padding:32px;border-radius:12px;max-width:560px">

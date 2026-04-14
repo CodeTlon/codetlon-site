@@ -1,35 +1,36 @@
 import { services } from '@/lib/services-data'
+import { AnimateIn } from '@/components/ui/AnimateIn'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 
 export function ServicesGrid() {
   return (
-    <section className="py-16 bg-background" aria-label="Todos los servicios">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((s) => (
-            <Link
-              key={s.slug}
-              href={`/servicios/${s.slug}`}
-              className="group bg-surface-container rounded-2xl p-6 border border-white/6 hover:border-primary/30 transition-all hover:bg-surface-high"
-            >
-              <div className="flex items-start justify-between mb-4">
-                <span className="font-body text-xs font-bold text-primary uppercase tracking-wider bg-primary/10 px-2.5 py-1 rounded-full">
-                  {s.level}
-                </span>
-                <ArrowRight
-                  size={16}
-                  className="text-foreground/20 group-hover:text-primary group-hover:translate-x-1 transition-all"
-                />
-              </div>
-              <h3 className="font-display text-xl text-foreground mb-2">{s.name}</h3>
-              <p className="font-body text-sm text-foreground/50 leading-relaxed mb-4">
-                {s.shortDescription}
-              </p>
-              <p className="font-body text-xs font-medium text-secondary uppercase tracking-wide">
-                {s.techStack.slice(0, 3).join(' · ')}
-              </p>
-            </Link>
+    <section className="bg-background py-8" aria-label="Todos los servicios">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="border-t border-white/[0.04]">
+          {services.map((s, i) => (
+            <AnimateIn key={s.slug} delay={i * 45}>
+              <Link
+                href={`/servicios/${s.slug}`}
+                className="group flex flex-col sm:flex-row sm:items-center justify-between py-8 md:py-10 border-b border-white/[0.04] hover:bg-white/[0.01] transition-colors duration-500"
+              >
+                <div className="flex items-baseline gap-6 md:gap-10">
+                  <span className="font-body text-xs font-medium text-[#ffb690]/40 group-hover:text-[#ffb690] transition-colors duration-500 uppercase tracking-[0.15em] w-8 shrink-0">
+                    {s.level}
+                  </span>
+                  <span className="font-display text-xl md:text-3xl text-foreground/70 group-hover:text-foreground transition-colors duration-500">
+                    {s.name}
+                  </span>
+                </div>
+                <div className="flex items-center gap-8 mt-3 sm:mt-0 ml-14 sm:ml-0">
+                  <span className="font-body text-xs text-foreground/25 hidden md:block">
+                    {s.techStack.slice(0, 3).join(' · ')}
+                  </span>
+                  <span className="font-body text-sm text-[#ffb690] opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+                    Ver servicio →
+                  </span>
+                </div>
+              </Link>
+            </AnimateIn>
           ))}
         </div>
       </div>

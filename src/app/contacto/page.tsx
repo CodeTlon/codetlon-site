@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 
 // --- Lista de canales ---
 const contactChannels = [
-  { icon: Mail, label: 'Email', href: 'mailto:hola@codetlon.com' },
+  { icon: Mail, label: 'Email', href: 'mailto:info@codetlon.com.ar' },
   { icon: WhatsAppIcon, label: 'WhatsApp', href: WHATSAPP_CTA_URL },
   { icon: InstagramIcon, label: 'Instagram', href: INSTAGRAM_URL },
   { icon: FacebookIcon, label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61576536284674&locale=es_LA' },

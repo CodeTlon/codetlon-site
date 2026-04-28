@@ -22,7 +22,7 @@ const localBusinessSchema = {
     'Software factory en Córdoba, Argentina. Desarrollamos sitios web, ecommerce, dashboards y automatizaciones con stack moderno y metodología propia.',
   url: 'https://codetlon.com',
   logo: 'https://codetlon.com.ar/logos/codetlon-naranja.png',
-  email: 'hola@codetlon.com',
+  email: 'info@codetlon.com.ar',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Córdoba',

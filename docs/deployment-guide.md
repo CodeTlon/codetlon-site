@@ -54,7 +54,7 @@ RESEND_FROM_EMAIL=noreply@codetlon.com
 RESEND_FROM_NAME=CodeTlon
 
 # Company
-COMPANY_EMAIL=hola@codetlon.com
+COMPANY_EMAIL=info@codetlon.com.ar
 
 # Social
 NEXT_PUBLIC_WHATSAPP_NUMBER=+5493511234567
@@ -106,7 +106,7 @@ Or push to `main` branch if GitHub integration is configured.
 ## 6. Post-Deploy Checklist
 
 - [ ] Visit `https://codetlon.com` — site loads
-- [ ] Submit contact form — check email received at `hola@codetlon.com`
+- [ ] Submit contact form — check email received at `info@codetlon.com.ar`
 - [ ] Check Supabase Dashboard → Table Editor → `contact_leads` — row inserted
 - [ ] Check `https://codetlon.com/sitemap.xml` — all URLs present
 - [ ] Run Lighthouse in Chrome DevTools on production

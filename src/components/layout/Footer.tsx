@@ -97,10 +97,10 @@ export function Footer() {
             </h3>
             <div className="flex flex-col gap-4">
               <a
-                href="mailto:hola@codetlon.com"
+                href="mailto:info@codetlon.com.ar"
                 className="font-body text-sm text-foreground/50 hover:text-foreground transition-colors duration-500 w-fit underline-offset-4 hover:underline"
               >
-                hola@codetlon.com
+                info@codetlon.com.ar
               </a>
               <a
                 href="tel:+5493518922024"

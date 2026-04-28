@@ -1,7 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import { useFormState, useFormStatus } from 'react-dom'
+import { CheckCircle2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { sendContact } from '@/app/actions/contact'
 
 const PROJECT_TYPES = [
   'Web Institucional',
@@ -11,17 +14,42 @@ const PROJECT_TYPES = [
   'Aún no lo sé'
 ]
 
+function SubmitButton() {
+  const { pending } = useFormStatus()
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="group relative flex items-center justify-between gap-8 px-8 py-5 bg-[#ffb690] text-[#0e1516] overflow-hidden w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
+      <span className="relative z-10 font-body text-[13px] font-bold uppercase tracking-[0.25em]">
+        {pending ? 'Enviando...' : 'Enviar propuesta'}
+      </span>
+    </button>
+  )
+}
+
 export function ContactForm() {
   const [selectedType, setSelectedType] = useState<string>('')
+  const [state, formAction] = useFormState(sendContact, null)
+
+  if (state?.success) {
+    return (
+      <div className="flex flex-col items-start justify-center p-12 border border-white/10 bg-white/[0.02]">
+        <div className="w-12 h-12 rounded-full bg-[#ffb690]/10 flex items-center justify-center mb-6 border border-[#ffb690]/30">
+          <CheckCircle2 className="w-6 h-6 text-[#ffb690]" />
+        </div>
+        <h3 className="font-display text-3xl text-foreground mb-4">Mensaje enviado.</h3>
+        <p className="font-body text-base text-foreground/50 font-light text-pretty">
+          Recibimos los detalles de tu proyecto. En menos de 48 horas uno de nuestros expertos se va a contactar con vos.
+        </p>
+      </div>
+    )
+  }
 
   return (
-    <form 
-      // IMPORTANTE: Cambiá esta URL por el endpoint que te dé Formspree o Web3Forms
-      action="https://formspree.io/f/TU_ID_DE_FORMSPREE" 
-      method="POST"
-      className="flex flex-col gap-8"
-    >
-      {/* Este input oculto manda la selección de "Idea General" en el email */}
+    <form action={formAction} className="flex flex-col gap-8">
       <input type="hidden" name="serviceInterest" value={selectedType} />
 
       {/* 1. Selección de Idea General */}
@@ -88,17 +116,13 @@ export function ContactForm() {
         </div>
       </div>
 
+      {state?.error && (
+        <p className="font-body text-sm text-red-400">{state.error}</p>
+      )}
+
       {/* Submit Button */}
       <div className="pt-4">
-        <button
-          type="submit"
-          className="group relative flex items-center justify-between gap-8 px-8 py-5 bg-[#ffb690] text-[#0e1516] overflow-hidden w-full sm:w-auto transition-opacity hover:opacity-90"
-        >
-          <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
-          <span className="relative z-10 font-body text-[13px] font-bold uppercase tracking-[0.25em]">
-            Enviar propuesta
-          </span>
-        </button>
+        <SubmitButton />
       </div>
     </form>
   )

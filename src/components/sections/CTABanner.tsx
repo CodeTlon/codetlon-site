@@ -20,7 +20,7 @@ export function CTABanner({
       {/* Textura de ruido sutil para dar profundidad al naranja */}
       <div
         className="absolute inset-0 opacity-[0.04] mix-blend-multiply pointer-events-none"
-        style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
+        style={{ backgroundImage: 'url("/noise.svg")' }}
       />
 
       {/* Brillo interno para que el naranja no sea plano */}

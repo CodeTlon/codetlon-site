@@ -66,7 +66,7 @@ export default function ContactoPage() {
       <section className="relative min-h-screen bg-background overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none"
-          style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
+          style={{ backgroundImage: 'url("/noise.svg")' }}
         />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-16 md:pt-40 md:pb-24">

@@ -12,7 +12,7 @@ export function PageHero({ badge, title, subtitle }: PageHeroProps) {
       {/* Noise texture */}
       <div
         className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none"
-        style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
+        style={{ backgroundImage: 'url("/noise.svg")' }}
       />
       
       {/* ELIMINADO: Warm aura — top right */}

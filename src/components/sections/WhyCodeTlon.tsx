@@ -33,7 +33,7 @@ export function WhyCodeTlon() {
       {/* Solo dejamos la textura de ruido muy sutil para que no parezca "plástico" */}
       <div
         className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none"
-        style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
+        style={{ backgroundImage: 'url("/noise.svg")' }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">

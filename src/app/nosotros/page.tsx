@@ -43,7 +43,7 @@ export default function NosotrosPage() {
       <section className="relative min-h-[60vh] lg:min-h-[65vh] flex flex-col justify-center overflow-hidden bg-background pt-32 pb-16 md:pt-40 md:pb-24">
         <div
           className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none"
-          style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
+          style={{ backgroundImage: 'url("/noise.svg")' }}
         />
         
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">

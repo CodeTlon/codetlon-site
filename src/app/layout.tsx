@@ -3,6 +3,7 @@ import { Inter, Newsreader } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -71,6 +72,9 @@ export default function RootLayout({
       lang="es"
       className={`${inter.variable} ${newsreader.variable} dark`}
     >
+      <head>
+        <GoogleAnalytics />
+      </head>
       <body className="bg-background text-foreground antialiased">
         <a
           href="#main-content"

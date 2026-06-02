@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev)",
+      "Bash(npm run build)",
+      "Bash(npm start)",
+      "Bash(npm install*)",
+      "Bash(npm ci)",
+      "Bash(npm run lint)",
+      "Bash(npx playwright*)",
+      "Bash(git status)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(git push*)",
+      "Bash(git checkout*)",
+      "Bash(git branch*)",
+      "Bash(git stash*)",
+      "Bash(git pull*)",
+      "Bash(git merge*)",
+      "Bash(git tag*)",
+      "Bash(gh pr*)",
+      "Bash(gh repo*)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'RECORDATORIO mantenimiento: 1) README.md (raiz) -> fila nueva en Changelog. 2) .claude/CLAUDE.md + ARCHITECTURE.md si hubo cambios estructurales + fila en Historial. 3) Commits SIN Co-Authored-By: Claude.'"
+          }
+        ]
+      }
+    ]
+  }
+}

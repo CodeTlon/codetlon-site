@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CodeTlon Site
 
-## Getting Started
+Sitio institucional de **CodeTlon** — Software Factory Autónoma. Marketing site multipágina construido con el stack CodeTlon.
 
-First, run the development server:
+🔗 Producción: https://codetlon.com
+
+## Stack
+
+- **Next.js 14** (App Router, `src/`) + **TypeScript**
+- **Tailwind CSS** + **Shadcn/UI** (base-ui) + **Lucide React**
+- **Resend** para el formulario de contacto (sin base de datos)
+- **Google Analytics 4** vía `next/script`
+- **Playwright** (E2E) · Deploy en **Vercel**
+
+## Setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env.local   # completar credenciales
+npm run dev                  # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run dev          # Dev server
+npm run build        # Build de producción
+npm start            # Serve producción (Lighthouse)
+npm run lint         # ESLint
+npm run test:e2e     # Tests E2E (Playwright)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Variables de entorno
 
-## Learn More
+Ver `.env.example`. Claves: `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_FROM_NAME`, `COMPANY_EMAIL`, `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_WHATSAPP_NUMBER`, `NEXT_PUBLIC_SITE_URL`.
 
-To learn more about Next.js, take a look at the following resources:
+## Estructura
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Páginas: Home, Servicios (+ detalle por slug), Proceso, Nosotros, Contacto, Gracias.
+Ver [`ARCHITECTURE.md`](./ARCHITECTURE.md) para el mapa de archivos y dónde tocar cada cosa.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Mantenimiento
 
-## Deploy on Vercel
+Este repo usa el modelo de sesión de CodeTlon. En una sesión de cambios:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `/cambio "<tema>"` — abre una rama de trabajo desde `main`. Cada cambio commitea ahí.
+- `/cerrar` — build + actualiza este Changelog + mergea a `main` + tag SemVer.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contexto de proyecto en `.claude/CLAUDE.md` + `ARCHITECTURE.md`.
+
+## Changelog
+
+| Versión | Fecha | Cambio |
+|---------|-------|--------|
+| v1.0.0 | 2026 | Entrega inicial — marketing site |
+| — | 2026 | Google Analytics 4 (next/script); grainy-gradients externo → SVG local; form de contacto vuelve a Resend |

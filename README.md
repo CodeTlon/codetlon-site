@@ -52,6 +52,7 @@ Contexto de proyecto en `.claude/CLAUDE.md` + `ARCHITECTURE.md`.
 
 | Versión | Fecha | Cambio |
 |---------|-------|--------|
+| v1.1.0 | 2026-06-18 | **Fix real:** `WhatsAppButton` existía como componente pero nunca se renderizaba en ningún layout — se agrega al `RootLayout`. Accesibilidad: contraste del footer (4 textos `/50`→`/65`, ratio 4.24→AA) y links del menú móvil colapsado quedaban tabbables con `aria-hidden` (se agrega `tabIndex={-1}` cuando está cerrado). E2E: de 43/54 rojos a 54/54 verdes — la mayoría eran por falta de los browsers de Playwright (WebKit/Firefox no instalados) y selectores desactualizados vs. el rediseño actual (slug `landing-page`→`landing`, picker de botones en vez de `<select>`, texto "Enviar propuesta", aria-labels en español, navegación flaky en `next dev` por Fast Refresh). Pendiente real (no de código, requiere decisión de producto): los CTA de `/servicios/[slug]` linkean a `/contacto?servicio=<slug>` pero el form rediseñado no lee ese query param — el deep-link no preselecciona nada. |
 | v1.0.0 | 2026 | Entrega inicial — marketing site |
 | — | 2026 | Google Analytics 4 (next/script); grainy-gradients externo → SVG local; form de contacto vuelve a Resend |
 

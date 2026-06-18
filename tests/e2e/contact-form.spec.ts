@@ -9,10 +9,11 @@ test.describe('Contact Form', () => {
     await expect(page.locator('textarea[name="message"]')).toBeVisible()
   })
 
-  test('?servicio param pre-fills service select', async ({ page }) => {
-    await page.goto('/contacto?servicio=landing-page')
-    const select = page.locator('select[name="serviceInterest"]')
-    await expect(select).toHaveValue('landing-page')
+  test('selecting a project type sets the hidden serviceInterest field', async ({ page }) => {
+    await page.goto('/contacto')
+    await page.click('button:has-text("E-commerce")')
+    const hidden = page.locator('input[name="serviceInterest"]')
+    await expect(hidden).toHaveValue('E-commerce')
   })
 
   test('form shows success message on valid submission (mocked)', async ({ page }) => {
@@ -41,7 +42,7 @@ test.describe('Contact Form', () => {
     // so we verify the form is filled correctly and the button is not disabled before submit)
     const submitButton = page.locator('button[type="submit"]')
     await expect(submitButton).toBeEnabled()
-    await expect(submitButton).toContainText('Enviar mensaje')
+    await expect(submitButton).toContainText('Enviar propuesta')
   })
 
   test('submit button shows loading state while pending', async ({ page }) => {

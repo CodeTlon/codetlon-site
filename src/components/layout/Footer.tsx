@@ -52,7 +52,7 @@ export function Footer() {
                 className="w-28 md:w-36 h-auto opacity-90 group-hover:opacity-100 transition-opacity duration-500"
               />
             </Link>
-            <p className="font-body text-sm text-foreground/50 leading-relaxed max-w-sm font-light text-left">
+            <p className="font-body text-sm text-foreground/65 leading-relaxed max-w-sm font-light text-left">
               Software Factory en Córdoba, Argentina. Combinamos diseño de vanguardia con tecnología robusta para construir el futuro digital que tu negocio merece.
             </p>
             
@@ -82,7 +82,7 @@ export function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="font-body text-sm text-foreground/50 hover:text-foreground transition-colors duration-500 w-fit"
+                  className="font-body text-sm text-foreground/65 hover:text-foreground transition-colors duration-500 w-fit"
                 >
                   {link.label}
                 </Link>
@@ -98,13 +98,13 @@ export function Footer() {
             <div className="flex flex-col gap-4">
               <a
                 href="mailto:info@codetlon.com.ar"
-                className="font-body text-sm text-foreground/50 hover:text-foreground transition-colors duration-500 w-fit underline-offset-4 hover:underline"
+                className="font-body text-sm text-foreground/65 hover:text-foreground transition-colors duration-500 w-fit underline-offset-4 hover:underline"
               >
                 info@codetlon.com.ar
               </a>
               <a
                 href="tel:+5493518922024"
-                className="font-body text-sm text-foreground/50 hover:text-foreground transition-colors duration-500 w-fit"
+                className="font-body text-sm text-foreground/65 hover:text-foreground transition-colors duration-500 w-fit"
               >
                 +54 9 351 892 2024
               </a>

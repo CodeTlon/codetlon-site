@@ -54,3 +54,8 @@ Contexto de proyecto en `.claude/CLAUDE.md` + `ARCHITECTURE.md`.
 |---------|-------|--------|
 | v1.0.0 | 2026 | Entrega inicial — marketing site |
 | — | 2026 | Google Analytics 4 (next/script); grainy-gradients externo → SVG local; form de contacto vuelve a Resend |
+
+## Licencia
+
+© 2026 CodeTlon. Todos los derechos reservados. Software propietario de CodeTlon.
+Prohibida su copia, redistribución o reuso sin autorización escrita. Ver [LICENSE](./LICENSE).

@@ -40,6 +40,8 @@
 | `src/components/seo/JsonLd.tsx` | JSON-LD structured data |
 | `src/components/ui/` | Primitivas Shadcn + componentes propios (GlassCard, GradientButton, etc.) |
 | `src/lib/services-data.ts` | Fuente de verdad de los servicios (slugs incluidos) |
+| `src/lib/projects-data.ts` | Fuente de verdad de los proyectos en producción (sección "En Producción" del home) — agregar uno = una entrada |
+| `src/components/sections/Projects.tsx` | Sección "En Producción" del home (cards de proyectos live → link externo al sitio) |
 | `src/lib/constants.ts` | Constantes globales (links, datos de contacto) |
 | `src/lib/validations/contact.ts` | Schema Zod del formulario |
 
@@ -88,6 +90,7 @@ npm run test:e2e     # Playwright E2E
 | 2026 | main | feat: Google Analytics 4 con next/script |
 | 2026 | main | fix: grainy-gradients externo → SVG local; form vuelve a Resend |
 | 2026-06-19 | fix/security-vulnerabilities | Seguridad: Next 14.2.35 → 15.5.19 (estándar de fábrica) + `npm audit fix` de transitivas (hono y otras same-major). Cierra los 7 HIGH de Next 14 + hono. `npm audit`: 17 vulns → **0 HIGH** (1 moderate = postcss en Next, no accionable). Codemod `next-async-request-api` convirtió `servicios/[slug]` a async params. Build verde + **42/42 E2E**. |
+| 2026-06-19 | feat/proyectos-produccion | feat: sección **"En Producción"** en el home (entre WhyCodeTlon y CTA) con cards de proyectos live (Marcovich Barbería, GC² Entrenamiento) → link externo al sitio. Data-driven en `src/lib/projects-data.ts` (agregar uno = una entrada; solo sitios con dominio confirmado). Reusa `GlassCard`/`SectionLabel`/`AnimateIn`. Build verde + 42/42 E2E. |
 <!-- Agregar fila al finalizar cada sesión de mantenimiento -->
 ---
 

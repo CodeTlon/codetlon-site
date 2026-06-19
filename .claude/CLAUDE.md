@@ -88,3 +88,18 @@ npm run test:e2e     # Playwright E2E
 | 2026 | main | feat: Google Analytics 4 con next/script |
 | 2026 | main | fix: grainy-gradients externo → SVG local; form vuelve a Resend |
 <!-- Agregar fila al finalizar cada sesión de mantenimiento -->
+---
+
+## Módulos de la fábrica — consultar en `/cambio` según lo que toques
+
+Estos módulos viven en `codetlon-cloud/.claude/modules/` (desde este repo: `../../codetlon-cloud/.claude/modules/`). NO están copiados acá: leé el que aplique al iniciar una sesión de mantenimiento que toque cada tema.
+
+| Si el `/cambio` toca… | Módulo a leer |
+|---|---|
+| deps / vulnerabilidades (`npm audit`, actualizar libs, upgrade de major) | `security-maintenance.md` |
+| auth / DB / RLS / route handler / form / env / secrets (seguridad de **código**) | `security-owasp.md` |
+| UI / componentes / forms / páginas (accesibilidad WCAG, Lighthouse a11y > 90) | `accessibility.md` |
+| pipeline / `.github/workflows` / Dockerfile / env vars (CI = gate de calidad) | `ci-cd.md` |
+| dejar el proyecto live / incidente en producción (monitoreo) | `observability.md` |
+
+Regla: leer SOLO el módulo que la tarea pide (disciplina de tokens), no todos por las dudas.

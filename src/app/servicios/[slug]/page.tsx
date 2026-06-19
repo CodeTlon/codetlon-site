@@ -17,11 +17,12 @@ export async function generateStaticParams() {
   }
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string }>
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const service = getServiceBySlug(params.slug)
   if (!service) return {}
   return {
@@ -31,7 +32,8 @@ export async function generateMetadata({
   }
 }
 
-export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
+export default async function ServiceDetailPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const service = getServiceBySlug(params.slug)
   if (!service) notFound()
 

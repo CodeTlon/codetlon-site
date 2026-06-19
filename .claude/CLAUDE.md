@@ -16,7 +16,7 @@
 - **Deploy:** Vercel
 
 ## Stack
-- Next.js 14 (App Router) + TypeScript + Tailwind CSS + Shadcn/UI (base-ui) + Lucide React
+- Next.js 15 (App Router) + TypeScript + Tailwind CSS + Shadcn/UI (base-ui) + Lucide React
 - Supabase: **no** (env vars heredadas en `.env.example` pero el form NO escribe a DB — ver `actions/contact.ts`)
 - Resend: **sí** — formulario de contacto envía email, sin almacenamiento
 - Analytics: Google Analytics 4 vía `next/script` (`NEXT_PUBLIC_GA_ID`)
@@ -87,4 +87,20 @@ npm run test:e2e     # Playwright E2E
 | 2026 | main | v1.0.0 — entrega inicial (marketing site) |
 | 2026 | main | feat: Google Analytics 4 con next/script |
 | 2026 | main | fix: grainy-gradients externo → SVG local; form vuelve a Resend |
+| 2026-06-19 | fix/security-vulnerabilities | Seguridad: Next 14.2.35 → 15.5.19 (estándar de fábrica) + `npm audit fix` de transitivas (hono y otras same-major). Cierra los 7 HIGH de Next 14 + hono. `npm audit`: 17 vulns → **0 HIGH** (1 moderate = postcss en Next, no accionable). Codemod `next-async-request-api` convirtió `servicios/[slug]` a async params. Build verde + **42/42 E2E**. |
 <!-- Agregar fila al finalizar cada sesión de mantenimiento -->
+---
+
+## Módulos de la fábrica — consultar en `/cambio` según lo que toques
+
+Estos módulos viven en `codetlon-cloud/.claude/modules/` (desde este repo: `../../codetlon-cloud/.claude/modules/`). NO están copiados acá: leé el que aplique al iniciar una sesión de mantenimiento que toque cada tema.
+
+| Si el `/cambio` toca… | Módulo a leer |
+|---|---|
+| deps / vulnerabilidades (`npm audit`, actualizar libs, upgrade de major) | `security-maintenance.md` |
+| auth / DB / RLS / route handler / form / env / secrets (seguridad de **código**) | `security-owasp.md` |
+| UI / componentes / forms / páginas (accesibilidad WCAG, Lighthouse a11y > 90) | `accessibility.md` |
+| pipeline / `.github/workflows` / Dockerfile / env vars (CI = gate de calidad) | `ci-cd.md` |
+| dejar el proyecto live / incidente en producción (monitoreo) | `observability.md` |
+
+Regla: leer SOLO el módulo que la tarea pide (disciplina de tokens), no todos por las dudas.

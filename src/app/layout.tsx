@@ -4,6 +4,7 @@ import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { GoogleAnalytics } from '@/components/GoogleAnalytics'
+import { CookieConsent } from '@/components/CookieConsent'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -87,6 +88,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <CookieConsent />
       </body>
     </html>
   )

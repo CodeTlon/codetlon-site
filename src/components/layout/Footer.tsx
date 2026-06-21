@@ -114,9 +114,23 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/[0.04] pt-10 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="font-body text-[10px] md:text-[11px] text-foreground/30 tracking-[0.15em] uppercase text-left w-full">
+          <p className="font-body text-[10px] md:text-[11px] text-foreground/30 tracking-[0.15em] uppercase text-left">
             © {currentYear} CODETLON SOFTWARE FACTORY. TODOS LOS DERECHOS RESERVADOS.
           </p>
+          <nav className="flex items-center gap-5">
+            <Link
+              href="/privacidad"
+              className="font-body text-[10px] md:text-[11px] text-foreground/40 hover:text-foreground/70 tracking-[0.15em] uppercase transition-colors duration-500"
+            >
+              Privacidad
+            </Link>
+            <Link
+              href="/terminos"
+              className="font-body text-[10px] md:text-[11px] text-foreground/40 hover:text-foreground/70 tracking-[0.15em] uppercase transition-colors duration-500"
+            >
+              Términos
+            </Link>
+          </nav>
         </div>
 
       </div>

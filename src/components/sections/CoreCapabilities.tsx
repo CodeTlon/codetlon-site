@@ -26,7 +26,7 @@ const capabilities = [
 
 export function CoreCapabilities() {
   return (
-    <section className="relative py-24 bg-background overflow-hidden" aria-label="Capacidades Core">
+    <section className="relative py-24 overflow-hidden" aria-label="Capacidades Core">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col">
           {capabilities.map((cap, i) => (

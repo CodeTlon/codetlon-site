@@ -24,8 +24,7 @@ const differentials = [
 
 export function WhyCodeTlon() {
   return (
-    // CAMBIO: bg-background (Verde Oscuro del Hero) en lugar de naranja
-    <section className="relative pt-32 pb-24 md:pb-32 bg-background overflow-hidden" aria-label="Por qué CodeTlon">
+    <section className="relative pt-32 pb-24 md:pb-32 overflow-hidden" aria-label="Por qué CodeTlon">
       
       {/* Blend edge: Gradiente de Negro a Transparente */}
       <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-[#050505] to-transparent pointer-events-none" />

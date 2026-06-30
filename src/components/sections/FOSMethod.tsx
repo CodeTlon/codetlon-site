@@ -41,9 +41,7 @@ const phases = [
 
 export function FOSMethod() {
   return (
-    <section className="relative py-32 bg-[#050505]" aria-label="FOS Method">
-      {/* Subtle central aura */}
-      <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-[#ffb690] opacity-[0.02] rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+    <section className="relative py-32" aria-label="FOS Method">
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 

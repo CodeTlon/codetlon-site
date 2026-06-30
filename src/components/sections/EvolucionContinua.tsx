@@ -9,8 +9,7 @@ const items = [
 
 export function EvolucionContinua() {
   return (
-    // CAMBIO: Fondo negro sólido (#050505), igual que el final de la sección anterior
-    <section className="relative pb-32 pt-16 bg-[#050505] overflow-hidden" aria-label="Plan de Evolución Continua">
+    <section className="relative pb-32 pt-16 overflow-hidden" aria-label="Plan de Evolución Continua">
       
       {/* ELIMINADO: Ya no necesitamos el gradiente porque venimos de un fondo negro puro */}
 

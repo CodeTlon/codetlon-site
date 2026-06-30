@@ -10,7 +10,7 @@ const capabilities = [
 
 export function ServicesTeaser() {
   return (
-    <section className="bg-[#050505] py-24 md:py-32" aria-label="Nuestras Capacidades">
+    <section className="py-24 md:py-32" aria-label="Nuestras Capacidades">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         <AnimateIn>

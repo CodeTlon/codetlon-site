@@ -1,28 +1,23 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Newsreader } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import { CookieConsent } from '@/components/CookieConsent'
+import { ParticleField } from '@/components/ui/ParticleField'
 
+// Sistema de una sola familia (void/cosmos): Inter cubre display (peso 200) y body.
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
 })
 
-const newsreader = Newsreader({
-  subsets: ['latin'],
-  variable: '--font-newsreader',
-  display: 'swap',
-  style: ['normal', 'italic'],
-})
-
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0e1516',
+  themeColor: '#0a0f10',
 }
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://codetlon.com.ar'
@@ -71,12 +66,20 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${inter.variable} ${newsreader.variable} dark`}
+      className={`${inter.variable} dark`}
     >
       <head>
         <GoogleAnalytics />
       </head>
       <body className="bg-background text-foreground antialiased">
+        {/* Campo de partículas global — sutil, fijo detrás de todo el contenido.
+            Aparece en todas las páginas. El hero del home y los PageHero suman
+            un campo propio más denso encima. */}
+        <ParticleField
+          count={60}
+          cluster={false}
+          className="fixed inset-0 -z-10 h-full w-full pointer-events-none"
+        />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-[#ffb690] focus:text-[#0e1516] focus:font-bold focus:rounded"

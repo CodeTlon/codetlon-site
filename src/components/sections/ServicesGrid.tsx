@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export function ServicesGrid() {
   return (
-    <section className="bg-background py-8" aria-label="Todos los servicios">
+    <section className="py-8" aria-label="Todos los servicios">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="border-t border-white/[0.04]">
           {services.map((s, i) => (

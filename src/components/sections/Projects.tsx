@@ -9,7 +9,7 @@ export function Projects() {
 
   return (
     <section
-      className="relative pt-24 pb-24 md:pt-32 md:pb-32 bg-background overflow-hidden"
+      className="relative pt-24 pb-24 md:pt-32 md:pb-32 overflow-hidden"
       aria-label="Proyectos en producción"
       id="proyectos"
     >

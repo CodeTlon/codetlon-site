@@ -1,21 +1,17 @@
 import React from 'react'
+import { ParticleField } from '@/components/ui/ParticleField'
 
 interface PageHeroProps {
   badge?: string
-  title: React.ReactNode 
+  title: React.ReactNode
   subtitle?: string
 }
 
 export function PageHero({ badge, title, subtitle }: PageHeroProps) {
   return (
-    <section className="relative min-h-[60vh] lg:min-h-[65vh] flex flex-col justify-center overflow-hidden bg-background pt-32 pb-16 md:pt-40 md:pb-24">
-      {/* Noise texture */}
-      <div
-        className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none"
-        style={{ backgroundImage: 'url("/noise.svg")' }}
-      />
-      
-      {/* ELIMINADO: Warm aura — top right */}
+    <section className="relative min-h-[60vh] lg:min-h-[65vh] flex flex-col justify-center overflow-hidden pt-32 pb-16 md:pt-40 md:pb-24">
+      {/* Campo de partículas propio — foco visual del hero, encima del global */}
+      <ParticleField count={90} className="absolute inset-0 z-0 h-full w-full pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-4xl">
@@ -29,7 +25,7 @@ export function PageHero({ badge, title, subtitle }: PageHeroProps) {
             </div>
           )}
           
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-foreground leading-[1.05] tracking-tight text-balance anim-fade-up anim-d2">
+          <h1 className="font-display display-thin text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-foreground leading-[1.05] text-balance anim-fade-up anim-d2">
             {title}
           </h1>
           

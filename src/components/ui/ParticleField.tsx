@@ -8,11 +8,14 @@ import { useEffect, useRef } from 'react'
  * derivan lento sobre el void y se densifican hacia el centro.
  *
  * Sin dependencias: canvas + requestAnimationFrame. Respeta prefers-reduced-motion
- * (render estático). ponytail: heurística simple; subir COUNT si se quiere más densidad.
+ * (render estático). ponytail: heurística simple; subir `count` si se quiere más densidad.
+ *
+ * - `count`: cantidad de partículas (hero denso ~130; capa global sutil ~55).
+ * - `cluster`: si true, se agrupan hacia el centro (hero). Si false, se reparten
+ *   parejo y tenue — ideal como fondo global de página.
  */
 
 const COLORS = ['#ffb690', '#a4cddb', '#e8ddd4'] // peach, celeste, bone
-const COUNT = 130
 
 type Shape = 'tri' | 'circle' | 'diamond' | 'square'
 
@@ -59,7 +62,13 @@ function drawShape(ctx: CanvasRenderingContext2D, p: P) {
   }
 }
 
-export function ParticleField({ className }: { className?: string }) {
+interface ParticleFieldProps {
+  className?: string
+  count?: number
+  cluster?: boolean
+}
+
+export function ParticleField({ className, count = 130, cluster = true }: ParticleFieldProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -84,18 +93,19 @@ export function ParticleField({ className }: { className?: string }) {
       canvas.height = h * dpr
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
 
-      particles = Array.from({ length: COUNT }, () => {
-        // Densidad gaussiana hacia el centro: el cosmos se agrupa, no se reparte parejo.
-        const cx = (Math.random() + Math.random() + Math.random()) / 3
-        const cy = (Math.random() + Math.random() + Math.random()) / 3
+      particles = Array.from({ length: count }, () => {
+        // cluster: densidad gaussiana hacia el centro (cosmos del hero).
+        // si no, reparto uniforme y tenue (fondo global de página).
+        const cx = cluster ? (Math.random() + Math.random() + Math.random()) / 3 : Math.random()
+        const cy = cluster ? (Math.random() + Math.random() + Math.random()) / 3 : Math.random()
         return {
           x: cx * w,
           y: cy * h,
           vx: (Math.random() - 0.5) * 0.15,
           vy: (Math.random() - 0.5) * 0.15,
-          size: 1.5 + Math.random() * 3.5,
+          size: 1.5 + Math.random() * (cluster ? 3.5 : 2),
           color: COLORS[Math.floor(Math.random() * COLORS.length)],
-          alpha: 0.15 + Math.random() * 0.55,
+          alpha: (cluster ? 0.15 : 0.08) + Math.random() * (cluster ? 0.55 : 0.32),
           shape: shapes[Math.floor(Math.random() * shapes.length)],
         }
       })

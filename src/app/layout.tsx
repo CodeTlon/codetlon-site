@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import { CookieConsent } from '@/components/CookieConsent'
+import { ParticleField } from '@/components/ui/ParticleField'
 
 // Sistema de una sola familia (void/cosmos): Inter cubre display (peso 200) y body.
 const inter = Inter({
@@ -71,6 +72,14 @@ export default function RootLayout({
         <GoogleAnalytics />
       </head>
       <body className="bg-background text-foreground antialiased">
+        {/* Campo de partículas global — sutil, fijo detrás de todo el contenido.
+            Aparece en todas las páginas. El hero del home y los PageHero suman
+            un campo propio más denso encima. */}
+        <ParticleField
+          count={60}
+          cluster={false}
+          className="fixed inset-0 -z-10 h-full w-full pointer-events-none"
+        />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-[#ffb690] focus:text-[#0e1516] focus:font-bold focus:rounded"

@@ -41,7 +41,7 @@ export function ContactForm() {
           <CheckCircle2 className="w-6 h-6 text-[#ffb690]" />
         </div>
         <h3 className="font-display text-3xl text-foreground mb-4">Mensaje enviado.</h3>
-        <p className="font-body text-base text-foreground/50 font-light text-pretty">
+        <p className="font-body text-base text-foreground/70 font-light text-pretty">
           Recibimos los detalles de tu proyecto. En menos de 48 horas uno de nuestros expertos se va a contactar con vos.
         </p>
       </div>
@@ -67,7 +67,7 @@ export function ContactForm() {
                 'px-5 py-3 font-body text-sm transition-all duration-300 border',
                 selectedType === type
                   ? 'bg-[#ffb690] text-[#0e1516] border-[#ffb690] font-medium'
-                  : 'bg-white/[0.02] text-foreground/50 border-white/10 hover:border-[#ffb690]/50 hover:text-foreground'
+                  : 'bg-white/[0.06] text-foreground/80 border-white/20 hover:border-[#ffb690]/50 hover:text-foreground'
               )}
             >
               {type}
@@ -91,7 +91,7 @@ export function ContactForm() {
               name="name"
               required
               placeholder="Tu nombre"
-              className="w-full bg-white/[0.02] border border-white/10 px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-[#ffb690]/50 focus:bg-white/[0.04] transition-colors"
+              className="w-full bg-white/[0.06] border border-white/15 px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-[#ffb690]/50 focus:bg-white/[0.08] transition-colors"
             />
           </div>
           <div className="flex flex-col gap-2">
@@ -100,7 +100,7 @@ export function ContactForm() {
               name="email"
               required
               placeholder="Tu email"
-              className="w-full bg-white/[0.02] border border-white/10 px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-[#ffb690]/50 focus:bg-white/[0.04] transition-colors"
+              className="w-full bg-white/[0.06] border border-white/15 px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-[#ffb690]/50 focus:bg-white/[0.08] transition-colors"
             />
           </div>
         </div>
@@ -111,7 +111,7 @@ export function ContactForm() {
             required
             rows={5}
             placeholder="Contanos sobre tu proyecto. ¿Cuál es el objetivo? ¿Tenés referencias? Mientras más detalles, mejor."
-            className="w-full bg-white/[0.02] border border-white/10 px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/30 focus:outline-none focus:border-[#ffb690]/50 focus:bg-white/[0.04] transition-colors resize-none"
+            className="w-full bg-white/[0.06] border border-white/15 px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-[#ffb690]/50 focus:bg-white/[0.08] transition-colors resize-none"
           />
         </div>
       </div>

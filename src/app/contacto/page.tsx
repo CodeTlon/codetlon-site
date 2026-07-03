@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { ContactForm } from '@/components/sections/ContactForm'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { AnimateIn } from '@/components/ui/AnimateIn'
+import { ParticleField } from '@/components/ui/ParticleField'
 import { Mail } from 'lucide-react'
 import { WHATSAPP_CTA_URL, INSTAGRAM_URL } from '@/lib/constants'
 
@@ -63,23 +64,14 @@ export default function ContactoPage() {
     <>
       <JsonLd data={contactPageSchema} />
 
-      <section className="relative min-h-screen bg-background overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none"
-          style={{ backgroundImage: 'url("/noise.svg")' }}
-        />
+      <section className="relative min-h-screen overflow-hidden">
+        <ParticleField count={90} className="absolute inset-0 z-0 h-full w-full pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-32 pb-16 md:pt-40 md:pb-24">
 
           {/* Header */}
           <div className="mb-16 md:mb-24">
-            <div className="flex items-center gap-4 mb-8 anim-fade-up anim-d1">
-              <div className="w-10 h-[1px] bg-[#ffb690]/50" />
-              <span className="font-body text-xs sm:text-sm font-semibold text-[#ffb690] uppercase tracking-[0.25em]">
-                Hablemos
-              </span>
-            </div>
-            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-foreground tracking-tight max-w-4xl leading-[1.05] text-balance anim-fade-up anim-d2">
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-foreground tracking-tight max-w-4xl leading-[1.05] text-balance anim-fade-up anim-d1">
               ¿Tenés un proyecto{' '}
               <em className="italic text-[#ffb690] font-light">en mente?</em>
             </h1>

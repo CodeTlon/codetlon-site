@@ -27,7 +27,7 @@ export function EvolucionContinua() {
               Evolución{' '}
               <em className="font-display italic text-[#ffb690] font-light">Continua.</em>
             </h2>
-            <p className="font-body text-lg text-foreground/40 leading-relaxed font-light max-w-sm">
+            <p className="font-body text-lg text-foreground/65 leading-relaxed font-light max-w-sm">
               El despliegue es solo el día uno. Tu ecosistema digital crece, muta y se adapta junto
               con las demandas de tu mercado.
             </p>

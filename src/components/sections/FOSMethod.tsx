@@ -57,7 +57,7 @@ export function FOSMethod() {
               El sistema{' '}
               <em className="font-display italic text-[#ffb690] font-light">FOS.</em>
             </h2>
-            <p className="font-body text-lg text-foreground/40 leading-relaxed font-light text-balance">
+            <p className="font-body text-lg text-foreground/65 leading-relaxed font-light text-balance">
               Factory Operating System. El proceso que seguimos en cada proyecto, sin excepciones.
               Predecible, documentado y orientado a resultados.
             </p>
@@ -74,7 +74,7 @@ export function FOSMethod() {
                 <h3 className="font-body text-xl font-medium text-foreground mb-3">
                   {phase.title}
                 </h3>
-                <p className="font-body text-sm font-light text-foreground/50 leading-relaxed">
+                <p className="font-body text-sm font-light text-foreground/65 leading-relaxed">
                   {phase.description}
                 </p>
               </div>

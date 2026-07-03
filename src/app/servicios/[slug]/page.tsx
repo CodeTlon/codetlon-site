@@ -57,13 +57,12 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
     <>
       <JsonLd data={serviceSchema} />
       <PageHero
-        badge={`Nivel ${service.level}`}
         title={service.name}
         subtitle={service.shortDescription}
       />
 
       {/* Descripción + Para quién */}
-      <section className="py-24 md:py-32 bg-background">
+      <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 border-t border-white/[0.04] pt-16">
             <AnimateIn>
@@ -78,7 +77,7 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
               <span className="font-body text-xs font-medium text-foreground/30 uppercase tracking-[0.2em] block mb-6">
                 Para quién es
               </span>
-              <p className="font-body text-base text-foreground/50 leading-relaxed font-light mb-8">
+              <p className="font-body text-base text-foreground/70 leading-relaxed font-light mb-8">
                 {service.problemStatement}
               </p>
               <GradientButton href={`/contacto?servicio=${service.slug}`}>
@@ -90,7 +89,7 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
       </section>
 
       {/* Qué incluye */}
-      <section className="py-24 bg-[#050505]">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <AnimateIn>
             <div className="flex items-center gap-4 mb-16">
@@ -116,7 +115,7 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
       </section>
 
       {/* Stack + Timeline */}
-      <section className="py-24 bg-background">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16">
 
           <AnimateIn>
@@ -167,7 +166,7 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
 
       {/* Servicios relacionados */}
       {related.length > 0 && (
-        <section className="py-20 bg-[#050505]">
+        <section className="py-20">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <AnimateIn>
               <div className="flex items-center gap-4 mb-12">

@@ -57,7 +57,7 @@ export function CoreCapabilities() {
 
                 {/* Columna Derecha: Descripción */}
                 <div className="w-full lg:w-7/12 lg:pl-12">
-                  <p className="font-body text-lg sm:text-xl text-foreground/50 leading-relaxed font-light text-pretty group-hover:text-foreground/70 transition-colors duration-500">
+                  <p className="font-body text-lg sm:text-xl text-foreground/65 leading-relaxed font-light text-pretty group-hover:text-foreground/80 transition-colors duration-500">
                     {cap.description}
                   </p>
                 </div>

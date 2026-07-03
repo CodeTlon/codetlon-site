@@ -13,7 +13,7 @@ const techs = [
 
 export function LogoStrip() {
   return (
-    <section className="bg-gradient-to-b from-background to-[#050505] pb-24 pt-4">
+    <section className="pb-24 pt-4">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <AnimateIn variant="fade">
           <div className="border-t border-white/[0.04] pt-12 flex flex-col md:flex-row md:items-baseline gap-8 md:gap-16">

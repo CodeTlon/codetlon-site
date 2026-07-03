@@ -76,9 +76,9 @@ export default function RootLayout({
             Aparece en todas las páginas. El hero del home y los PageHero suman
             un campo propio más denso encima. */}
         <ParticleField
-          count={60}
+          count={220}
           cluster={false}
-          className="fixed inset-0 -z-10 h-full w-full pointer-events-none"
+          className="fixed inset-0 z-0 h-full w-full pointer-events-none"
         />
         <a
           href="#main-content"

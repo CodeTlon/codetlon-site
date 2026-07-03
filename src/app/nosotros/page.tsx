@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { CTABanner } from '@/components/sections/CTABanner'
+import { PageHero } from '@/components/sections/PageHero'
 import { AnimateIn } from '@/components/ui/AnimateIn'
 import { INSTAGRAM_URL } from '@/lib/constants'
 
@@ -39,41 +40,18 @@ const stack = {
 export default function NosotrosPage() {
   return (
     <>
-      {/* Hero (Petróleo Sólido) */}
-      <section className="relative min-h-[60vh] lg:min-h-[65vh] flex flex-col justify-center overflow-hidden bg-background pt-32 pb-16 md:pt-40 md:pb-24">
-        <div
-          className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none"
-          style={{ backgroundImage: 'url("/noise.svg")' }}
-        />
-        
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-4xl">
-            <div className="flex items-center gap-4 mb-8 anim-fade-up anim-d1">
-              <div className="w-10 h-[1px] bg-[#ffb690]/50" />
-              <span className="font-body text-xs sm:text-sm font-semibold text-[#ffb690] uppercase tracking-[0.25em]">
-                Software Factory
-              </span>
-            </div>
-            
-            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-foreground leading-[1.05] tracking-tight text-balance anim-fade-up anim-d2">
-              Construimos software{' '}
-              <em className="italic text-[#ffb690] font-light">que escala.</em>
-            </h1>
-            
-            <p className="font-body text-lg sm:text-xl text-foreground/50 mt-8 max-w-2xl leading-relaxed font-light text-pretty anim-fade-up anim-d3">
-              Equipo en Córdoba, Argentina. Un stack curado, una metodología propia y el mismo nivel
-              de exigencia en cada proyecto.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title={
+          <>
+            Construimos software{' '}
+            <em className="italic text-[#ffb690] font-light">que escala.</em>
+          </>
+        }
+        subtitle="Equipo en Córdoba, Argentina. Un stack curado, una metodología propia y el mismo nivel de exigencia en cada proyecto."
+      />
 
-      {/* Valores (Transición al Negro) */}
-      <section className="relative py-32 bg-[#050505] overflow-hidden">
-        
-        {/* Fundido de Petróleo a Negro */}
-        <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-background to-transparent pointer-events-none" />
-
+      {/* Valores */}
+      <section className="relative py-32 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-12">
           <AnimateIn delay={300} threshold={0.4}>
             <div className="flex items-center gap-4 mb-16">
@@ -94,7 +72,7 @@ export default function NosotrosPage() {
                       {v.title}
                     </h3>
                   </div>
-                  <p className="font-body text-lg text-foreground/40 leading-relaxed font-light text-pretty group-hover:text-foreground/70 transition-colors duration-500 md:pt-8">
+                  <p className="font-body text-lg text-foreground/65 leading-relaxed font-light text-pretty group-hover:text-foreground/85 transition-colors duration-500 md:pt-8">
                     {v.description}
                   </p>
                 </div>
@@ -104,8 +82,8 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Stack (Negro Sólido) */}
-      <section className="py-24 bg-[#050505]">
+      {/* Stack */}
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <AnimateIn>
             <div className="flex items-center gap-4 mb-8">
@@ -118,7 +96,7 @@ export default function NosotrosPage() {
               No es aleatorio.{' '}
               <em className="italic text-[#ffb690] font-light">Es deliberado.</em>
             </h2>
-            <p className="font-body text-lg text-foreground/40 font-light max-w-xl mb-20 text-pretty">
+            <p className="font-body text-lg text-foreground/65 font-light max-w-xl mb-20 text-pretty">
               Cada tecnología fue elegida por rendimiento, escalabilidad, comunidad y
               mantenibilidad a largo plazo.
             </p>
@@ -148,8 +126,8 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* Ubicación (Negro Sólido - Sin botones) */}
-      <section className="pb-24 pt-0 bg-[#050505]"> {/* pt-0 para eliminar la separación superior */}
+      {/* Ubicación */}
+      <section className="pb-24 pt-0"> {/* pt-0 para eliminar la separación superior */}
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <AnimateIn>
             {/* Eliminamos border-t y pt-16 para que no haya línea ni padding extra arriba */}
@@ -160,7 +138,7 @@ export default function NosotrosPage() {
                   Base operativa
                 </span>
                 <p className="font-display text-4xl text-foreground mt-4">Córdoba, Argentina</p>
-                <p className="font-body text-base text-foreground/50 mt-2 font-light">
+                <p className="font-body text-base text-foreground/70 mt-2 font-light">
                   100% remoto · Clientes en todo el país y el exterior
                 </p>
               </div>

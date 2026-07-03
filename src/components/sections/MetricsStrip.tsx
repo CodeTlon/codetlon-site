@@ -19,7 +19,7 @@ export function MetricsStrip() {
                   <span className="font-display text-6xl lg:text-7xl italic text-foreground/20 font-light mb-4 tracking-tighter group-hover:text-[#ffb690] transition-colors duration-500">
                     {m.value}
                   </span>
-                  <span className="font-body text-sm font-light text-foreground/50 text-balance max-w-[220px]">
+                  <span className="font-body text-sm font-light text-foreground/65 text-balance max-w-[220px]">
                     {m.label}
                   </span>
                 </div>

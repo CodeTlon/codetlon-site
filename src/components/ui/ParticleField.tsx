@@ -24,6 +24,8 @@ interface P {
   y: number
   vx: number
   vy: number
+  bvx: number // deriva base — a esta velocidad relaja cuando el cursor se aleja
+  bvy: number
   size: number
   color: string
   alpha: number
@@ -83,6 +85,11 @@ export function ParticleField({ className, count = 130, cluster = true }: Partic
     let w = 0
     let h = 0
     let raf = 0
+    // Cursor en coordenadas locales del canvas; lejos del lienzo = sin efecto.
+    const mouse = { x: -9999, y: -9999 }
+    const ATTRACT_RADIUS = 220 // gravedad: atrae partículas dentro de este radio
+    const REPEL_RADIUS = 36 // muy cerca del cursor, empuja para no apilarse
+    const EASE = 0.94 // qué tan rápido relaja la velocidad hacia la deriva base
 
     const seed = () => {
       const rect = canvas.getBoundingClientRect()
@@ -93,19 +100,27 @@ export function ParticleField({ className, count = 130, cluster = true }: Partic
       canvas.height = h * dpr
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
 
-      particles = Array.from({ length: count }, () => {
+      // Densidad relativa al viewport de escritorio — evita amontonamiento en mobile.
+      const density = Math.min(1, (w * h) / (1440 * 800))
+      const n = Math.max(24, Math.round(count * density))
+
+      particles = Array.from({ length: n }, () => {
         // cluster: densidad gaussiana hacia el centro (cosmos del hero).
         // si no, reparto uniforme y tenue (fondo global de página).
         const cx = cluster ? (Math.random() + Math.random() + Math.random()) / 3 : Math.random()
         const cy = cluster ? (Math.random() + Math.random() + Math.random()) / 3 : Math.random()
+        const bvx = (Math.random() - 0.5) * 0.15
+        const bvy = (Math.random() - 0.5) * 0.15
         return {
           x: cx * w,
           y: cy * h,
-          vx: (Math.random() - 0.5) * 0.15,
-          vy: (Math.random() - 0.5) * 0.15,
-          size: 1.5 + Math.random() * (cluster ? 3.5 : 2),
+          vx: bvx,
+          vy: bvy,
+          bvx,
+          bvy,
+          size: 1.5 + Math.random() * (cluster ? 3.5 : 2.5),
           color: COLORS[Math.floor(Math.random() * COLORS.length)],
-          alpha: (cluster ? 0.15 : 0.08) + Math.random() * (cluster ? 0.55 : 0.32),
+          alpha: (cluster ? 0.15 : 0.12) + Math.random() * (cluster ? 0.55 : 0.4),
           shape: shapes[Math.floor(Math.random() * shapes.length)],
         }
       })
@@ -119,6 +134,26 @@ export function ParticleField({ className, count = 130, cluster = true }: Partic
 
     const tick = () => {
       for (const p of particles) {
+        const dx = mouse.x - p.x
+        const dy = mouse.y - p.y
+        const dist = Math.hypot(dx, dy)
+        if (dist < ATTRACT_RADIUS && dist > 0.01) {
+          if (dist > REPEL_RADIUS) {
+            // gravedad: cuanto más cerca del radio, más tira (sin llegar a singularidad)
+            const pull = 0.03 * (1 - dist / ATTRACT_RADIUS)
+            p.vx += (dx / dist) * pull
+            p.vy += (dy / dist) * pull
+          } else {
+            // demasiado cerca del cursor: empuja hacia afuera
+            const push = 0.6 * (1 - dist / REPEL_RADIUS)
+            p.vx -= (dx / dist) * push
+            p.vy -= (dy / dist) * push
+          }
+        }
+        // relaja hacia la deriva base — efecto resorte amortiguado, sin oscilar
+        p.vx = p.bvx + (p.vx - p.bvx) * EASE
+        p.vy = p.bvy + (p.vy - p.bvy) * EASE
+
         p.x += p.vx
         p.y += p.vy
         if (p.x < -10) p.x = w + 10
@@ -143,11 +178,26 @@ export function ParticleField({ className, count = 130, cluster = true }: Partic
       if (reduced) render()
       else raf = requestAnimationFrame(tick)
     }
+    const onMove = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect()
+      mouse.x = e.clientX - rect.left
+      mouse.y = e.clientY - rect.top
+    }
+    const onLeave = () => {
+      mouse.x = -9999
+      mouse.y = -9999
+    }
     window.addEventListener('resize', onResize)
+    if (!reduced) {
+      window.addEventListener('mousemove', onMove)
+      window.addEventListener('mouseleave', onLeave)
+    }
 
     return () => {
       cancelAnimationFrame(raf)
       window.removeEventListener('resize', onResize)
+      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('mouseleave', onLeave)
     }
   }, [])
 

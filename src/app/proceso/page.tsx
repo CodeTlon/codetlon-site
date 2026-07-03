@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { CTABanner } from '@/components/sections/CTABanner'
+import { PageHero } from '@/components/sections/PageHero'
 import { AnimateIn } from '@/components/ui/AnimateIn'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 
@@ -95,37 +96,18 @@ const continuoItems = [
 export default function ProcesoPage() {
   return (
     <>
-      {/* Hero Refinado */}
-      <section className="relative min-h-[60vh] lg:min-h-[65vh] flex flex-col justify-center overflow-hidden bg-background pt-32 pb-16 md:pt-40 md:pb-24">
-        <div
-          className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none"
-          style={{ backgroundImage: 'url("/noise.svg")' }}
-        />
-        
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-4xl">
-            <div className="flex items-center gap-4 mb-8 anim-fade-up anim-d1">
-              <div className="w-10 h-[1px] bg-[#ffb690]/50" />
-              <span className="font-body text-xs sm:text-sm font-semibold text-[#ffb690] uppercase tracking-[0.25em]">
-                Metodología propia
-              </span>
-            </div>
-            
-            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-foreground leading-[1.05] tracking-tight text-balance anim-fade-up anim-d2">
-              El{' '}
-              <em className="italic text-[#ffb690] font-light">FOS Method</em>
-            </h1>
-            
-            <p className="font-body text-lg sm:text-xl text-foreground/50 mt-8 max-w-2xl leading-relaxed font-light text-pretty anim-fade-up anim-d3">
-              Factory Operating System. El proceso que seguimos en cada proyecto, sin excepciones.
-              Predecible, documentado y orientado a resultados.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title={
+          <>
+            El{' '}
+            <em className="italic text-[#ffb690] font-light">FOS Method</em>
+          </>
+        }
+        subtitle="Factory Operating System. El proceso que seguimos en cada proyecto, sin excepciones. Predecible, documentado y orientado a resultados."
+      />
 
       {/* Fases 01 a 06 */}
-      <section className="py-24 bg-background">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="border-t border-white/10">
             {phases.map((phase, i) => (
@@ -147,7 +129,7 @@ export default function ProcesoPage() {
                   </div>
 
                   <div className="w-full lg:w-4/12">
-                    <p className="font-body text-base text-foreground/50 leading-relaxed font-light text-pretty group-hover:text-foreground/70 transition-colors duration-500">
+                    <p className="font-body text-base text-foreground/65 leading-relaxed font-light text-pretty group-hover:text-foreground/80 transition-colors duration-500">
                       {phase.description}
                     </p>
                   </div>
@@ -156,7 +138,7 @@ export default function ProcesoPage() {
                     {phase.deliverables.map((d) => (
                       <div key={d} className="flex items-start gap-3">
                         <div className="w-1 h-1 bg-[#ffb690]/40 mt-[9px] shrink-0 group-hover:bg-[#ffb690] transition-colors duration-500" />
-                        <span className="font-body text-xs text-foreground/40 leading-relaxed group-hover:text-foreground/60 transition-colors duration-500">
+                        <span className="font-body text-xs text-foreground/60 leading-relaxed group-hover:text-foreground/80 transition-colors duration-500">
                           {d}
                         </span>
                       </div>
@@ -170,10 +152,8 @@ export default function ProcesoPage() {
         </div>
       </section>
 
-      {/* Fase 07 - Ahora con el mismo Layout visual que las otras fases, pero fondo oscuro */}
-      <section className="relative pt-24 pb-32 bg-[#050505] overflow-hidden">
-        <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-background to-transparent pointer-events-none" />
-
+      {/* Fase 07 */}
+      <section className="relative pt-24 pb-32 overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
           <AnimateIn>
             <div className="flex items-center gap-4 mb-16">
@@ -205,7 +185,7 @@ export default function ProcesoPage() {
 
                 {/* Descripción alineada */}
                 <div className="w-full lg:w-4/12">
-                  <p className="font-body text-base text-foreground/50 leading-relaxed font-light text-pretty group-hover:text-foreground/70 transition-colors duration-500">
+                  <p className="font-body text-base text-foreground/65 leading-relaxed font-light text-pretty group-hover:text-foreground/80 transition-colors duration-500">
                     El lanzamiento no es el fin del proceso. Es el inicio de la siguiente etapa. Activamos un plan integral para escalar el proyecto y mantenerlo optimizado.
                   </p>
                 </div>
@@ -215,7 +195,7 @@ export default function ProcesoPage() {
                   {continuoItems.map((item) => (
                     <div key={item} className="flex items-start gap-3">
                       <div className="w-1 h-1 bg-[#ffb690]/40 mt-[9px] shrink-0 group-hover:bg-[#ffb690] transition-colors duration-500" />
-                      <span className="font-body text-xs text-foreground/40 leading-relaxed group-hover:text-foreground/60 transition-colors duration-500">
+                      <span className="font-body text-xs text-foreground/60 leading-relaxed group-hover:text-foreground/80 transition-colors duration-500">
                         {item}
                       </span>
                     </div>
@@ -229,7 +209,7 @@ export default function ProcesoPage() {
       </section>
 
       {/* FAQ */}
-      <section className="pb-32 bg-[#050505]">
+      <section className="pb-32">
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <AnimateIn>
             <div className="flex items-center gap-4 mb-16">
@@ -249,12 +229,12 @@ export default function ProcesoPage() {
                   // 2. Cambiamos data-[state=open] por data-open
                   className="border-b border-white/10 data-[state-open]:border-[#ffb690]/20 transition-colors duration-500"
                 >
-                  <AccordionTrigger className="font-display text-xl md:text-2xl text-foreground/50 hover:text-foreground py-8 hover:no-underline data-open:text-[#ffb690] text-left transition-colors duration-500">
+                  <AccordionTrigger className="font-display text-xl md:text-2xl text-foreground/75 hover:text-foreground py-8 hover:no-underline data-open:text-[#ffb690] text-left transition-colors duration-500">
                     {faq.q}
                   </AccordionTrigger>
-                  
+
                   {/* 3. Limpiamos las clases extra porque tu accordion.tsx ya las maneja súper bien */}
-                  <AccordionContent className="font-body text-base text-foreground/40 leading-relaxed font-light text-pretty pb-8 pt-2">
+                  <AccordionContent className="font-body text-base text-foreground/65 leading-relaxed font-light text-pretty pb-8 pt-2">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>

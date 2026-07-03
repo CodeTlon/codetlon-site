@@ -27,7 +27,7 @@ export function ServicesTeaser() {
               <em className="font-display italic text-[#ffb690] font-light">necesita.</em>
             </h2>
 
-            <p className="font-body text-lg text-foreground/40 leading-relaxed font-light text-balance">
+            <p className="font-body text-lg text-foreground/65 leading-relaxed font-light text-balance">
               No trabajamos con plantillas cerradas. Analizamos el objetivo de tu negocio y combinamos
               nuestras herramientas para construir la solución definitiva.
             </p>

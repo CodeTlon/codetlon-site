@@ -4,7 +4,7 @@ import { ParticleField } from '@/components/ui/ParticleField'
 export function HeroHome() {
   return (
     // min-h-[90vh] en móvil evita problemas con la barra del navegador; min-h-screen en desktop
-    <section className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-hidden bg-background">
+    <section className="relative min-h-[90vh] lg:min-h-screen flex flex-col justify-center overflow-hidden">
 
       {/* La constelación es la identidad visual, no decoración: ocupa todo el hero. */}
       <ParticleField className="absolute inset-0 z-0 h-full w-full pointer-events-none" />

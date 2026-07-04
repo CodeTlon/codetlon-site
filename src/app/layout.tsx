@@ -71,14 +71,15 @@ export default function RootLayout({
       <head>
         <GoogleAnalytics />
       </head>
-      <body className="bg-background text-foreground antialiased">
-        {/* Campo de partículas global — sutil, fijo detrás de todo el contenido.
+      <body className="relative bg-background text-foreground antialiased">
+        {/* Campo de partículas global — sutil, corre con todo el documento (no fixed)
+            para que se reparta en toda la altura de la página, no solo el viewport.
             Aparece en todas las páginas. El hero del home y los PageHero suman
             un campo propio más denso encima. */}
         <ParticleField
           count={220}
           cluster={false}
-          className="fixed inset-0 z-0 h-full w-full pointer-events-none"
+          className="absolute inset-0 z-0 h-full w-full pointer-events-none"
         />
         <a
           href="#main-content"

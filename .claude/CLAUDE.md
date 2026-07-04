@@ -38,7 +38,7 @@
 | `src/components/layout/` | Header, Footer, WhatsAppButton |
 | `src/components/sections/` | Secciones reutilizables (Hero, ServicesGrid, CTABanner, ContactForm, etc.) |
 | `src/components/seo/JsonLd.tsx` | JSON-LD structured data |
-| `src/components/ui/ParticleField.tsx` | Campo de partículas (canvas, sin deps) — firma visual void/cosmos. Capa global sutil en `layout.tsx` (todas las páginas) + campo propio más denso en `HeroHome` y `PageHero`. Props: `count`, `cluster`. Respeta `prefers-reduced-motion` |
+| `src/components/ui/ParticleField.tsx` | Campo de partículas / starfield (canvas, sin deps) — firma visual void/cosmos. Capa global en `layout.tsx` es `absolute` sobre todo el documento (no `fixed`, no solo el viewport) en `body` con `position: relative`; recicla partículas cada 200ms para que se sientan nuevas al scrollear. Efecto espacio: profundidad (`depth`, parallax), parpadeo (twinkle) y halo en las estrellas cercanas (sin `shadowBlur`, por costo). Cursor: atrae/repele con más fuerza en las partículas de mayor `depth`. Se pausa con Page Visibility API si la pestaña está en background. Campo propio más denso en `HeroHome`/`PageHero` (sección transparente, sin `bg-*` opaco, para que el campo global se vea a través). Props: `count`, `cluster`. Respeta `prefers-reduced-motion` |
 | `src/components/ui/` | Primitivas Shadcn + componentes propios (GlassCard, GradientButton, etc.) |
 | `src/lib/services-data.ts` | Fuente de verdad de los servicios (slugs incluidos) |
 | `src/lib/projects-data.ts` | Fuente de verdad de los proyectos en producción (sección "En Producción" del home) — agregar uno = una entrada |

@@ -20,7 +20,7 @@ export const viewport: Viewport = {
   themeColor: '#0a0f10',
 }
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://codetlon.com.ar'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://codetlon.com'
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

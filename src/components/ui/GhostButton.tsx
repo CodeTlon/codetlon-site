@@ -9,7 +9,7 @@ interface GhostButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export function GhostButton({ href, children, className, size = 'md', ...props }: GhostButtonProps) {
   const base = cn(
-    'inline-flex items-center justify-center font-body font-medium rounded-full border transition-colors hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-primary/50',
+    'inline-flex items-center justify-center font-body font-medium rounded-full border transition-all duration-300 hover:bg-white/10 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50',
     'border-white/20 text-foreground',
     {
       'px-4 py-2 text-sm': size === 'sm',

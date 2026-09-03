@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { ParticleField } from '@/components/ui/ParticleField'
+import { ShareButton } from '@/components/ui/ShareButton'
 
 export function HeroHome() {
   return (
@@ -32,7 +33,7 @@ export function HeroHome() {
 
             <Link
               href="/contacto"
-              className="group relative flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#ffb690] text-[#552100] overflow-hidden transition-opacity hover:opacity-90 w-full sm:w-auto"
+              className="group relative flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-[#ffb690] text-[#552100] overflow-hidden transition-all duration-300 hover:opacity-90 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffb690]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto"
             >
               <span className="relative z-10 font-body text-[13px] font-bold uppercase tracking-[0.2em]">
                 Iniciar proyecto
@@ -41,13 +42,20 @@ export function HeroHome() {
 
             <Link
               href="/servicios"
-              className="group flex items-center justify-center gap-4 px-8 py-4 rounded-full border border-white/15 text-foreground/70 hover:text-foreground hover:border-white/30 transition-colors duration-500 w-full sm:w-auto"
+              className="group flex items-center justify-center gap-4 px-8 py-4 rounded-full border border-white/15 text-foreground/70 hover:text-foreground hover:border-white/30 transition-all duration-300 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffb690]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background w-full sm:w-auto"
             >
               <span className="font-body text-[13px] font-bold uppercase tracking-[0.2em]">
                 Explorar capacidades
               </span>
             </Link>
 
+          </div>
+
+          <div className="mt-8 anim-fade-up anim-d5">
+            <ShareButton
+              title="CodeTlon | Software Factory en Córdoba, Argentina"
+              text="Desarrollamos sitios, ecommerce, dashboards y automatizaciones a medida."
+            />
           </div>
         </div>
       </div>

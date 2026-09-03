@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { services } from '@/lib/services-data'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://codetlon.com'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.codetlon.com.ar'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

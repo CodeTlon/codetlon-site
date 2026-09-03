@@ -56,9 +56,9 @@ export default function NosotrosPage() {
           <AnimateIn delay={300} threshold={0.4}>
             <div className="flex items-center gap-4 mb-16">
               <div className="w-8 h-[1px] bg-[#ffb690]/30" />
-              <span className="font-body text-xs font-medium text-foreground/40 uppercase tracking-[0.2em]">
+              <h2 className="font-body text-xs font-medium text-foreground/40 uppercase tracking-[0.2em]">
                 Valores fundamentales
-              </span>
+              </h2>
             </div>
 
             <div className="border-t border-white/10">

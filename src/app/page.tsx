@@ -5,6 +5,7 @@ import { ServicesTeaser } from '@/components/sections/ServicesTeaser'
 import { FOSMethod } from '@/components/sections/FOSMethod'
 import { WhyCodeTlon } from '@/components/sections/WhyCodeTlon'
 import { Projects } from '@/components/sections/Projects'
+import { FAQHome } from '@/components/sections/FAQHome'
 import { CTABanner } from '@/components/sections/CTABanner'
 import { JsonLd } from '@/components/seo/JsonLd'
 
@@ -49,6 +50,7 @@ export default function Home() {
       <FOSMethod />
       <WhyCodeTlon />
       <Projects />
+      <FAQHome />
       <CTABanner />
     </>
   )

@@ -1,5 +1,6 @@
 import { MonitorSmartphone, CloudCog, DatabaseZap, Workflow } from 'lucide-react'
 import { AnimateIn } from '@/components/ui/AnimateIn'
+import { GradientButton } from '@/components/ui/GradientButton'
 
 const capabilities = [
   {
@@ -28,6 +29,25 @@ export function CoreCapabilities() {
   return (
     <section className="relative py-24 overflow-hidden" aria-label="Capacidades Core">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <AnimateIn className="max-w-2xl mb-16 md:mb-20">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-8 h-[1px] bg-[#ffb690]/40" />
+            <span className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
+              Capacidades Core
+            </span>
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl text-foreground leading-[1.1] tracking-tight mb-6 text-balance">
+            Cuatro frentes,{' '}
+            <em className="font-display italic text-[#ffb690] font-light">un solo equipo.</em>
+          </h2>
+          <p className="font-body text-lg text-foreground/65 leading-relaxed font-light mb-8">
+            Buscás quién construya tu producto de punta a punta: interfaz, nube, backend e integraciones.
+            Estas son las cuatro capacidades que combinamos en cada proyecto, sin subcontratar ninguna.
+          </p>
+          <GradientButton href="/contacto" size="sm">
+            Contanos tu proyecto
+          </GradientButton>
+        </AnimateIn>
         <div className="flex flex-col">
           {capabilities.map((cap, i) => (
             <AnimateIn key={cap.title} delay={i * 100}>

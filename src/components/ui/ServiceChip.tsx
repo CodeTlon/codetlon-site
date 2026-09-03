@@ -17,6 +17,8 @@ export function ServiceChip({ level, name, slug, className }: ServiceChipProps) 
         'group relative flex items-center gap-3 px-5 py-3 rounded-full border border-white/[0.06] bg-transparent backdrop-blur-sm transition-all duration-500 ease-out',
         // 2. Hover: Elevación sutil, borde que se enciende y apenas un tinte de fondo
         'hover:border-[#ffb690]/40 hover:bg-[#ffb690]/[0.02] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(255,182,144,0.04)]',
+        // 3. Active/focus — feedback táctil y accesibilidad de teclado
+        'active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffb690]/50',
         className
       )}
     >

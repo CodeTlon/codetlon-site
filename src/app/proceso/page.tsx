@@ -3,6 +3,7 @@ import { CTABanner } from '@/components/sections/CTABanner'
 import { PageHero } from '@/components/sections/PageHero'
 import { AnimateIn } from '@/components/ui/AnimateIn'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { JsonLd } from '@/components/seo/JsonLd'
 
 export const metadata: Metadata = {
   title: 'FOS Method | Cómo trabajamos en CodeTlon',
@@ -93,9 +94,23 @@ const continuoItems = [
   'Optimización continua de SEO',
 ]
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a,
+    },
+  })),
+}
+
 export default function ProcesoPage() {
   return (
     <>
+      <JsonLd data={faqSchema} />
       <PageHero
         title={
           <>
@@ -214,9 +229,9 @@ export default function ProcesoPage() {
           <AnimateIn>
             <div className="flex items-center gap-4 mb-16">
               <div className="w-8 h-[1px] bg-[#ffb690]/40" />
-              <span className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
+              <h2 className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
                 Preguntas frecuentes
-              </span>
+              </h2>
             </div>
           </AnimateIn>
 

@@ -1,9 +1,72 @@
 'use server'
 
+import { headers } from 'next/headers'
 import { Resend } from 'resend'
 import { contactSchema } from '@/lib/validations/contact'
 
-export async function sendContact(prevState: unknown, formData: FormData) {
+// Rate limiting simple en memoria por IP, sin dependencias nuevas. No es
+// distribuido (cada instancia/lambda tiene su propio Map), pero corta el caso
+// común de un script/bot golpeando el form repetidas veces y agotando la
+// cuota de envíos de Resend. Ventana fija: 5 envíos cada 10 minutos por IP.
+const RATE_LIMIT_MAX = 5
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000
+const rateLimitStore = new Map<string, { count: number; resetAt: number }>()
+
+async function isRateLimited(): Promise<boolean> {
+  const headersList = await headers()
+  const ip =
+    headersList.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+    headersList.get('x-real-ip') ||
+    'unknown'
+
+  const now = Date.now()
+  const entry = rateLimitStore.get(ip)
+
+  if (!entry || now > entry.resetAt) {
+    rateLimitStore.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS })
+    return false
+  }
+
+  if (entry.count >= RATE_LIMIT_MAX) {
+    return true
+  }
+
+  entry.count += 1
+  return false
+}
+
+export interface ContactState {
+  success?: boolean
+  error?: string
+  fieldErrors?: {
+    name?: string
+    email?: string
+    message?: string
+  }
+}
+
+// Los campos del form van interpolados en HTML de email (abajo). Sin escapar,
+// un mensaje/nombre con `<`, `>`, etc. podría inyectar markup en el email que
+// recibe el equipo o en la confirmación que recibe el propio remitente.
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
+export async function sendContact(
+  prevState: ContactState | null,
+  formData: FormData
+): Promise<ContactState> {
+  if (await isRateLimited()) {
+    return {
+      error: 'Hiciste demasiados envíos en poco tiempo. Probá de nuevo en unos minutos.',
+    }
+  }
+
   const resend = new Resend(process.env.RESEND_API_KEY)
   const parsed = contactSchema.safeParse({
     name: formData.get('name'),
@@ -14,10 +77,27 @@ export async function sendContact(prevState: unknown, formData: FormData) {
   })
 
   if (!parsed.success) {
-    return { error: 'Datos inválidos. Revisá los campos.' }
+    const fieldErrors = parsed.error.flatten().fieldErrors
+    return {
+      error: 'Revisá los campos marcados abajo.',
+      fieldErrors: {
+        name: fieldErrors.name?.[0],
+        email: fieldErrors.email?.[0],
+        message: fieldErrors.message?.[0],
+      },
+    }
   }
 
-  const { name, email, company, serviceInterest, message } = parsed.data
+  const { name: rawName, email, company: rawCompany, serviceInterest: rawServiceInterest, message: rawMessage } = parsed.data
+  // Escapados para interpolar en el HTML del email de forma segura (el email
+  // en sí no se interpola crudo en el HTML, solo se usa como href/to/replyTo).
+  const name = escapeHtml(rawName)
+  const company = rawCompany ? escapeHtml(rawCompany) : rawCompany
+  const serviceInterest = rawServiceInterest ? escapeHtml(rawServiceInterest) : rawServiceInterest
+  const message = escapeHtml(rawMessage)
+  // `email` (sin escapar) se usa para `to`/`replyTo` de Resend; `emailHtml` es
+  // la versión segura para mostrar dentro del cuerpo HTML del email.
+  const emailHtml = escapeHtml(email)
 
   // ---- ACÁ BORRAMOS TODA LA INSERCIÓN A SUPABASE ----
 
@@ -61,7 +141,7 @@ export async function sendContact(prevState: unknown, formData: FormData) {
           <td style="background-color:#0e1516;background-image:linear-gradient(#0e1516,#0e1516);border-left:1px solid #1e2d2e;border-right:1px solid #1e2d2e;padding:0 36px 28px">
             <h1 style="margin:0;font-size:28px;font-weight:700;color:#e8ddd4;letter-spacing:-0.02em">${name}</h1>
             <p style="margin:6px 0 0;font-size:14px;color:#8a9b9c">
-              <a href="mailto:${email}" style="color:#a4cddb;text-decoration:none">${email}</a>
+              <a href="mailto:${emailHtml}" style="color:#a4cddb;text-decoration:none">${emailHtml}</a>
               ${company ? `<span style="color:#4a5556;margin:0 6px">·</span><span>${company}</span>` : ''}
             </p>
           </td>
@@ -91,7 +171,7 @@ export async function sendContact(prevState: unknown, formData: FormData) {
                   Respondé directamente a este email para contactar a ${name}.
                 </td>
                 <td align="right">
-                  <a href="mailto:${email}" style="display:inline-block;background-color:#ffb690;background-image:linear-gradient(#ffb690,#ffb690);color:#0e1516;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:10px 20px;text-decoration:none">Responder</a>
+                  <a href="mailto:${emailHtml}" style="display:inline-block;background-color:#ffb690;background-image:linear-gradient(#ffb690,#ffb690);color:#0e1516;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:10px 20px;text-decoration:none">Responder</a>
                 </td>
               </tr>
             </table>

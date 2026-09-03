@@ -6,6 +6,8 @@ import { EvolucionContinua } from '@/components/sections/EvolucionContinua'
 import { CTABanner } from '@/components/sections/CTABanner'
 import { AnimateIn } from '@/components/ui/AnimateIn'
 import { GradientButton } from '@/components/ui/GradientButton'
+import { TLDRBox } from '@/components/ui/TLDRBox'
+import { ShareButton } from '@/components/ui/ShareButton'
 import { JsonLd } from '@/components/seo/JsonLd'
 import Link from 'next/link'
 
@@ -26,7 +28,7 @@ export async function generateMetadata(
   const service = getServiceBySlug(params.slug)
   if (!service) return {}
   return {
-    title: `${service.name} | CodeTlon — ${service.level}`,
+    title: `${service.name} a medida — ${service.level} | CodeTlon`,
     description: service.shortDescription,
     alternates: { canonical: `https://codetlon.com/servicios/${service.slug}` },
   }
@@ -38,6 +40,14 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
   if (!service) notFound()
 
   const related = getRelatedServices(params.slug)
+
+  // TL:DR data-driven — no requiere copy manual por servicio, se arma desde services-data.ts.
+  const tldrPoints = [
+    service.problemStatement,
+    `Incluye ${service.whatYouGet.length} entregables: desde ${service.whatYouGet[0]?.toLowerCase()} hasta ${service.whatYouGet[service.whatYouGet.length - 1]?.toLowerCase()}.`,
+    `Stack: ${service.techStack.slice(0, 4).join(', ')}.`,
+    `Proceso en ${service.timeline.length} etapas, nivel ${service.level} de nuestro catálogo de servicios.`,
+  ]
 
   const serviceSchema = {
     '@context': 'https://schema.org',
@@ -61,22 +71,40 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
         subtitle={service.shortDescription}
       />
 
+      {/* TL:DR — puntos clave arriba del contenido largo, seguido de CTA inmediata */}
+      <section className="pb-4">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <AnimateIn className="max-w-3xl">
+            <TLDRBox points={tldrPoints} />
+            <div className="flex flex-wrap items-center gap-4 mt-8">
+              <GradientButton href={`/contacto?servicio=${service.slug}`}>
+                Consultar por este servicio
+              </GradientButton>
+              <ShareButton
+                title={`${service.name} | CodeTlon`}
+                text={service.shortDescription}
+              />
+            </div>
+          </AnimateIn>
+        </div>
+      </section>
+
       {/* Descripción + Para quién */}
       <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 border-t border-white/[0.04] pt-16">
             <AnimateIn>
-              <span className="font-body text-xs font-medium text-foreground/30 uppercase tracking-[0.2em] block mb-6">
+              <h2 className="font-body text-xs font-medium text-foreground/30 uppercase tracking-[0.2em] block mb-6">
                 Descripción
-              </span>
+              </h2>
               <p className="font-body text-lg text-foreground/60 leading-relaxed font-light">
                 {service.longDescription}
               </p>
             </AnimateIn>
             <AnimateIn delay={100}>
-              <span className="font-body text-xs font-medium text-foreground/30 uppercase tracking-[0.2em] block mb-6">
+              <h2 className="font-body text-xs font-medium text-foreground/30 uppercase tracking-[0.2em] block mb-6">
                 Para quién es
-              </span>
+              </h2>
               <p className="font-body text-base text-foreground/70 leading-relaxed font-light mb-8">
                 {service.problemStatement}
               </p>
@@ -94,9 +122,9 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
           <AnimateIn>
             <div className="flex items-center gap-4 mb-16">
               <div className="w-8 h-[1px] bg-[#ffb690]/40" />
-              <span className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
+              <h2 className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
                 Qué incluye
-              </span>
+              </h2>
             </div>
           </AnimateIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 max-w-3xl border-t border-white/[0.04]">
@@ -121,9 +149,9 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
           <AnimateIn>
             <div className="flex items-center gap-4 mb-10">
               <div className="w-8 h-[1px] bg-[#ffb690]/40" />
-              <span className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
+              <h2 className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
                 Stack técnico
-              </span>
+              </h2>
             </div>
             <div className="flex flex-wrap gap-x-8 gap-y-3">
               {service.techStack.map((tech) => (
@@ -140,9 +168,9 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
           <AnimateIn delay={100}>
             <div className="flex items-center gap-4 mb-10">
               <div className="w-8 h-[1px] bg-[#ffb690]/40" />
-              <span className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
+              <h2 className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
                 Proceso
-              </span>
+              </h2>
             </div>
             <div className="border-t border-white/[0.04]">
               {service.timeline.map((t, i) => (
@@ -157,6 +185,13 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
                 </div>
               ))}
             </div>
+            <Link
+              href="/proceso"
+              className="group inline-flex items-center gap-2 mt-6 font-body text-sm text-foreground/50 hover:text-[#ffb690] transition-colors duration-500"
+            >
+              Ver el FOS Method completo
+              <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+            </Link>
           </AnimateIn>
 
         </div>
@@ -171,9 +206,9 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
             <AnimateIn>
               <div className="flex items-center gap-4 mb-12">
                 <div className="w-8 h-[1px] bg-[#ffb690]/40" />
-                <span className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
+                <h2 className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
                   También podrías necesitar
-                </span>
+                </h2>
               </div>
             </AnimateIn>
             <div className="border-t border-white/[0.04]">

@@ -11,7 +11,7 @@
 - **Cliente:** CodeTlon (sitio institucional propio de la agencia)
 - **Tipo:** L2 — Marketing site multipágina
 - **Generado:** 2026 (entrega inicial)
-- **URL Producción:** https://codetlon.com
+- **URL Producción:** https://codetlon.com.ar
 - **Repo GitHub:** CodeTlon/codetlon-site
 - **Deploy:** Vercel
 

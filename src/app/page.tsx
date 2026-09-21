@@ -8,12 +8,13 @@ import { Projects } from '@/components/sections/Projects'
 import { FAQHome } from '@/components/sections/FAQHome'
 import { CTABanner } from '@/components/sections/CTABanner'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'CodeTlon | Software Factory en Córdoba, Argentina',
   description:
     'Desarrollamos sitios, ecommerce, dashboards y automatizaciones. 9 niveles de servicio, stack moderno, metodología propia. Basados en Córdoba.',
-  alternates: { canonical: 'https://codetlon.com' },
+  alternates: { canonical: SITE_URL },
 }
 
 const localBusinessSchema = {
@@ -22,8 +23,8 @@ const localBusinessSchema = {
   name: 'CodeTlon Software Factory',
   description:
     'Software factory en Córdoba, Argentina. Desarrollamos sitios web, ecommerce, dashboards y automatizaciones con stack moderno y metodología propia.',
-  url: 'https://codetlon.com',
-  logo: 'https://codetlon.com.ar/logos/codetlon-naranja.png',
+  url: SITE_URL,
+  logo: `${SITE_URL}/logos/codetlon-naranja.png`,
   email: 'info@codetlon.com.ar',
   address: {
     '@type': 'PostalAddress',

@@ -3,13 +3,13 @@ import { PageHero } from '@/components/sections/PageHero'
 import { CoreCapabilities } from '@/components/sections/CoreCapabilities'
 import { EvolucionContinua } from '@/components/sections/EvolucionContinua'
 import { CTABanner } from '@/components/sections/CTABanner'
-import { WHATSAPP_CTA_URL } from '@/lib/constants'
+import { WHATSAPP_CTA_URL, SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'Capacidades Tecnológicas | CodeTlon',
   description:
     'Desarrollo a medida. Desde plataformas complejas hasta arquitecturas escalables en la nube. Construimos la tecnología que tu visión demanda.',
-  alternates: { canonical: 'https://codetlon.com/servicios' },
+  alternates: { canonical: `${SITE_URL}/servicios` },
 }
 
 export default function ServiciosPage() {

@@ -4,7 +4,7 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { AnimateIn } from '@/components/ui/AnimateIn'
 import { ParticleField } from '@/components/ui/ParticleField'
 import { Mail } from 'lucide-react'
-import { WHATSAPP_CTA_URL, INSTAGRAM_URL } from '@/lib/constants'
+import { WHATSAPP_CTA_URL, INSTAGRAM_URL, SITE_URL } from '@/lib/constants'
 
 // --- Íconos Personalizados ---
 
@@ -40,14 +40,14 @@ const contactPageSchema = {
   '@type': 'ContactPage',
   name: 'Contacto — CodeTlon Software Factory',
   description: 'Formulario de contacto y canales de comunicación de CodeTlon.',
-  url: 'https://codetlon.com/contacto',
+  url: `${SITE_URL}/contacto`,
 }
 
 export const metadata: Metadata = {
   title: 'Contacto | CodeTlon Software Factory',
   description:
     'Contanos de tu proyecto. Respondemos en menos de 48hs. Formulario, WhatsApp o Instagram — elegí el canal que prefieras.',
-  alternates: { canonical: 'https://codetlon.com/contacto' },
+  alternates: { canonical: `${SITE_URL}/contacto` },
 }
 
 // --- Lista de canales ---

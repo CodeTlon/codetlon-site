@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import { CTABanner } from '@/components/sections/CTABanner'
 import { PageHero } from '@/components/sections/PageHero'
 import { AnimateIn } from '@/components/ui/AnimateIn'
-import { INSTAGRAM_URL } from '@/lib/constants'
+import { INSTAGRAM_URL, SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'Quiénes somos | CodeTlon Software Factory',
   description:
     'Software Factory basada en Córdoba, Argentina. Conocé el FOS Method, nuestro stack curado y la filosofía detrás de cada proyecto digital.',
-  alternates: { canonical: 'https://codetlon.com/nosotros' },
+  alternates: { canonical: `${SITE_URL}/nosotros` },
 }
 
 const valores = [
@@ -56,9 +56,9 @@ export default function NosotrosPage() {
           <AnimateIn delay={300} threshold={0.4}>
             <div className="flex items-center gap-4 mb-16">
               <div className="w-8 h-[1px] bg-[#ffb690]/30" />
-              <span className="font-body text-xs font-medium text-foreground/40 uppercase tracking-[0.2em]">
+              <h2 className="font-body text-xs font-medium text-foreground/40 uppercase tracking-[0.2em]">
                 Valores fundamentales
-              </span>
+              </h2>
             </div>
 
             <div className="border-t border-white/10">

@@ -1,4 +1,21 @@
 /** @type {import('next').NextConfig} */
+// CSP: 'unsafe-inline' en script/style es necesario porque el sitio no usa nonces
+// (script inline de GA4 en GoogleAnalytics.tsx + estilos inline puntuales en JSX).
+// Igual restringe fuentes externas, bloquea framing (clickjacking) y objetos embebidos.
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: https://images.unsplash.com https://*.supabase.co https://www.google-analytics.com https://www.googletagmanager.com",
+  "font-src 'self' data:",
+  "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  'upgrade-insecure-requests',
+].join('; ')
+
 const securityHeaders = [
   { key: 'X-DNS-Prefetch-Control', value: 'on' },
   { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
@@ -7,6 +24,7 @@ const securityHeaders = [
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
   { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
   { key: 'X-XSS-Protection', value: '1; mode=block' },
+  { key: 'Content-Security-Policy', value: contentSecurityPolicy },
 ]
 
 const nextConfig = {

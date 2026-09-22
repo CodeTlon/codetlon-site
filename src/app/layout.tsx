@@ -6,6 +6,9 @@ import { Footer } from '@/components/layout/Footer'
 import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import { CookieConsent } from '@/components/CookieConsent'
 import { ParticleField } from '@/components/ui/ParticleField'
+import { BackToTop } from '@/components/ui/BackToTop'
+import { StickyMobileCTA } from '@/components/ui/StickyMobileCTA'
+import { JsonLd } from '@/components/seo/JsonLd'
 
 // Sistema de una sola familia (void/cosmos): Inter cubre display (peso 200) y body.
 const inter = Inter({
@@ -58,6 +61,31 @@ export const metadata: Metadata = {
   },
 }
 
+// Organization — entidad de la marca a nivel sitio (todas las páginas).
+// El home suma además LocalBusiness (con dirección/área de servicio) en su propio JSON-LD.
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'CodeTlon Software Factory',
+  alternateName: 'CodeTlon',
+  url: BASE_URL,
+  logo: `${BASE_URL}/logos/codetlon-naranja.png`,
+  description:
+    'Software factory en Córdoba, Argentina. Desarrollamos sitios web, ecommerce, dashboards y automatizaciones con stack moderno y metodología propia (FOS Method).',
+  email: 'info@codetlon.com.ar',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Córdoba',
+    addressRegion: 'Córdoba',
+    addressCountry: 'AR',
+  },
+  sameAs: [
+    'https://www.instagram.com/codetlon/',
+    'https://www.linkedin.com/company/codetlon',
+    'https://www.facebook.com/profile.php?id=61576536284674&locale=es_LA',
+  ],
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -72,6 +100,7 @@ export default function RootLayout({
         <GoogleAnalytics />
       </head>
       <body className="relative bg-background text-foreground antialiased">
+        <JsonLd data={organizationSchema} />
         {/* Campo de partículas global — sutil, corre con todo el documento (no fixed)
             para que se reparta en toda la altura de la página, no solo el viewport.
             Aparece en todas las páginas. El hero del home y los PageHero suman
@@ -93,6 +122,8 @@ export default function RootLayout({
         </main>
         <Footer />
         <CookieConsent />
+        <BackToTop />
+        <StickyMobileCTA />
       </body>
     </html>
   )

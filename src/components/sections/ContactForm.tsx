@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useFormState, useFormStatus } from 'react-dom'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { sendContact } from '@/app/actions/contact'
 
@@ -20,7 +20,7 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
-      className="group relative flex items-center justify-between gap-8 px-8 py-5 bg-[#ffb690] text-[#0e1516] overflow-hidden w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+      className="group relative flex items-center justify-between gap-8 px-8 py-5 bg-[#ffb690] text-[#0e1516] overflow-hidden w-full sm:w-auto transition-transform duration-300 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffb690]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed"
     >
       <div className="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
       <span className="relative z-10 font-body text-[13px] font-bold uppercase tracking-[0.25em]">
@@ -64,7 +64,7 @@ export function ContactForm() {
               type="button"
               onClick={() => setSelectedType(type)}
               className={cn(
-                'px-5 py-3 font-body text-sm transition-all duration-300 border',
+                'px-5 py-3 font-body text-sm transition-all duration-300 border active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffb690]/50',
                 selectedType === type
                   ? 'bg-[#ffb690] text-[#0e1516] border-[#ffb690] font-medium'
                   : 'bg-white/[0.06] text-foreground/80 border-white/20 hover:border-[#ffb690]/50 hover:text-foreground'
@@ -90,9 +90,23 @@ export function ContactForm() {
               type="text"
               name="name"
               required
+              minLength={2}
               placeholder="Tu nombre"
-              className="w-full bg-white/[0.06] border border-white/15 px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-[#ffb690]/50 focus:bg-white/[0.08] transition-colors"
+              aria-invalid={!!state?.fieldErrors?.name}
+              aria-describedby={state?.fieldErrors?.name ? 'name-error' : undefined}
+              className={cn(
+                'w-full bg-white/[0.06] border px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:bg-white/[0.08] transition-colors',
+                state?.fieldErrors?.name
+                  ? 'border-red-400/60 focus:border-red-400/60'
+                  : 'border-white/15 focus:border-[#ffb690]/50'
+              )}
             />
+            {state?.fieldErrors?.name && (
+              <p id="name-error" className="flex items-center gap-1.5 font-body text-xs text-red-400">
+                <AlertCircle size={12} className="shrink-0" />
+                {state.fieldErrors.name}
+              </p>
+            )}
           </div>
           <div className="flex flex-col gap-2">
             <input
@@ -100,8 +114,21 @@ export function ContactForm() {
               name="email"
               required
               placeholder="Tu email"
-              className="w-full bg-white/[0.06] border border-white/15 px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-[#ffb690]/50 focus:bg-white/[0.08] transition-colors"
+              aria-invalid={!!state?.fieldErrors?.email}
+              aria-describedby={state?.fieldErrors?.email ? 'email-error' : undefined}
+              className={cn(
+                'w-full bg-white/[0.06] border px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:bg-white/[0.08] transition-colors',
+                state?.fieldErrors?.email
+                  ? 'border-red-400/60 focus:border-red-400/60'
+                  : 'border-white/15 focus:border-[#ffb690]/50'
+              )}
             />
+            {state?.fieldErrors?.email && (
+              <p id="email-error" className="flex items-center gap-1.5 font-body text-xs text-red-400">
+                <AlertCircle size={12} className="shrink-0" />
+                {state.fieldErrors.email}
+              </p>
+            )}
           </div>
         </div>
 
@@ -109,15 +136,32 @@ export function ContactForm() {
           <textarea
             name="message"
             required
+            minLength={10}
             rows={5}
             placeholder="Contanos sobre tu proyecto. ¿Cuál es el objetivo? ¿Tenés referencias? Mientras más detalles, mejor."
-            className="w-full bg-white/[0.06] border border-white/15 px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-[#ffb690]/50 focus:bg-white/[0.08] transition-colors resize-none"
+            aria-invalid={!!state?.fieldErrors?.message}
+            aria-describedby={state?.fieldErrors?.message ? 'message-error' : undefined}
+            className={cn(
+              'w-full bg-white/[0.06] border px-5 py-4 font-body text-sm text-foreground placeholder:text-foreground/40 focus:outline-none focus:bg-white/[0.08] transition-colors resize-none',
+              state?.fieldErrors?.message
+                ? 'border-red-400/60 focus:border-red-400/60'
+                : 'border-white/15 focus:border-[#ffb690]/50'
+            )}
           />
+          {state?.fieldErrors?.message && (
+            <p id="message-error" className="flex items-center gap-1.5 font-body text-xs text-red-400">
+              <AlertCircle size={12} className="shrink-0" />
+              {state.fieldErrors.message}
+            </p>
+          )}
         </div>
       </div>
 
       {state?.error && (
-        <p className="font-body text-sm text-red-400">{state.error}</p>
+        <p role="alert" className="flex items-center gap-2 font-body text-sm text-red-400">
+          <AlertCircle size={14} className="shrink-0" />
+          {state.error}
+        </p>
       )}
 
       {/* Submit Button */}

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
+import { SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'Términos y Condiciones',
   description: 'Condiciones de uso del sitio web de CodeTlon Software Factory.',
-  alternates: { canonical: 'https://codetlon.com/terminos' },
+  alternates: { canonical: `${SITE_URL}/terminos` },
   robots: { index: true, follow: true },
 }
 
@@ -27,7 +28,7 @@ export default function TerminosPage() {
         <section>
           <h2>Uso del sitio</h2>
           <p>
-            El contenido de codetlon.com es informativo y promocional sobre nuestros servicios. Te
+            El contenido de codetlon.com.ar es informativo y promocional sobre nuestros servicios. Te
             comprometés a usarlo de buena fe, sin intentar dañar, sobrecargar o acceder de forma no
             autorizada a sus sistemas.
           </p>

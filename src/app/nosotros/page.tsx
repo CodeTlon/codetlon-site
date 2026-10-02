@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import { CTABanner } from '@/components/sections/CTABanner'
 import { PageHero } from '@/components/sections/PageHero'
 import { AnimateIn } from '@/components/ui/AnimateIn'
-import { INSTAGRAM_URL } from '@/lib/constants'
+import { INSTAGRAM_URL, SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'Quiénes somos | CodeTlon Software Factory',
   description:
     'Software Factory basada en Córdoba, Argentina. Conocé el FOS Method, nuestro stack curado y la filosofía detrás de cada proyecto digital.',
-  alternates: { canonical: 'https://codetlon.com/nosotros' },
+  alternates: { canonical: `${SITE_URL}/nosotros` },
 }
 
 const valores = [

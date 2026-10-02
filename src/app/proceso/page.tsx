@@ -4,12 +4,13 @@ import { PageHero } from '@/components/sections/PageHero'
 import { AnimateIn } from '@/components/ui/AnimateIn'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'FOS Method | Cómo trabajamos en CodeTlon',
   description:
     'Conocé el FOS Method: la metodología propia de CodeTlon. 6 etapas desde el descubrimiento hasta el lanzamiento y más allá.',
-  alternates: { canonical: 'https://codetlon.com/proceso' },
+  alternates: { canonical: `${SITE_URL}/proceso` },
 }
 
 const phases = [

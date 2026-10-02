@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
+import { SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
   title: 'Política de Privacidad',
   description:
     'Cómo CodeTlon recopila, usa y protege tus datos personales y qué cookies utiliza el sitio.',
-  alternates: { canonical: 'https://codetlon.com/privacidad' },
+  alternates: { canonical: `${SITE_URL}/privacidad` },
   robots: { index: true, follow: true },
 }
 

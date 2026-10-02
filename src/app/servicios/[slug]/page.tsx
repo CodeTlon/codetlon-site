@@ -9,6 +9,7 @@ import { GradientButton } from '@/components/ui/GradientButton'
 import { TLDRBox } from '@/components/ui/TLDRBox'
 import { ShareButton } from '@/components/ui/ShareButton'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { SITE_URL } from '@/lib/constants'
 import Link from 'next/link'
 
 export async function generateStaticParams() {
@@ -30,7 +31,7 @@ export async function generateMetadata(
   return {
     title: `${service.name} a medida — ${service.level} | CodeTlon`,
     description: service.shortDescription,
-    alternates: { canonical: `https://codetlon.com/servicios/${service.slug}` },
+    alternates: { canonical: `${SITE_URL}/servicios/${service.slug}` },
   }
 }
 
@@ -57,9 +58,9 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
     provider: {
       '@type': 'Organization',
       name: 'CodeTlon Software Factory',
-      url: 'https://codetlon.com',
+      url: SITE_URL,
     },
-    url: `https://codetlon.com/servicios/${service.slug}`,
+    url: `${SITE_URL}/servicios/${service.slug}`,
     areaServed: { '@type': 'Country', name: 'Argentina' },
   }
 

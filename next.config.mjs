@@ -6,7 +6,7 @@ const contentSecurityPolicy = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: https://images.unsplash.com https://*.supabase.co https://www.google-analytics.com https://www.googletagmanager.com",
+  "img-src 'self' data: https://images.unsplash.com https://www.google-analytics.com https://www.googletagmanager.com",
   "font-src 'self' data:",
   "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com",
   "object-src 'none'",
@@ -37,7 +37,6 @@ const nextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 60,
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'https', hostname: '*.supabase.co' },
     ],
   },
 }

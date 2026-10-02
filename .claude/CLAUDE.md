@@ -17,7 +17,7 @@
 
 ## Stack
 - Next.js 15 (App Router) + TypeScript + Tailwind CSS + Shadcn/UI (base-ui) + Lucide React
-- Supabase: **no** (env vars heredadas en `.env.example` pero el form NO escribe a DB — ver `actions/contact.ts`)
+- Supabase: **no** — dependencia, env vars y CSP/remotePatterns removidos; el form NO escribe a DB (ver `actions/contact.ts`)
 - Resend: **sí** — formulario de contacto envía email, sin almacenamiento
 - Analytics: Google Analytics 4 vía `next/script` (`NEXT_PUBLIC_GA_ID`)
 - Fuentes: **una sola familia** — Inter vía `next/font` (display peso 200 + body). Newsreader (serif) fue removido en el rediseño void/cosmos.
@@ -60,7 +60,6 @@ NEXT_PUBLIC_GA_ID=
 NEXT_PUBLIC_WHATSAPP_NUMBER=
 NEXT_PUBLIC_INSTAGRAM_URL=
 NEXT_PUBLIC_SITE_URL=
-# Supabase: presentes en .env.example pero NO usados por el form actual
 ```
 Ver `.env.example` para el listado completo.
 
@@ -97,6 +96,7 @@ npm run test:e2e     # Playwright E2E
 | 2026-06-29 | style/void-cosmos-redesign | **Rediseño visual completo "void/cosmos"** (referente Dala, colores CodeTlon). Tokens nuevos en `tailwind.config.ts`/`globals.css`: fondo `#0a0f10`, durazno `#ffb690` como único color de acción, **Inter como familia única** (display peso 200, se removió Newsreader serif), bordes hairline, pills 24px, sin glass/gradientes/sombras. Nuevo `ParticleField.tsx` (canvas sin deps): capa global sutil en `layout.tsx` (todas las páginas) + campo denso en `HeroHome`/`PageHero`; respeta `prefers-reduced-motion`. Secciones del home pasadas a transparente (sin `bg-*` opaco) para que el campo global se vea. Build verde 23/23. |
 | 2026-07-04 | fix/particulas-espacio | v1.3.1 — Fix `ParticleField`: capa global pasa de `fixed` (solo viewport, sembrada una vez) a `absolute` sobre todo el documento en `body` con `position: relative`; `HeroHome` pierde su `bg-background` opaco que tapaba el campo global y causaba un corte visible al terminar el hero. Reciclado de partículas cada 200ms (campo vivo al scrollear). Efecto espacio: `depth` (parallax), twinkle, halo en estrellas cercanas. Cursor con más alcance/fuerza. Perf: `shadowBlur` → halo de doble trazo (más barato), tope absoluto 1400 partículas, pausa por Page Visibility API en background. Sin nuevas deps, bundle sin cambios. Build verde 23/23. |
 | 2026-07-11 | chore/security-headers-loading-states | v1.3.2 — Baseline seguridad + perf percibida (`security-owasp.md` §5): `next.config.mjs` suma `Strict-Transport-Security` (HSTS, sitio HTTPS/Vercel) y sube `X-Frame-Options` `SAMEORIGIN`→`DENY`; `nosniff`/`Referrer-Policy`/`Permissions-Policy` ya existían. CORS/RLS: N/A — sin `route.ts` (form es Server Action Resend-only) y sin Supabase real. Progressive loading: `src/components/ui/skeleton.tsx` (shadcn) + `src/components/PageSkeleton.tsx` compartido → `loading.tsx` en las 8 rutas top-level (`servicios/[slug]` hereda el de `servicios/`). Error boundaries de marca: `src/components/ErrorFallback.tsx` (logo + botón peach + "volver al inicio") → `error.tsx` por ruta + `global-error.tsx` raíz self-contained (estilos inline, sin depender del layout que puede haber roto). Build verde 23/23. |
+| 2026-10-02 | chore/remove-supabase-leftovers | v1.3.4 — chore: se quitan restos de Supabase (sin uso en código): dep `@supabase/supabase-js`, env vars de `.env.example`, `*.supabase.co` en CSP `img-src` y `remotePatterns`, `exclude: supabase` en tsconfig. Sin backend propio (solo Server Action Resend) → sigue en Vercel. Build verde. |
 <!-- Agregar fila al finalizar cada sesión de mantenimiento -->
 ---
 

@@ -11,6 +11,7 @@ sesión `/cambio`.
 
 ## 2. ¿El `SUPABASE_SERVICE_ROLE_KEY` sigue seteado en Vercel (Production/Preview)?
 
+(Desde v1.3.5 el repo ya no referencia Supabase; esta credencial es lo único que queda.)
 No verificable sin acceso al dashboard/API de Vercel desde esta sesión. Si el plan sigue siendo no
 reintroducir Supabase, tiene sentido rotar o eliminar esta credencial tanto del `.env` local como
 de Vercel, dado que es un key de alto privilegio (bypass total de RLS) sin ningún uso hoy.

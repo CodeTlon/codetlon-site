@@ -5,8 +5,9 @@ pedido explícito del usuario.
 
 ## No escribir a Supabase
 
-`@supabase/supabase-js` sigue como dependencia y las env vars de Supabase siguen en `.env.example`,
-pero el insert de leads del formulario a Supabase fue **removido a propósito** (comentario
+El insert de leads del formulario a Supabase fue **removido a propósito**. En v1.3.5 (2026-10-02)
+se quitaron también la dependencia `@supabase/supabase-js`, las env vars de `.env.example`,
+`*.supabase.co` de la CSP/`remotePatterns` y el `exclude` de tsconfig (comentario
 explícito en `src/app/actions/contact.ts`: "ACÁ BORRAMOS TODA LA INSERCIÓN A SUPABASE"). El
 formulario solo manda email vía Resend, sin persistir nada. No reintroducir Supabase salvo pedido
 explícito del usuario.

@@ -79,6 +79,9 @@ está expuesta (nunca se commiteó), pero es una credencial viva de alto privile
 que el sitio no usa — cuanto más tiempo exista sin rotar/remover, más superficie de riesgo si
 alguna vez se filtra por otro canal (backup del `.env`, captura de pantalla, etc.).
 
+**Actualización 2026-10-02 (v1.3.5):** el repo ya no tiene dependencia, env vars de ejemplo ni CSP
+de Supabase. La credencial en `.env` local y en Vercel **sigue sin tocar** (no es del repo).
+
 **Fix propuesto (no aplicado, requiere decisión del usuario):** confirmar si esta key también
 sigue seteada en las env vars de Producción/Preview de Vercel; si el plan es no reintroducir
 Supabase, rotarla o eliminarla de ambos lugares. Ver `OPEN_QUESTIONS.md`.

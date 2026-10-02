@@ -36,9 +36,10 @@ contacto que manda email. Ver `.ai/context/PROJECT.md`.
   dice "15". El real, instalado, es 16.3.3 (`package.json`).
 - TypeScript, Tailwind CSS, Shadcn/UI (base-ui), Lucide React.
 - Fuente única: Inter vía `next/font` (peso 200 para display + body). No hay serif.
-- Sin base de datos. Supabase está en `.env.example`/`package.json` (`@supabase/supabase-js`) pero
-  **no se usa** — la inserción de leads a Supabase fue removida a propósito (ver
-  `src/app/actions/contact.ts`, comentario explícito). No la reintroduzcas salvo pedido explícito.
+- Sin base de datos ni Supabase. Los restos (dependencia, env vars de ejemplo, CSP/`remotePatterns`,
+  `exclude` de tsconfig) se removieron en v1.3.5; la inserción de leads ya había sido removida a
+  propósito (ver `src/app/actions/contact.ts`, comentario explícito). No la reintroduzcas salvo
+  pedido explícito.
 - Resend para el único efecto server-side real: el formulario de contacto envía dos emails
   (notificación interna + confirmación al usuario), sin almacenar nada.
 - GA4 vía `next/script`, con Consent Mode v2 (banner opt-in, `CookieConsent.tsx`).

@@ -6,7 +6,7 @@
 - Supabase account
 - Resend account
 - Vercel account
-- Domain configured (codetlon.com)
+- Domain configured (codetlon.com.ar)
 
 ---
 
@@ -33,7 +33,7 @@ supabase/migrations/001_contact_leads.sql
 ## 2. Resend Setup
 
 1. Go to [resend.com](https://resend.com) → Create API key
-2. Add your domain (codetlon.com) and verify DNS records
+2. Add your domain (codetlon.com.ar) and verify DNS records
 3. Once verified, update `RESEND_FROM_EMAIL` to `noreply@codetlon.com`
 
 ---

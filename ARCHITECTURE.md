@@ -3,15 +3,18 @@
 Mapa para mantenimiento. **No releas el repo entero**: buscá tu tipo de cambio acá y abrí solo esos archivos.
 
 ## Stack
-Next.js 14 (App Router, `src/`) · TypeScript · Tailwind · Shadcn/base-ui · Resend · GA4 · Vercel. Alias `@/*` → `src/*`.
+Next.js 16 (App Router, `src/`) · TypeScript · Tailwind · Shadcn/base-ui · Resend · GA4 · Vercel. Alias `@/*` → `src/*`.
 
 ## Para cambios comunes, leé solo esto
 
 | Querés cambiar… | Abrí |
 |-----------------|------|
 | Textos/secciones del Home | `src/app/page.tsx` + el componente en `src/components/sections/` |
-| Un servicio (texto, nuevo servicio, slug) | `src/lib/services-data.ts` (fuente de verdad) → se refleja en `servicios/` y `servicios/[slug]` |
-| Header / Footer / botón WhatsApp | `src/components/layout/` |
+| Un servicio (texto, nuevo servicio, slug) | `src/lib/services-data.ts` (fuente de verdad) → se refleja en home (`ServicesTeaser`), `/servicios` (`ServicesGrid`), `servicios/[slug]`, sitemap, JSON-LD y opciones del form. Si cambiás un slug, agregá el redirect 301 en `next.config.mjs` |
+| Fases del FOS Method | `src/lib/fos-phases.ts` (home, `/proceso` y detalle de servicio) |
+| Proyectos en producción | `src/lib/projects-data.ts` (solo dominios live confirmados) |
+| Redirects de slugs viejos | `next.config.mjs` → `legacyServiceRedirects` (301 explícito) + `tests/e2e/redirects.spec.ts` |
+| Header / Footer | `src/components/layout/` (WhatsApp y teléfono vienen de `constants.ts`) |
 | Formulario de contacto (campos, validación) | `src/components/sections/ContactForm.tsx` + `src/lib/validations/contact.ts` |
 | Lógica de envío del form (email) | `src/app/actions/contact.ts` (Resend; **no** toca Supabase) |
 | Metadata / SEO de una página | `metadata` export de esa `page.tsx` + `src/components/seo/JsonLd.tsx` |
@@ -31,8 +34,8 @@ Next.js 14 (App Router, `src/`) · TypeScript · Tailwind · Shadcn/base-ui · R
 - `src/app/global-error.tsx` — reemplaza el `<html>`/`<body>` entero si el root layout falla; no puede importar nada del árbol normal (Header, ErrorFallback, Tailwind classes asumidas). Estilos inline a propósito.
 
 ## Flujo de datos
-- Servicios: estáticos en `src/lib/services-data.ts` (sin DB). `servicios/[slug]` resuelve por slug de ahí.
-- Contacto: `ContactForm` (`useFormState`) → `sendContact` Server Action → Resend. Redirige a `/gracias`.
+- Servicios: estáticos en `src/lib/services-data.ts` (sin DB), 6 servicios. `servicios/[slug]` resuelve por slug de ahí. `SERVICE_INTEREST_OPTIONS` alimenta el form y el enum Zod.
+- Contacto: `ContactFormFromQuery` (lee `?servicio=<slug>` con `useSearchParams` dentro de `Suspense`, la página sigue estática) → `ContactForm` (`useFormState`) → `sendContact` Server Action → Resend.
 
 ## Deploy
 Vercel (push a `main`). Variables de entorno cargadas manualmente en el dashboard de Vercel.

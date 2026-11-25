@@ -1,12 +1,12 @@
 # CodeTlon Site
 
-Sitio institucional de **CodeTlon** — Software Factory Autónoma. Marketing site multipágina construido con el stack CodeTlon.
+Sitio institucional de **CodeTlon** — Software Factory en Córdoba, Argentina: software a medida, desarrollo web, apps móviles, automatización e integraciones, modernización de sistemas y mantenimiento.
 
-🔗 Producción: https://codetlon.com
+Producción: https://codetlon.com.ar
 
 ## Stack
 
-- **Next.js 14** (App Router, `src/`) + **TypeScript**
+- **Next.js 16** (App Router, `src/`) + **TypeScript**
 - **Tailwind CSS** + **Shadcn/UI** (base-ui) + **Lucide React**
 - **Resend** para el formulario de contacto (sin base de datos)
 - **Google Analytics 4** vía `next/script`
@@ -27,7 +27,7 @@ npm run dev          # Dev server
 npm run build        # Build de producción
 npm start            # Serve producción (Lighthouse)
 npm run lint         # ESLint
-npm run test:e2e     # Tests E2E (Playwright)
+npm run test:e2e     # Tests E2E (Playwright; con PLAYWRIGHT_BASE_URL usa un server ya levantado)
 ```
 
 ## Variables de entorno
@@ -36,7 +36,8 @@ Ver `.env.example`. Claves: `RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `RESEND_FROM_
 
 ## Estructura
 
-Páginas: Home, Servicios (+ detalle por slug), Proceso, Nosotros, Contacto, Gracias.
+Páginas: Home, Servicios (+ detalle de los 6 servicios por slug), Proceso, Nosotros, Contacto, Gracias, Privacidad, Términos.
+Catálogo en `src/lib/services-data.ts`; los slugs del viejo catálogo L1–L9 redirigen con 301 (`next.config.mjs`).
 Ver [`ARCHITECTURE.md`](./ARCHITECTURE.md) para el mapa de archivos y dónde tocar cada cosa.
 
 ## Mantenimiento
@@ -52,6 +53,7 @@ Contexto de proyecto en `.claude/CLAUDE.md` + `ARCHITECTURE.md`.
 
 | Versión | Fecha | Cambio |
 |---------|-------|--------|
+| v1.4.0 | 2026-11-25 | **Nuevo posicionamiento**: estudio de desarrollo de software general en lugar de "niveles" de sitios. `services-data.ts` pasa de 9 niveles (L1–L9, con `level`/`timeline`/`color`) a **6 servicios** (software a medida, desarrollo web, apps móviles, automatización e integraciones, modernización de sistemas, mantenimiento y soporte) con ícono. **Redirects 301** de los 9 slugs viejos. Hero, servicios del home, FAQ, "Nuestros estándares" (ex MetricsStrip, compromisos en vez de `A+`/`∞`), stack ampliado (web, mobile, .NET, Java, IA), `/servicios` ahora lista el catálogo con `OfferCatalog` JSON-LD, detalle sin duraciones (fases FOS compartidas en `src/lib/fos-phases.ts`). Form: opciones = 6 servicios + "Otro / no estoy seguro", enum Zod server-side y preselección por `?servicio=` (cerraba el pendiente de v1.1.0). WhatsApp: fallback real y mensaje unificado. Proyectos: + Grúas InGlobal, InGlobal Agenda (App Store) y Recovery Parts Academy. Fix títulos duplicados "\| CodeTlon \| CodeTlon". `llms.txt` reescrito con dominio `.com.ar`. Se borran `CoreCapabilities`, `ServiceChip`, `MetricCard`. Build verde, E2E 81/81 (viewports emulados en Chromium). |
 | v1.3.6 | 2026-10-02 | Docs: `AGENTS.md` y `.ai/context/` (DECISIONS, ARCHITECTURE, KNOWN_ISSUES, OPEN_QUESTIONS) actualizados tras quitar Supabase en v1.3.5. Sin cambios de código. Build verde. |
 | v1.3.5 | 2026-10-02 | Limpieza: se quitan restos de Supabase sin uso (dep `@supabase/supabase-js`, env vars de `.env.example`, `*.supabase.co` en CSP `img-src` y `remotePatterns`, `exclude` de tsconfig). Sin backend propio (solo Server Action Resend) → sigue en Vercel. Build verde. |
 | v1.3.3 | 2026-09-21 | **Cierre del ciclo de context engineering** (auditoría del 2026-09-18 que había quedado sin commitear). Fix: dominio `https://codetlon.com` (sin `.ar`, NXDOMAIN) hardcodeado en canonical/OG/JSON-LD de ~10 `page.tsx` — corregido a `codetlon.com.ar`, ahora todos importan `SITE_URL` de `constants.ts` en vez de repetir el literal. Fix deps: `npm audit fix` resuelve el 1 HIGH activo (`browserslist`, transitiva vía `shadcn`) — `npm audit` queda en 0 vulnerabilidades. Docs: se agregan `AGENTS.md` + `.ai/context/` (9 archivos) como capa de contexto para agentes de IA, incluyendo el veredicto explícito de que ni RAG ni un subagente de mantenimiento aplican hoy (corpus chico y estático, mantenedor único). Build verde. |

@@ -8,7 +8,10 @@
   `KNOWN_ISSUES.md` #6 resuelto, salvo `.env.example` (número de ejemplo falso, bloqueado para el agente).
 - Producción sigue en v1.3.6 hasta que Mateo mergee y despliegue (no hay PR ni merge hecho).
 - E2E: 81/81 en la VPS con los viewports mobile/tablet **emulados en Chromium** (WebKit no instalable
-  sin sudo). Hubo 2 fallas intermitentes de `toHaveValue` en el form en una corrida; la siguiente, 81/81.
+  sin sudo). Las fallas intermitentes del form eran un bug real (el `Suspense` de `?servicio=` remontaba
+  el form y perdía la selección del usuario); corregido leyendo el parámetro en un `useEffect`.
+- Ramas: `test` creada desde `main` (2026-11-25). `dev` **sin alinear**: el merge de `main` choca en
+  `.env.example` (archivo bloqueado para el agente), lo resuelve Mateo.
 
 ---
 

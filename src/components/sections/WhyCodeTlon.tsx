@@ -44,9 +44,9 @@ export function WhyCodeTlon() {
               </span>
             </div>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] tracking-tight text-balance">
-              Un solo equipo para{' '}
+              Por qué elegir{' '}
               {/* CAMBIO: Volvemos al crema/naranja (#ffb690) para el italic, igual que en el Hero */}
-              <em className="font-display italic text-[#ffb690] font-light drop-shadow-sm">todo tu software.</em>
+              <em className="font-display italic text-[#ffb690] font-light drop-shadow-sm">CodeTlon.</em>
             </h2>
           </div>
 

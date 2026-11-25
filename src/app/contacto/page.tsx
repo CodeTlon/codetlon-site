@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
-import { ContactForm, ContactFormFromQuery } from '@/components/sections/ContactForm'
+import { ContactForm } from '@/components/sections/ContactForm'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { AnimateIn } from '@/components/ui/AnimateIn'
 import { ParticleField } from '@/components/ui/ParticleField'
@@ -83,10 +82,7 @@ export default function ContactoPage() {
 
             {/* Formulario */}
             <AnimateIn delay={100} className="w-full">
-              {/* Suspense: useSearchParams (preselección ?servicio=) sin volver dinámica la página */}
-              <Suspense fallback={<ContactForm />}>
-                <ContactFormFromQuery />
-              </Suspense>
+              <ContactForm />
             </AnimateIn>
 
             {/* Canales Secundarios (Solo Íconos siempre debajo del form) */}

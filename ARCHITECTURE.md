@@ -35,7 +35,7 @@ Next.js 16 (App Router, `src/`) · TypeScript · Tailwind · Shadcn/base-ui · R
 
 ## Flujo de datos
 - Servicios: estáticos en `src/lib/services-data.ts` (sin DB), 6 servicios. `servicios/[slug]` resuelve por slug de ahí. `SERVICE_INTEREST_OPTIONS` alimenta el form y el enum Zod.
-- Contacto: `ContactFormFromQuery` (lee `?servicio=<slug>` con `useSearchParams` dentro de `Suspense`, la página sigue estática) → `ContactForm` (`useFormState`) → `sendContact` Server Action → Resend.
+- Contacto: `ContactForm` (`useFormState`; preselecciona `?servicio=<slug>` en un `useEffect`, la página sigue estática) → `sendContact` Server Action → Resend.
 
 ## Deploy
 Vercel (push a `main`). Variables de entorno cargadas manualmente en el dashboard de Vercel.

@@ -84,7 +84,7 @@ automatización e integraciones, modernización de sistemas, mantenimiento y sop
   `automatizacion`, `ia-integrada` → `automatizacion-e-integraciones`; `refactor` →
   `modernizacion-de-sistemas`.
 - **Métricas → estándares**: `A+` y `∞` no eran defendibles; "Nuestros estándares" muestra
-  compromisos verificables (código propio, E2E, WCAG, sin plantillas).
+  compromisos verificables (código propio, tests de flujos críticos, accesibilidad, sin plantillas).
 - **Form**: `serviceInterest` pasa de string libre a enum Zod (6 servicios + "Otro / no estoy seguro").
 - **Proyectos**: solo dominios live verificados. Génesis Estética (sistema clínico privado, el
   dominio abre en un login) queda afuera por decisión de Mateo. InGlobal Agenda enlaza a App Store;

@@ -2,9 +2,9 @@ import { AnimateIn } from '@/components/ui/AnimateIn'
 
 // Compromisos verificables en cada proyecto — no métricas de marketing.
 const standards = [
-  { value: '100%', label: 'Del código y la documentación quedan en tu propiedad.' },
-  { value: 'E2E', label: 'Tests automatizados de punta a punta antes de cada entrega.' },
-  { value: 'WCAG', label: 'Accesibilidad revisada en cada interfaz que publicamos.' },
+  { value: '100%', label: 'del código y la documentación quedan en tu propiedad.' },
+  { value: 'Tests', label: 'Pruebas automáticas de los flujos críticos antes de cada entrega.' },
+  { value: 'A11y', label: 'Interfaces accesibles para cualquier persona y dispositivo.' },
   { value: '0', label: 'Plantillas o constructores genéricos: todo se desarrolla a medida.' },
 ]
 

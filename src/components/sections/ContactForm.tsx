@@ -1,7 +1,6 @@
 'use client'
 
-import { useState } from 'react'
-import { useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { useFormState, useFormStatus } from 'react-dom'
 import { CheckCircle2, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -28,15 +27,17 @@ function SubmitButton() {
   )
 }
 
-// Preselecciona el servicio cuando se llega desde /servicios/<slug> (?servicio=<slug>).
-export function ContactFormFromQuery() {
-  const slug = useSearchParams().get('servicio')
-  const service = slug ? getServiceBySlug(slug) : undefined
-  return <ContactForm defaultService={service?.name} />
-}
+export function ContactForm() {
+  const [selectedType, setSelectedType] = useState<string>('')
 
-export function ContactForm({ defaultService = '' }: { defaultService?: string }) {
-  const [selectedType, setSelectedType] = useState<string>(defaultService)
+  // Preselecciona el servicio cuando se llega desde /servicios/<slug> (?servicio=<slug>).
+  // Se lee en un efecto (no con useSearchParams + Suspense) para que la página siga estática
+  // sin remontar el form: así no se pierde una elección que el usuario ya haya hecho.
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get('servicio')
+    const service = slug ? getServiceBySlug(slug) : undefined
+    if (service) setSelectedType((current) => current || service.name)
+  }, [])
   const [state, formAction] = useFormState(sendContact, null)
 
   if (state?.success) {

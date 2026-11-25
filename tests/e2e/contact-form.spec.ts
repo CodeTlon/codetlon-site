@@ -18,7 +18,8 @@ test.describe('Contact Form', () => {
 
   test('?servicio=<slug> preselects that service', async ({ page }) => {
     await page.goto('/contacto?servicio=modernizacion-de-sistemas')
-    await expect(page.locator('input[name="serviceInterest"]')).toHaveValue('Modernización de sistemas')
+    // Depende de la hidratación (useEffect): margen extra para máquinas cargadas.
+    await expect(page.locator('input[name="serviceInterest"]')).toHaveValue('Modernización de sistemas', { timeout: 15_000 })
     await expect(page.locator('button[aria-pressed="true"]')).toHaveText('Modernización de sistemas')
   })
 

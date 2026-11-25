@@ -1,38 +1,67 @@
 import type { Metadata } from 'next'
 import { PageHero } from '@/components/sections/PageHero'
-import { CoreCapabilities } from '@/components/sections/CoreCapabilities'
+import { ServicesGrid } from '@/components/sections/ServicesGrid'
 import { EvolucionContinua } from '@/components/sections/EvolucionContinua'
 import { CTABanner } from '@/components/sections/CTABanner'
+import { JsonLd } from '@/components/seo/JsonLd'
 import { WHATSAPP_CTA_URL, SITE_URL } from '@/lib/constants'
+import { services } from '@/lib/services-data'
+
+const description =
+  'Software a medida, desarrollo web, aplicaciones móviles, automatización e integraciones, modernización de sistemas y mantenimiento. Software Factory en Córdoba, Argentina.'
 
 export const metadata: Metadata = {
-  title: 'Capacidades Tecnológicas | CodeTlon',
-  description:
-    'Desarrollo a medida. Desde plataformas complejas hasta arquitecturas escalables en la nube. Construimos la tecnología que tu visión demanda.',
+  title: 'Servicios de desarrollo de software',
+  description,
   alternates: { canonical: `${SITE_URL}/servicios` },
+  openGraph: {
+    title: 'Servicios de desarrollo de software | CodeTlon',
+    description,
+    url: `${SITE_URL}/servicios`,
+  },
+}
+
+const catalogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'OfferCatalog',
+  name: 'Servicios de CodeTlon Software Factory',
+  url: `${SITE_URL}/servicios`,
+  itemListElement: services.map((s, i) => ({
+    '@type': 'Offer',
+    position: i + 1,
+    itemOffered: {
+      '@type': 'Service',
+      name: s.name,
+      description: s.shortDescription,
+      url: `${SITE_URL}/servicios/${s.slug}`,
+      provider: { '@type': 'Organization', name: 'CodeTlon Software Factory', url: SITE_URL },
+      areaServed: { '@type': 'Country', name: 'Argentina' },
+    },
+  })),
 }
 
 export default function ServiciosPage() {
   return (
     <>
+      <JsonLd data={catalogSchema} />
       <PageHero
         title={
           <>
-            Desarrollo a medida.{' '}
-            <em className="font-display italic text-[#ffb690] font-light">Sin límites técnicos.</em>
+            Desarrollamos la tecnología que tu negocio{' '}
+            <em className="font-display italic text-[#ffb690] font-light">necesita.</em>
           </>
         }
-        subtitle="No trabajamos con plantillas ni soluciones enlatadas. Entendemos la complejidad de tu negocio y construimos la arquitectura exacta para escalarlo."
+        subtitle="Sistemas desde cero, sitios y plataformas web, apps móviles, automatizaciones y la modernización de lo que ya tenés. Trabajamos con empresas y negocios de cualquier rubro."
       />
 
-      <CoreCapabilities />
+      <ServicesGrid />
 
       <EvolucionContinua />
-      
-      <CTABanner 
-        headline="Tu proyecto merece el stack correcto." 
-        ctaLabel="ASESORAMIENTO TÉCNICO"
-        ctaHref={WHATSAPP_CTA_URL} 
+
+      <CTABanner
+        headline="¿No sabés por dónde empezar? Te asesoramos."
+        ctaLabel="ESCRIBINOS POR WHATSAPP"
+        ctaHref={WHATSAPP_CTA_URL}
       />
     </>
   )

@@ -1,267 +1,161 @@
+import type { LucideIcon } from 'lucide-react'
+import { Boxes, Globe, Smartphone, Workflow, RefreshCcw, LifeBuoy } from 'lucide-react'
+
+// Catálogo de servicios — fuente de verdad del sitio (home, /servicios, /servicios/[slug],
+// sitemap, JSON-LD, select del formulario de contacto).
+// Reemplaza al viejo modelo de niveles L1–L9 (ver .ai/context/DECISIONS.md). Los slugs viejos
+// redirigen con 301 a estos desde next.config.mjs.
 export interface Service {
   slug: string
-  level: string
   name: string
   shortDescription: string
   longDescription: string
   problemStatement: string
   whatYouGet: string[]
   techStack: string[]
-  timeline: { step: string; duration: string }[]
   relatedSlugs: string[]
-  color: string
+  icon: LucideIcon
 }
 
 export const services: Service[] = [
   {
-    slug: 'landing',
-    level: 'L1',
-    name: 'Landing de Alta Conversión',
-    shortDescription: 'Una página optimizada para convertir visitantes en clientes.',
+    slug: 'software-a-medida',
+    name: 'Software a medida',
+    icon: Boxes,
+    shortDescription:
+      'Sistemas diseñados desde cero según los procesos y objetivos de tu negocio, escalables y seguros.',
     longDescription:
-      'La landing perfecta para lanzar un producto, servicio o campaña. Diseñada para convertir, con formulario de contacto, secciones de características, testimonios y SEO desde el día uno.',
+      'Diseñamos y desarrollamos sistemas que se adaptan a cómo trabaja tu negocio, no al revés: paneles de gestión, plataformas internas, portales para clientes y herramientas operativas. Partimos de tus procesos reales, definimos juntos el alcance y construimos una base sólida que pueda crecer con vos.',
     problemStatement:
-      'Necesitás presencia digital rápida, profesional y orientada a resultados. Sin complejidad innecesaria.',
+      'Para negocios que hoy se apoyan en planillas, sistemas genéricos que no encajan o procesos manuales que ya no alcanzan, y necesitan una herramienta propia.',
     whatYouGet: [
-      'Diseño premium responsive (mobile-first)',
-      'Formulario de contacto con notificaciones email',
-      'Secciones: Hero, Features, Testimonios, Galería, FAQ, Contacto',
-      'SEO on-page completo + Schema.org LocalBusiness',
-      'Lighthouse Performance > 85, SEO > 95',
-      'Deploy en Vercel con dominio personalizado',
-      'Tests E2E automatizados',
-      'Documentación y guía de mantenimiento',
+      'Relevamiento de procesos y definición del alcance antes de escribir código',
+      'Usuarios, roles y permisos según quién hace qué en tu operación',
+      'Panel de gestión con reportes y exportación de datos',
+      'Base de datos diseñada para tu información, con copias de seguridad',
+      'API para conectar el sistema con otras herramientas',
+      'Tests automatizados sobre los flujos críticos',
+      'Código fuente y documentación técnica de tu propiedad',
     ],
-    techStack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Resend', 'Vercel'],
-    timeline: [
-      { step: 'Brief y diseño', duration: '1 día' },
-      { step: 'Desarrollo', duration: '2 días' },
-      { step: 'Testing y ajustes', duration: '1 día' },
-      { step: 'Deploy', duration: '4 horas' },
-    ],
-    relatedSlugs: ['marketing-site', 'sitio-estatico'],
-    color: '#ffb690',
+    techStack: ['Next.js', 'React', 'Node.js', '.NET / C#', 'Java', 'Python / FastAPI', 'Go', 'PostgreSQL', 'SQL Server', 'Redis', 'Docker'],
+    relatedSlugs: ['automatizacion-e-integraciones', 'modernizacion-de-sistemas', 'aplicaciones-moviles'],
   },
   {
-    slug: 'marketing-site',
-    level: 'L2',
-    name: 'Marketing Site',
-    shortDescription: 'Sitio multipágina para posicionar tu marca y captar leads.',
+    slug: 'desarrollo-web',
+    name: 'Desarrollo web',
+    icon: Globe,
+    shortDescription:
+      'Sitios institucionales, plataformas web y tiendas online modernas, rápidas y adaptadas a todos los dispositivos.',
     longDescription:
-      'Un sitio institucional completo con múltiples páginas, navegación global, blog opcional y SEO por página. Ideal para empresas que necesitan una presencia digital sólida y escalable.',
+      'Desarrollamos sitios y plataformas web pensados para que tu negocio se encuentre, se entienda y se contacte. Desde un sitio institucional hasta una tienda online o una plataforma con contenido editable, cuidamos la velocidad, el SEO técnico y la accesibilidad en cada página.',
     problemStatement:
-      'Tu negocio creció y necesitás más que una landing: un sitio que cuente toda tu historia y posicione tu marca.',
+      'Para negocios que no tienen presencia web, que tienen un sitio desactualizado o que necesitan vender y captar consultas online.',
     whatYouGet: [
-      'Múltiples páginas: Home, Nosotros, Servicios, Contacto y más',
-      'Navegación global con Header y Footer',
-      'Metadata única y SEO por página',
-      'Sitemap dinámico y robots.txt',
-      'Formulario de contacto completo',
-      'Blog opcional (MDX o Supabase)',
-      'Lighthouse Performance > 85, SEO > 95',
-      'Deploy en Vercel',
+      'Diseño a medida, adaptado a celular, tablet y escritorio',
+      'Contenido editable desde un panel, sin tocar código',
+      'SEO técnico: metadata, sitemap y datos estructurados',
+      'Formularios de contacto conectados a tu correo o WhatsApp',
+      'Tienda online con catálogo, carrito y pagos cuando el proyecto lo requiere',
+      'Accesibilidad revisada y tests automatizados antes de publicar',
+      'Publicación con dominio propio y certificado HTTPS',
     ],
-    techStack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Resend', 'Vercel'],
-    timeline: [
-      { step: 'Brief y diseño', duration: '1-2 días' },
-      { step: 'Desarrollo', duration: '3-4 días' },
-      { step: 'Testing y SEO', duration: '1 día' },
-      { step: 'Deploy', duration: '4 horas' },
-    ],
-    relatedSlugs: ['landing', 'dashboard-usuarios'],
-    color: '#a4cddb',
+    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Vercel', 'Cloudflare'],
+    relatedSlugs: ['mantenimiento-y-soporte', 'automatizacion-e-integraciones', 'software-a-medida'],
   },
   {
-    slug: 'dashboard-usuarios',
-    level: 'L3',
-    name: 'Dashboard con Usuarios',
-    shortDescription: 'Aplicación web con autenticación, roles y panel de gestión.',
+    slug: 'aplicaciones-moviles',
+    name: 'Aplicaciones móviles',
+    icon: Smartphone,
+    shortDescription: 'Apps para Android e iOS integradas con tus sistemas y servicios.',
     longDescription:
-      'Para negocios que necesitan que sus clientes o equipo inicien sesión y gestionen datos. Incluye autenticación segura con Supabase Auth, roles de usuario y un dashboard CRUD completo.',
+      'Desarrollamos aplicaciones para Android e iOS desde una misma base de código, conectadas a tus sistemas existentes o a un backend que construimos para la app. Nos ocupamos también de la publicación en Google Play y App Store.',
     problemStatement:
-      'Necesitás que tus usuarios tengan acceso privado a datos, configuraciones o herramientas dentro de tu plataforma.',
+      'Para negocios cuyos clientes o equipos necesitan operar desde el celular: agendas, pedidos, seguimiento en campo o acceso a sus datos en cualquier lugar.',
     whatYouGet: [
-      'Autenticación completa (email/password o magic link)',
-      'Roles: usuario y administrador (RBAC)',
-      'Dashboard con operaciones CRUD',
-      'Row Level Security en base de datos',
-      'Middleware de protección de rutas',
-      'Panel admin independiente',
-      'Deploy en Vercel + Supabase Cloud',
+      'Una app para Android e iOS desarrollada con una sola base de código',
+      'Login y sesión segura, integrada con tus usuarios existentes',
+      'Conexión con tu sistema web o con una API construida para la app',
+      'Notificaciones push',
+      'Publicación en Google Play y App Store',
+      'Actualizaciones de la app sin depender de terceros',
     ],
-    techStack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Supabase Auth', 'Supabase DB', 'Vercel'],
-    timeline: [
-      { step: 'Arquitectura y diseño', duration: '2 días' },
-      { step: 'Auth y roles', duration: '2 días' },
-      { step: 'Dashboard y CRUD', duration: '3 días' },
-      { step: 'Testing y deploy', duration: '2 días' },
-    ],
-    relatedSlugs: ['ecommerce', 'marketing-site'],
-    color: '#ffb690',
+    techStack: ['React Native', 'Expo', 'TypeScript', 'Node.js', 'PostgreSQL', 'Supabase'],
+    relatedSlugs: ['software-a-medida', 'automatizacion-e-integraciones'],
   },
   {
-    slug: 'ecommerce',
-    level: 'L4',
-    name: 'Ecommerce',
-    shortDescription: 'Tienda online completa con catálogo, carrito y pagos.',
+    slug: 'automatizacion-e-integraciones',
+    name: 'Automatización e integraciones',
+    icon: Workflow,
+    shortDescription:
+      'Automatizamos tareas repetitivas y conectamos tus herramientas y sistemas: WhatsApp, correo, planillas, CRM, pagos, facturación e inteligencia artificial.',
     longDescription:
-      'Una tienda online robusta con catálogo de productos, carrito de compras y pagos integrados con MercadoPago o Stripe. Disponible en versión básica (catálogo + contacto) o completa (tienda + panel admin).',
+      'Identificamos las tareas que tu equipo repite todos los días y las automatizamos. Conectamos las herramientas que ya usás para que la información fluya sola entre ellas, y sumamos inteligencia artificial donde aporta: responder consultas, clasificar mensajes o procesar documentos.',
     problemStatement:
-      'Querés vender online con una plataforma propia, sin pagar comisiones a marketplaces ni depender de plataformas cerradas.',
+      'Para negocios que pierden horas copiando datos entre sistemas, respondiendo los mismos mensajes o armando reportes a mano.',
     whatYouGet: [
-      'Catálogo de productos con filtros y búsqueda',
-      'Carrito de compras persistente',
-      'Checkout con MercadoPago o Stripe',
-      'Webhooks para confirmación de pagos',
-      'Panel admin para gestión de productos y órdenes',
-      'Deploy en VPS Docker',
-      'Optimización de performance para e-commerce',
+      'Relevamiento de las tareas repetitivas y priorización por impacto',
+      'Flujos automáticos entre WhatsApp, correo, planillas y CRM',
+      'Integración con pagos, facturación y sistemas existentes',
+      'Asistentes con inteligencia artificial conectados a tu información',
+      'Alertas cuando un flujo falla, para que nada se pierda en silencio',
+      'Documentación de cada automatización',
     ],
-    techStack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Supabase', 'MercadoPago/Stripe', 'Docker', 'VPS'],
-    timeline: [
-      { step: 'Diseño y arquitectura', duration: '2 días' },
-      { step: 'Catálogo y carrito', duration: '3 días' },
-      { step: 'Pagos y webhooks', duration: '2 días' },
-      { step: 'Admin y deploy', duration: '3 días' },
-    ],
-    relatedSlugs: ['dashboard-usuarios', 'sitio-automatizacion'],
-    color: '#a4cddb',
+    techStack: ['n8n', 'WhatsApp Business API', 'Node.js', 'Python', 'OpenRouter', 'LangChain', 'LangGraph', 'PostgreSQL', 'Docker'],
+    relatedSlugs: ['software-a-medida', 'desarrollo-web', 'aplicaciones-moviles'],
   },
   {
-    slug: 'sitio-automatizacion',
-    level: 'L5',
-    name: 'Sitio + Automatización',
-    shortDescription: 'Cualquier sitio de los niveles anteriores + workflows automáticos con n8n.',
+    slug: 'modernizacion-de-sistemas',
+    name: 'Modernización de sistemas',
+    icon: RefreshCcw,
+    shortDescription:
+      'Actualizamos, migramos o rediseñamos sistemas existentes para mejorar rendimiento, seguridad y experiencia de uso.',
     longDescription:
-      'La combinación perfecta: un sitio web profesional más la potencia de la automatización. Con n8n corriendo en tu propia VPS, conectamos tu sitio con CRMs, notificaciones automáticas, reportes y cualquier flujo que necesites.',
+      'Tomamos sistemas que funcionan pero quedaron viejos —en PHP, WordPress, .NET Framework, Access u otras tecnologías— y los llevamos a una base actual. Auditamos lo que hay, planificamos la migración por etapas y cuidamos que los datos, el SEO y la operación diaria no se vean afectados.',
     problemStatement:
-      'Tu sitio capta leads pero los procesos manuales consumen tiempo. Necesitás automatizar sin perder el control.',
+      'Para negocios con un sistema lento, difícil de mantener, con problemas de seguridad o que ya nadie se anima a tocar.',
     whatYouGet: [
-      'Sitio web (L1-L4 según necesidad)',
-      'n8n self-hosted en tu VPS',
-      'Workflows: notificaciones, CRM, reportes',
-      'Webhook desde el sitio a n8n',
-      'Docker Compose para toda la infraestructura',
-      'Documentación de workflows',
+      'Auditoría técnica del sistema actual: código, datos, seguridad y rendimiento',
+      'Plan de migración por etapas, sin cortar la operación',
+      'Migración de datos con validación',
+      'Redirecciones y metadata para conservar el posicionamiento web',
+      'Rediseño de la interfaz cuando la experiencia de uso lo necesita',
+      'Tests automatizados que cubren lo que antes funcionaba',
+      'Documentación del sistema nuevo',
     ],
-    techStack: ['Next.js 14', 'TypeScript', 'n8n', 'Docker', 'PostgreSQL', 'Nginx', 'VPS'],
-    timeline: [
-      { step: 'Sitio base', duration: 'según nivel' },
-      { step: 'Setup VPS + Docker', duration: '1 día' },
-      { step: 'Workflows n8n', duration: '2-3 días' },
-      { step: 'Testing e integración', duration: '1 día' },
-    ],
-    relatedSlugs: ['automatizacion', 'ecommerce'],
-    color: '#ffb690',
+    techStack: ['Next.js', '.NET / C#', 'Java', 'Node.js', 'PostgreSQL', 'SQL Server', 'Docker', 'Playwright'],
+    relatedSlugs: ['software-a-medida', 'mantenimiento-y-soporte'],
   },
   {
-    slug: 'sitio-estatico',
-    level: 'L6',
-    name: 'Sitio Estático',
-    shortDescription: 'Sitio informativo puro, sin base de datos ni servidor.',
+    slug: 'mantenimiento-y-soporte',
+    name: 'Mantenimiento y soporte',
+    icon: LifeBuoy,
+    shortDescription:
+      'Hosting, copias de seguridad, monitoreo, actualizaciones y soporte técnico continuo.',
     longDescription:
-      'Para presencias digitales simples que solo necesitan mostrar información: portfolios, curriculums, micrositios de eventos o páginas de presentación. Build estático 100%, velocidad máxima, costo mínimo.',
+      'Nos hacemos cargo de que tu sitio o sistema siga funcionando bien después del lanzamiento: infraestructura, copias de seguridad, actualizaciones de seguridad y mejoras. Trabajamos tanto sobre proyectos que desarrollamos nosotros como sobre sistemas existentes.',
     problemStatement:
-      'Necesitás algo rápido, barato y confiable. Sin base de datos, sin backend, sin complicaciones.',
+      'Para negocios que dependen de su sitio o sistema y necesitan a alguien que lo cuide, lo actualice y responda cuando algo falla.',
     whatYouGet: [
-      'Sitio informativo completo',
-      'Export estático 100% (HTML + CSS + JS)',
-      'Velocidad de carga excepcional',
-      'Hosting en Vercel (gratis)',
-      'SEO básico incluido',
-      'Sin costos de servidor ni base de datos',
+      'Hosting en infraestructura administrada (Vercel, Cloudflare o servidores propios)',
+      'Copias de seguridad automáticas con restauración probada',
+      'Monitoreo de disponibilidad y alertas',
+      'Actualizaciones de dependencias y parches de seguridad',
+      'Soporte técnico y mejoras cotizadas por alcance',
+      'Registro de cada cambio en el repositorio',
     ],
-    techStack: ['Next.js 14 (static export)', 'TypeScript', 'Tailwind CSS', 'Vercel'],
-    timeline: [
-      { step: 'Diseño', duration: '1 día' },
-      { step: 'Desarrollo', duration: '1-2 días' },
-      { step: 'Deploy', duration: '2 horas' },
-    ],
-    relatedSlugs: ['landing', 'marketing-site'],
-    color: '#a4cddb',
+    techStack: ['Docker', 'VPS propios', 'Vercel', 'Cloudflare', 'Playwright', 'PostgreSQL'],
+    relatedSlugs: ['desarrollo-web', 'modernizacion-de-sistemas'],
   },
-  {
-    slug: 'refactor',
-    level: 'L7',
-    name: 'Refactor a Nuestro Stack',
-    shortDescription: 'Migramos tu sitio existente a Next.js + Tailwind + Supabase.',
-    longDescription:
-      'Tenés un sitio viejo en WordPress, PHP, React legacy o cualquier otro stack y querés modernizarlo. Lo auditamos, planificamos y migramos completo a nuestro stack curado sin perder SEO ni contenido.',
-    problemStatement:
-      'Tu sitio actual es lento, difícil de mantener o no escala. Sabés que necesita una renovación tecnológica pero no querés empezar de cero.',
-    whatYouGet: [
-      'Auditoría completa del sitio existente',
-      'Plan de migración detallado',
-      'Migración a Next.js 14 + Tailwind + Supabase',
-      'Preservación de SEO (301 redirects, metadata)',
-      'Migración de contenido y datos',
-      'Performance mejorado garantizado',
-      'Documentación del nuevo stack',
-    ],
-    techStack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Vercel'],
-    timeline: [
-      { step: 'Auditoría', duration: '1 día' },
-      { step: 'Plan de migración', duration: '1 día' },
-      { step: 'Migración', duration: '4-7 días' },
-      { step: 'Validación y QA', duration: '2 días' },
-    ],
-    relatedSlugs: ['marketing-site', 'dashboard-usuarios'],
-    color: '#ffb690',
-  },
-  {
-    slug: 'automatizacion',
-    level: 'L8',
-    name: 'Solo Automatización',
-    shortDescription: 'n8n puro en tu VPS para automatizar procesos de tu negocio.',
-    longDescription:
-      'Sin necesidad de un sitio nuevo. Montamos n8n en tu VPS y construimos los workflows que necesita tu negocio: lead generation, procesamiento de datos, notificaciones automáticas, integraciones con APIs y más.',
-    problemStatement:
-      'Ya tenés un sitio. Lo que necesitás es automatizar los procesos que hoy hacés a mano.',
-    whatYouGet: [
-      'n8n self-hosted en tu VPS con Docker',
-      'Workflows documentados y testeados',
-      'Casos típicos: leads, notificaciones, reportes, integraciones',
-      'Backups automáticos de workflows',
-      'Dashboard de monitoreo',
-      'Capacitación para operar n8n',
-    ],
-    techStack: ['n8n', 'Docker', 'PostgreSQL', 'Nginx', 'VPS'],
-    timeline: [
-      { step: 'Setup VPS + Docker', duration: '4 horas' },
-      { step: 'Workflows', duration: '2-5 días' },
-      { step: 'Testing y documentación', duration: '1 día' },
-    ],
-    relatedSlugs: ['sitio-automatizacion', 'ia-integrada'],
-    color: '#a4cddb',
-  },
-  {
-    slug: 'ia-integrada',
-    level: 'L9',
-    name: 'Sitio + IA Integrada',
-    shortDescription: 'Tu sitio con inteligencia artificial: chatbots, generadores y asistentes.',
-    longDescription:
-      'El nivel más avanzado. Cualquier sitio de los niveles anteriores más integración real de IA usando Claude o GPT: chatbots entrenados con tu información, generadores de presupuestos automáticos, asistentes de contenido y más.',
-    problemStatement:
-      'Querés que tu sitio haga más que mostrar información: que entienda, responda y ayude a tus usuarios en tiempo real.',
-    whatYouGet: [
-      'Sitio web base (L1-L5 según necesidad)',
-      'Integración con Claude API o GPT',
-      'Chatbot entrenado con tu información',
-      'Rate limiting para control de costos',
-      'System prompt personalizado al negocio',
-      'Panel de monitoreo de uso de IA',
-      'Deploy en VPS Docker',
-    ],
-    techStack: ['Next.js 14', 'TypeScript', 'Claude API / GPT', 'Docker', 'VPS', 'Supabase'],
-    timeline: [
-      { step: 'Sitio base', duration: 'según nivel' },
-      { step: 'Integración IA', duration: '2-3 días' },
-      { step: 'Training y tuning', duration: '1-2 días' },
-      { step: 'Testing y deploy', duration: '1 día' },
-    ],
-    relatedSlugs: ['automatizacion', 'sitio-automatizacion'],
-    color: '#ffb690',
-  },
+]
+
+export const OTHER_SERVICE_OPTION = 'Otro / no estoy seguro'
+
+// Opciones válidas del campo "serviceInterest" del formulario de contacto (cliente + Zod).
+// Tipada como tupla no vacía porque z.enum lo exige.
+export const SERVICE_INTEREST_OPTIONS: [string, ...string[]] = [
+  services[0].name,
+  ...services.slice(1).map((s) => s.name),
+  OTHER_SERVICE_OPTION,
 ]
 
 export function getServiceBySlug(slug: string): Service | undefined {

@@ -27,7 +27,28 @@ const securityHeaders = [
   { key: 'Content-Security-Policy', value: contentSecurityPolicy },
 ]
 
+// Slugs del viejo catálogo de niveles (L1–L9) → servicios actuales. 301 explícito
+// (permanent: true en Next responde 308) para conservar SEO y links compartidos.
+const legacyServiceRedirects = {
+  landing: 'desarrollo-web',
+  'marketing-site': 'desarrollo-web',
+  'sitio-estatico': 'desarrollo-web',
+  ecommerce: 'desarrollo-web',
+  'dashboard-usuarios': 'software-a-medida',
+  'sitio-automatizacion': 'automatizacion-e-integraciones',
+  automatizacion: 'automatizacion-e-integraciones',
+  'ia-integrada': 'automatizacion-e-integraciones',
+  refactor: 'modernizacion-de-sistemas',
+}
+
 const nextConfig = {
+  async redirects() {
+    return Object.entries(legacyServiceRedirects).map(([from, to]) => ({
+      source: `/servicios/${from}`,
+      destination: `/servicios/${to}`,
+      statusCode: 301,
+    }))
+  },
   async headers() {
     return [{ source: '/(.*)', headers: securityHeaders }]
   },

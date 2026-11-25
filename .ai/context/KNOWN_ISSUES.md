@@ -134,5 +134,4 @@ sesión `/cambio`. Ver `OPEN_QUESTIONS.md`.
 
 **Resuelto 2026-11-25 (v1.4.0):** `README.md`, `ARCHITECTURE.md`, `TASKS.md`, `public/llms.txt`,
 `.claude/CLAUDE.md` y `docs/*.md` alineados (Next 16, `codetlon.com.ar`, catálogo de 6 servicios).
-Queda `.env.example` con el número de WhatsApp de ejemplo falso (el agente no tiene permiso de
-editar ese archivo).
+`.env.example` también corregido (número real de WhatsApp).

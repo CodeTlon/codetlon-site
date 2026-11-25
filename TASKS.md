@@ -11,6 +11,6 @@ Mantenimiento por sesiones (`/cambio` → rama → `/cerrar`). Historial complet
 ## Pendiente
 - [ ] Link de Google Play de **InGlobal Agenda** (hoy solo App Store; `com.gruasinglobal.agenda` da 404 en Play).
 - [ ] Génesis Estética: sumar a "En Producción" cuando se decida mostrar el sistema privado.
-- [ ] `.env.example`: el ejemplo de `NEXT_PUBLIC_WHATSAPP_NUMBER` sigue con un número falso (archivo bloqueado para el agente).
+- [ ] PR `test` → `main` para publicar v1.4.0 (requiere OK de Mateo).
 - [ ] Mover `shadcn` de `dependencies` a `devDependencies` (ver `.ai/context/KNOWN_ISSUES.md` #2).
 - [ ] Lighthouse en producción después del deploy de v1.4.0.

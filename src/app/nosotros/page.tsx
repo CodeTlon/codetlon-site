@@ -5,9 +5,9 @@ import { AnimateIn } from '@/components/ui/AnimateIn'
 import { INSTAGRAM_URL, SITE_URL } from '@/lib/constants'
 
 export const metadata: Metadata = {
-  title: 'Quiénes somos | CodeTlon Software Factory',
+  title: 'Quiénes somos',
   description:
-    'Software Factory basada en Córdoba, Argentina. Conocé el FOS Method, nuestro stack curado y la filosofía detrás de cada proyecto digital.',
+    'Software Factory en Córdoba, Argentina. Desarrollamos software a medida, web, apps móviles y automatizaciones para empresas y negocios de cualquier rubro.',
   alternates: { canonical: `${SITE_URL}/nosotros` },
 }
 
@@ -25,16 +25,18 @@ const valores = [
   {
     title: 'Resultados medibles',
     description:
-      'Lighthouse, SEO, conversiones. No entregamos proyectos, entregamos métricas que importan.',
+      'Definimos criterios de éxito al inicio y los verificamos en cada entrega: que el sistema funcione, sea rápido, seguro y útil para tu negocio.',
   },
 ]
 
 const stack = {
-  Frontend: ['Next.js 14+', 'TypeScript', 'Tailwind CSS', 'Shadcn/UI', 'Lucide React'],
-  Backend: ['Supabase (PostgreSQL + Auth)', 'Next.js Server Actions', 'Resend API'],
-  Automatización: ['n8n (self-hosted)', 'Docker Compose', 'webhooks'],
-  Testing: ['Playwright E2E', 'Lighthouse CI'],
-  Deploy: ['Vercel', 'VPS Docker'],
+  Frontend: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+  Mobile: ['React Native', 'Expo'],
+  Backend: ['Node.js', '.NET / C#', 'Java', 'Python / FastAPI', 'Go'],
+  Datos: ['PostgreSQL', 'Supabase', 'SQL Server', 'Redis'],
+  'IA y automatización': ['n8n', 'WhatsApp Business API', 'OpenRouter', 'LangChain', 'LangGraph'],
+  Calidad: ['Playwright', 'Tests E2E'],
+  Infraestructura: ['Docker', 'Cloudflare', 'Vercel', 'VPS propios'],
 }
 
 export default function NosotrosPage() {
@@ -47,7 +49,7 @@ export default function NosotrosPage() {
             <em className="italic text-[#ffb690] font-light">que escala.</em>
           </>
         }
-        subtitle="Equipo en Córdoba, Argentina. Un stack curado, una metodología propia y el mismo nivel de exigencia en cada proyecto."
+        subtitle="Software Factory en Córdoba, Argentina. Desarrollamos software a medida, web, apps móviles y automatizaciones para empresas y negocios de cualquier rubro, con una metodología propia y la misma exigencia en cada proyecto."
       />
 
       {/* Valores */}
@@ -97,7 +99,7 @@ export default function NosotrosPage() {
               <em className="italic text-[#ffb690] font-light">Es deliberado.</em>
             </h2>
             <p className="font-body text-lg text-foreground/65 font-light max-w-xl mb-20 text-pretty">
-              Cada tecnología fue elegida por rendimiento, escalabilidad, comunidad y
+              Elegimos cada herramienta según el problema: rendimiento, seguridad, comunidad y
               mantenibilidad a largo plazo.
             </p>
           </AnimateIn>

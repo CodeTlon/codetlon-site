@@ -134,7 +134,7 @@ All 9 service pages (`/servicios/[slug]`) are statically generated at build time
 ## Known Constraints
 
 - **Instagram icon**: `lucide-react` (current version) doesn't export `Instagram`. Using inline SVG in `Header.tsx` and `Footer.tsx`.
-- **next.config.mjs**: Uses `.mjs` (not `.ts`) — required for Next.js 14 (Bug #20).
-- **viewport export**: Always separate from `metadata` in `layout.tsx` to avoid Next.js 14 warning (Bug #1).
-- **useFormState**: Must import from `react-dom` not `react` in Next.js 14 (Bug #4).
+- **next.config.mjs**: Uses `.mjs` (not `.ts`) — historical Next.js 14 requirement, kept on Next 16 (Bug #20).
+- **viewport export**: Always separate from `metadata` in `layout.tsx` App Router rule since Next.js 14, still valid on 16 (Bug #1).
+- **useFormState**: Must import from `react-dom` not `react` (project convention since Next.js 14; Bug #4).
 - **Server Action signature**: First param must be `prevState: unknown` (Bug #5).

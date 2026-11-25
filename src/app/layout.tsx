@@ -9,6 +9,8 @@ import { ParticleField } from '@/components/ui/ParticleField'
 import { BackToTop } from '@/components/ui/BackToTop'
 import { StickyMobileCTA } from '@/components/ui/StickyMobileCTA'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { SITE_DESCRIPTION } from '@/lib/constants'
+import { services } from '@/lib/services-data'
 
 // Sistema de una sola familia (void/cosmos): Inter cubre display (peso 200) y body.
 const inter = Inter({
@@ -31,9 +33,10 @@ export const metadata: Metadata = {
     default: 'CodeTlon | Software Factory en Córdoba, Argentina',
     template: '%s | CodeTlon',
   },
-  description:
-    'Desarrollamos sitios, ecommerce, dashboards y automatizaciones. 9 niveles de servicio, stack moderno, metodología propia. Basados en Córdoba.',
+  description: SITE_DESCRIPTION,
   openGraph: {
+    title: 'CodeTlon | Software Factory en Córdoba, Argentina',
+    description: SITE_DESCRIPTION,
     type: 'website',
     locale: 'es_AR',
     url: BASE_URL,
@@ -50,8 +53,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'CodeTlon | Software Factory en Córdoba, Argentina',
-    description:
-      'Desarrollamos sitios, ecommerce, dashboards y automatizaciones. 9 niveles de servicio, stack moderno, metodología propia.',
+    description: SITE_DESCRIPTION,
     images: ['/logos/codetlon-naranja.png'],
   },
   robots: {
@@ -70,8 +72,21 @@ const organizationSchema = {
   alternateName: 'CodeTlon',
   url: BASE_URL,
   logo: `${BASE_URL}/logos/codetlon-naranja.png`,
-  description:
-    'Software factory en Córdoba, Argentina. Desarrollamos sitios web, ecommerce, dashboards y automatizaciones con stack moderno y metodología propia (FOS Method).',
+  description: SITE_DESCRIPTION,
+  slogan: 'Desarrollamos la tecnología que tu negocio necesita.',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Servicios de desarrollo de software',
+    itemListElement: services.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: s.name,
+        description: s.shortDescription,
+        url: `${BASE_URL}/servicios/${s.slug}`,
+      },
+    })),
+  },
   email: 'info@codetlon.com.ar',
   address: {
     '@type': 'PostalAddress',

@@ -5,69 +5,19 @@ import { AnimateIn } from '@/components/ui/AnimateIn'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { SITE_URL } from '@/lib/constants'
+import { fosPhases as phases } from '@/lib/fos-phases'
 
 export const metadata: Metadata = {
-  title: 'FOS Method | Cómo trabajamos en CodeTlon',
+  title: 'FOS Method: cómo trabajamos',
   description:
-    'Conocé el FOS Method: la metodología propia de CodeTlon. 6 etapas desde el descubrimiento hasta el lanzamiento y más allá.',
+    'Conocé el FOS Method, la metodología propia de CodeTlon: 6 etapas desde el descubrimiento hasta el lanzamiento, para software a medida, web, apps móviles y automatizaciones.',
   alternates: { canonical: `${SITE_URL}/proceso` },
 }
-
-const phases = [
-  {
-    number: '01',
-    title: 'Descubrimiento',
-    duration: '1 día',
-    description:
-      'Analizamos tu negocio, objetivos, audiencia y competencia. Revisamos el brief, hacemos preguntas que importan y definimos el alcance real del proyecto.',
-    deliverables: ['Brief validado', 'Alcance definido', 'Nivel de proyecto determinado'],
-  },
-  {
-    number: '02',
-    title: 'Propuesta',
-    duration: '1 día',
-    description:
-      'Preparamos la propuesta técnica y de diseño. Definimos el stack exacto, las páginas/funcionalidades y los criterios de éxito medibles.',
-    deliverables: ['Propuesta técnica', 'Stack definido', 'Criterios de aceptación'],
-  },
-  {
-    number: '03',
-    title: 'Diseño',
-    duration: '1–2 días',
-    description:
-      'Construimos el sistema de diseño: paleta de colores, tipografías, componentes base. Sin templates. Todo basado en tu marca e identidad.',
-    deliverables: ['Design system', 'Mockups de secciones clave', 'Aprobación de identidad visual'],
-  },
-  {
-    number: '04',
-    title: 'Desarrollo',
-    duration: 'según nivel',
-    description:
-      'Escribimos código modular, testeado y commiteado con conventional commits. Cada componente es independiente, cada feature va en su rama.',
-    deliverables: ['Repositorio GitHub privado', 'Componentes tipados en TypeScript', 'Commits semánticos'],
-  },
-  {
-    number: '05',
-    title: 'Revisión',
-    duration: '1 día',
-    description:
-      'Corremos los tests E2E en 3 viewports, hacemos auditoría Lighthouse y revisamos accesibilidad. Nada llega a producción sin pasar el filtro.',
-    deliverables: ['Tests E2E pasando', 'Lighthouse Performance ≥ 85', 'SEO ≥ 95'],
-  },
-  {
-    number: '06',
-    title: 'Lanzamiento',
-    duration: '4–8 horas',
-    description:
-      'Deploy en Vercel o VPS Docker, configuración de dominio, variables de entorno en producción, verificación final en vivo. El inicio, no el final.',
-    deliverables: ['Deploy en producción', 'Dominio configurado', 'Documentación entregada'],
-  },
-]
 
 const faqs = [
   {
     q: '¿Cuánto tarda un proyecto?',
-    a: 'Al ser desarrollos a medida, el tiempo depende íntegramente de la complejidad técnica y el alcance. Una experiencia web corporativa puede tomar un par de semanas, mientras que plataformas B2B o sistemas web a medida se ejecutan en fases de varios meses. El cronograma exacto lo definimos juntos en la propuesta técnica.',
+    a: 'Al ser desarrollos a medida, el tiempo depende íntegramente de la complejidad técnica y el alcance. Un sitio institucional suele resolverse en semanas, mientras que un sistema a medida, una app móvil o una modernización se ejecutan por etapas a lo largo de varios meses. El cronograma exacto lo definimos juntos en la propuesta técnica.',
   },
   {
     q: '¿Cómo me involucro durante el proceso?',
@@ -134,14 +84,9 @@ export default function ProcesoPage() {
                     <span className="font-display italic text-6xl md:text-7xl text-white/5 group-hover:text-[#ffb690] transition-colors duration-500 leading-none">
                       {phase.number}
                     </span>
-                    <div className="flex flex-col">
-                      <h2 className="font-display text-3xl text-foreground group-hover:translate-x-2 transition-transform duration-500 mb-2">
-                        {phase.title}
-                      </h2>
-                      <span className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-[#ffb690]/60">
-                        Duración // {phase.duration}
-                      </span>
-                    </div>
+                    <h2 className="font-display text-3xl text-foreground group-hover:translate-x-2 transition-transform duration-500">
+                      {phase.title}
+                    </h2>
                   </div>
 
                   <div className="w-full lg:w-4/12">

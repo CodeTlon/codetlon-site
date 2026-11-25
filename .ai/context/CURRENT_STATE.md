@@ -1,5 +1,21 @@
 # CURRENT_STATE.md
 
+## Actualización 2026-11-25 — v1.4.0 (rama `feature/dev1-posicionamiento-2026`, sin mergear)
+
+- Catálogo: 6 servicios generales en lugar de L1–L9; los 9 slugs viejos responden **301** al
+  servicio nuevo (`next.config.mjs`).
+- Docs legacy sincronizados con el código (Next 16.3.3, dominio `.com.ar`, `TASKS.md` real):
+  `KNOWN_ISSUES.md` #6 resuelto, salvo `.env.example` (número de ejemplo falso, bloqueado para el agente).
+- Producción sigue en v1.3.6 hasta que Mateo apruebe el PR a `main`.
+- E2E: 81/81 en la VPS con los viewports mobile/tablet **emulados en Chromium** (WebKit no instalable
+  sin sudo). Las fallas intermitentes del form eran un bug real (el `Suspense` de `?servicio=` remontaba
+  el form y perdía la selección del usuario); corregido leyendo el parámetro en un `useEffect`.
+- Ramas (2026-11-25): `dev` alineada con `main` (merge; conflicto de `.env.example` resuelto
+  conservando el encabezado de entornos de `dev`), `test` creada. La feature está promovida a
+  `dev` y `test`. Falta el PR a `main` (lo decide Mateo: despliega producción).
+
+---
+
 Foto verificada al **2026-09-18**. Todo lo de acá fue confirmado con evidencia (código, git,
 `gh api`, Vercel CLI, `npm audit`) en la misma sesión que generó esta capa de contexto — no es una
 copia de `README.md`/`TASKS.md` (que están atrasados, ver `KNOWN_ISSUES.md`).

@@ -9,14 +9,14 @@
 
 ## Identidad del Proyecto
 - **Cliente:** CodeTlon (sitio institucional propio de la agencia)
-- **Tipo:** L2 — Marketing site multipágina
+- **Tipo:** Marketing site multipágina (catálogo de 6 servicios desde v1.4.0)
 - **Generado:** 2026 (entrega inicial)
 - **URL Producción:** https://codetlon.com.ar
 - **Repo GitHub:** CodeTlon/codetlon-site
 - **Deploy:** Vercel
 
 ## Stack
-- Next.js 15 (App Router) + TypeScript + Tailwind CSS + Shadcn/UI (base-ui) + Lucide React
+- Next.js 16.3.3 (App Router) + TypeScript + Tailwind CSS + Shadcn/UI (base-ui) + Lucide React
 - Supabase: **no** — dependencia, env vars y CSP/remotePatterns removidos; el form NO escribe a DB (ver `actions/contact.ts`)
 - Resend: **sí** — formulario de contacto envía email, sin almacenamiento
 - Analytics: Google Analytics 4 vía `next/script` (`NEXT_PUBLIC_GA_ID`)
@@ -26,8 +26,8 @@
 | Archivo | Rol |
 |---------|-----|
 | `src/app/layout.tsx` | Root layout — Header, Footer, WhatsApp, fuentes, metadata, GA4 |
-| `src/app/page.tsx` | Home — Hero → Capacidades → Método FOS → Servicios teaser → Métricas → CTA |
-| `src/app/servicios/page.tsx` | Listado de servicios |
+| `src/app/page.tsx` | Home — Hero → Stack → Servicios (6) → FOS → Diferencia → Estándares → En Producción → FAQ → CTA |
+| `src/app/servicios/page.tsx` | Listado de los 6 servicios (`ServicesGrid`) + `OfferCatalog` JSON-LD |
 | `src/app/servicios/[slug]/page.tsx` | Detalle de servicio (data de `lib/services-data.ts`) |
 | `src/app/proceso/page.tsx` | Página de proceso / metodología |
 | `src/app/nosotros/page.tsx` | Sobre la agencia |
@@ -40,7 +40,9 @@
 | `src/components/seo/JsonLd.tsx` | JSON-LD structured data |
 | `src/components/ui/ParticleField.tsx` | Campo de partículas / starfield (canvas, sin deps) — firma visual void/cosmos. Capa global en `layout.tsx` es `absolute` sobre todo el documento (no `fixed`, no solo el viewport) en `body` con `position: relative`; recicla partículas cada 200ms para que se sientan nuevas al scrollear. Efecto espacio: profundidad (`depth`, parallax), parpadeo (twinkle) y halo en las estrellas cercanas (sin `shadowBlur`, por costo). Cursor: atrae/repele con más fuerza en las partículas de mayor `depth`. Se pausa con Page Visibility API si la pestaña está en background. Campo propio más denso en `HeroHome`/`PageHero` (sección transparente, sin `bg-*` opaco, para que el campo global se vea a través). Props: `count`, `cluster`. Respeta `prefers-reduced-motion` |
 | `src/components/ui/` | Primitivas Shadcn + componentes propios (GlassCard, GradientButton, etc.) |
-| `src/lib/services-data.ts` | Fuente de verdad de los servicios (slugs incluidos) |
+| `src/lib/services-data.ts` | Fuente de verdad de los 6 servicios (slugs, ícono, `SERVICE_INTEREST_OPTIONS` del form). Sin niveles ni duraciones |
+| `src/lib/fos-phases.ts` | Fases del FOS Method (home, /proceso, detalle de servicio), sin duraciones |
+| `next.config.mjs` → `legacyServiceRedirects` | 301 de los slugs del viejo catálogo L1–L9 |
 | `src/lib/projects-data.ts` | Fuente de verdad de los proyectos en producción (sección "En Producción" del home) — agregar uno = una entrada |
 | `src/components/sections/Projects.tsx` | Sección "En Producción" del home (cards de proyectos live → link externo al sitio) |
 | `src/lib/constants.ts` | Constantes globales (links, datos de contacto) |
@@ -66,7 +68,7 @@ Ver `.env.example` para el listado completo.
 ## Diseño — Decisiones Clave
 - **Estilo general (void/cosmos):** canvas negro casi puro (`#0a0f10`, leve tinte teal), **un solo color de acción = durazno `#ffb690`**, tipografía Inter ultra-fina (peso 200, tracking negativo) para display, bordes hairline, geometría pill (radius 24px), **sin glass / sin gradientes / sin sombras / sin elevación**. Partículas (`ParticleField`) como firma visual en todas las páginas. Colores CodeTlon; estructura del referente "Dala".
   - Tokens en `tailwind.config.ts` + `globals.css`. Las utilidades `.glass`/`.gradient-cta`/`.gradient-hero` se conservan por nombre pero ahora son planas (hairline / peach sólido / void sólido).
-- **Secciones home:** Hero → CoreCapabilities → FOSMethod → ServicesTeaser → Metrics → CTA. Las secciones son transparentes (sin `bg-*` opaco) para que el campo de partículas global se vea a través — "todo flota sobre el void". Excepción: `CTABanner` (relleno peach invertido).
+- **Secciones home:** HeroHome → LogoStrip → ServicesTeaser → FOSMethod → WhyCodeTlon → MetricsStrip ("Nuestros estándares") → Projects → FAQHome → CTABanner. Las secciones son transparentes (sin `bg-*` opaco) para que el campo de partículas global se vea a través — "todo flota sobre el void". Excepción: `CTABanner` (relleno peach invertido).
 - **Íconos:** Lucide React. WhatsApp → SVG inline.
 
 ## Quirks y Advertencias
@@ -98,6 +100,7 @@ npm run test:e2e     # Playwright E2E
 | 2026-07-11 | chore/security-headers-loading-states | v1.3.2 — Baseline seguridad + perf percibida (`security-owasp.md` §5): `next.config.mjs` suma `Strict-Transport-Security` (HSTS, sitio HTTPS/Vercel) y sube `X-Frame-Options` `SAMEORIGIN`→`DENY`; `nosniff`/`Referrer-Policy`/`Permissions-Policy` ya existían. CORS/RLS: N/A — sin `route.ts` (form es Server Action Resend-only) y sin Supabase real. Progressive loading: `src/components/ui/skeleton.tsx` (shadcn) + `src/components/PageSkeleton.tsx` compartido → `loading.tsx` en las 8 rutas top-level (`servicios/[slug]` hereda el de `servicios/`). Error boundaries de marca: `src/components/ErrorFallback.tsx` (logo + botón peach + "volver al inicio") → `error.tsx` por ruta + `global-error.tsx` raíz self-contained (estilos inline, sin depender del layout que puede haber roto). Build verde 23/23. |
 | 2026-09-21 | chore/ts7 | v1.3.3 — fix: dominio `https://codetlon.com` (sin `.ar`, NXDOMAIN) hardcodeado en canonical/OG/JSON-LD de ~10 `page.tsx` (home, contacto, nosotros, privacidad, proceso, servicios, servicios/[slug], términos) + fallback de `SITE_URL` en `constants.ts` → todos ahora importan `SITE_URL` de `constants.ts` (ya corregido a `codetlon.com.ar`), sin literal repetido. `npm audit fix`: **1 HIGH → 0** (`browserslist` transitiva vía `shadcn`, sin breaking changes). Corrección de esta misma fila: la entrada de 2026-06-19 decía "0 HIGH" — eso dejó de ser cierto en algún punto entre esa fecha y hoy (auditoría de contexto del 2026-09-18 encontró 1 HIGH activo); esta fila documenta la fecha real en que volvió a quedar en 0. Se agregan también `AGENTS.md` + `.ai/context/` (9 archivos, capa de contexto para agentes de IA que había quedado sin commitear desde la auditoría del 2026-09-18) — incluye el gate de RAG/subagente de mantenimiento, que quedó a medias en esa sesión: ninguno de los dos aplica hoy (corpus chico y estático, mantenedor único), ver `.ai/context/DECISIONS.md`. Build verde. |
 | 2026-10-02 | chore/remove-supabase-leftovers | v1.3.5 — chore: se quitan restos de Supabase (sin uso en código): dep `@supabase/supabase-js`, env vars de `.env.example`, `*.supabase.co` en CSP `img-src` y `remotePatterns`, `exclude: supabase` en tsconfig. Sin backend propio (solo Server Action Resend) → sigue en Vercel. Build verde. |
+| 2026-11-25 | feature/dev1-posicionamiento-2026 | v1.4.0 — Nuevo posicionamiento: 6 servicios en lugar de L1–L9 (`level`/`timeline`/`color` fuera, `icon` nuevo), redirects 301 de los 9 slugs viejos, `fos-phases.ts` compartido sin duraciones, hero/FAQ/stack/estándares nuevos, `/servicios` lista el catálogo, form con enum Zod + preselección `?servicio=`, WhatsApp real, 3 proyectos nuevos, fix títulos duplicados, `llms.txt` y docs legacy sincronizados. Borrados `CoreCapabilities`, `ServiceChip`, `MetricCard`. Build verde, E2E 81/81 (mobile/tablet emulados en Chromium). Sin mergear. |
 | 2026-10-02 | docs/ai-context-sin-supabase | v1.3.6 — docs: `AGENTS.md` + `.ai/context/` al día tras quitar Supabase (v1.3.5). Sin cambios de código. Build verde. |
 <!-- Agregar fila al finalizar cada sesión de mantenimiento -->
 ---

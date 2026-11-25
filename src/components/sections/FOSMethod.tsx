@@ -1,43 +1,5 @@
 import { AnimateIn } from '@/components/ui/AnimateIn'
-
-const phases = [
-  {
-    number: '01',
-    title: 'Descubrimiento',
-    description:
-      'Entendemos la visión y el contexto de tu negocio para trazar una hoja de ruta estratégica, sin suposiciones.',
-  },
-  {
-    number: '02',
-    title: 'Propuesta',
-    description:
-      'Estructuramos el alcance, la tecnología y los objetivos. Transparencia total antes de escribir la primera línea de código.',
-  },
-  {
-    number: '03',
-    title: 'Diseño',
-    description:
-      'Creamos interfaces funcionales y estéticas que conectan con tu audiencia y elevan el estándar de tu marca.',
-  },
-  {
-    number: '04',
-    title: 'Desarrollo',
-    description:
-      'Construimos sistemas robustos y escalables, aplicando los estándares de calidad más exigentes de la industria.',
-  },
-  {
-    number: '05',
-    title: 'Revisión',
-    description:
-      'Sometemos cada entrega a rigurosos controles de calidad y rendimiento. Nada llega a tus manos sin ser probado.',
-  },
-  {
-    number: '06',
-    title: 'Lanzamiento',
-    description:
-      'Desplegamos el producto final de manera segura, acompañando la transición y el crecimiento continuo.',
-  },
-]
+import { fosPhases } from '@/lib/fos-phases'
 
 export function FOSMethod() {
   return (
@@ -65,7 +27,7 @@ export function FOSMethod() {
         </AnimateIn>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-0">
-          {phases.map((phase, i) => (
+          {fosPhases.map((phase, i) => (
             <AnimateIn key={phase.number} delay={i * 80}>
               <div className="group border-t border-[#ffb690]/10 pt-8 pb-12 hover:bg-white/[0.01] transition-colors duration-500 px-2">
                 <span className="font-display italic text-5xl text-[#ffb690]/30 block mb-6 group-hover:text-[#ffb690] transition-colors duration-500">
@@ -75,7 +37,7 @@ export function FOSMethod() {
                   {phase.title}
                 </h3>
                 <p className="font-body text-sm font-light text-foreground/65 leading-relaxed">
-                  {phase.description}
+                  {phase.summary}
                 </p>
               </div>
             </AnimateIn>

@@ -27,6 +27,31 @@ export const projects: Project[] = [
     url: 'https://gc2entrenamientoderesistencia.com.ar',
     tags: ['Next.js', 'Supabase', 'Dashboard', 'SEO'],
   },
+  {
+    name: 'Grúas InGlobal',
+    category: 'Grúas y montajes industriales · Modernización + CMS',
+    description:
+      'Sitio institucional migrado de PHP legacy a Next.js, con CMS propio y un módulo de agenda de grúas instalable como PWA, con vista kiosco para TV.',
+    url: 'https://gruasinglobal.com',
+    tags: ['Next.js', 'CMS', 'PWA'],
+  },
+  {
+    name: 'InGlobal Agenda',
+    category: 'App móvil · iOS',
+    description:
+      'App para gestionar desde el celular la agenda de grúas, operarios y empresas, conectada a la misma API del sistema web de Grúas InGlobal.',
+    url: 'https://apps.apple.com/ar/app/inglobal-agenda/id6810508533',
+    displayUrl: 'App Store',
+    tags: ['React Native', 'Expo', 'API'],
+  },
+  {
+    name: 'Recovery Parts Academy',
+    category: 'Academia técnica · Sitio + Campus virtual',
+    description:
+      'Sitio de la academia con cursos y galería editables desde un CMS, y un campus virtual con accesos diferenciados para administración, profesores y alumnos.',
+    url: 'https://recoverypartsacademy.com.ar',
+    tags: ['Next.js', 'Supabase', 'CMS', 'Campus'],
+  },
 ]
 
 export function projectDisplayUrl(p: Project): string {

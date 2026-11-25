@@ -117,7 +117,7 @@ nunca su email de confirmación, sin que nadie se entere.
 
 ---
 
-## 6 — [MEDIA] Documentación legacy desincronizada del código real
+## 6 — [MEDIA] [RESUELTO 2026-11-25] Documentación legacy desincronizada del código real
 
 **Evidencia:** ver tabla completa en `CURRENT_STATE.md`. Resumen: `README.md`/`ARCHITECTURE.md`
 (raíz) dicen Next 14, `.claude/CLAUDE.md` dice Next 15 (real: 16.3.3); `TASKS.md` describe un
@@ -131,3 +131,7 @@ stack, el estado del deploy o el dominio real.
 **Fix propuesto (no aplicado — decisión explícita del usuario de no tocarlos en esta tarea):**
 corregir estos 4 archivos (README.md, ARCHITECTURE.md, TASKS.md, public/llms.txt) en la próxima
 sesión `/cambio`. Ver `OPEN_QUESTIONS.md`.
+
+**Resuelto 2026-11-25 (v1.4.0):** `README.md`, `ARCHITECTURE.md`, `TASKS.md`, `public/llms.txt`,
+`.claude/CLAUDE.md` y `docs/*.md` alineados (Next 16, `codetlon.com.ar`, catálogo de 6 servicios).
+`.env.example` también corregido (número real de WhatsApp).

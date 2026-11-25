@@ -1,18 +1,15 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useFormState, useFormStatus } from 'react-dom'
 import { CheckCircle2, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { sendContact } from '@/app/actions/contact'
+import { SERVICE_INTEREST_OPTIONS, getServiceBySlug } from '@/lib/services-data'
 
-const PROJECT_TYPES = [
-  'Web Institucional',
-  'Plataforma / App Web',
-  'E-commerce',
-  'MVP / Startup',
-  'Aún no lo sé'
-]
+
+// Los 6 servicios del catálogo + "Otro / no estoy seguro" (mismo enum que valida Zod en el server).
+const PROJECT_TYPES = SERVICE_INTEREST_OPTIONS
 
 function SubmitButton() {
   const { pending } = useFormStatus()
@@ -32,6 +29,15 @@ function SubmitButton() {
 
 export function ContactForm() {
   const [selectedType, setSelectedType] = useState<string>('')
+
+  // Preselecciona el servicio cuando se llega desde /servicios/<slug> (?servicio=<slug>).
+  // Se lee en un efecto (no con useSearchParams + Suspense) para que la página siga estática
+  // sin remontar el form: así no se pierde una elección que el usuario ya haya hecho.
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get('servicio')
+    const service = slug ? getServiceBySlug(slug) : undefined
+    if (service) setSelectedType((current) => current || service.name)
+  }, [])
   const [state, formAction] = useFormState(sendContact, null)
 
   if (state?.success) {
@@ -63,6 +69,7 @@ export function ContactForm() {
               key={type}
               type="button"
               onClick={() => setSelectedType(type)}
+              aria-pressed={selectedType === type}
               className={cn(
                 'px-5 py-3 font-body text-sm transition-all duration-300 border active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffb690]/50',
                 selectedType === type

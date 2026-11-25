@@ -11,9 +11,21 @@ test.describe('Contact Form', () => {
 
   test('selecting a project type sets the hidden serviceInterest field', async ({ page }) => {
     await page.goto('/contacto')
-    await page.click('button:has-text("E-commerce")')
+    await page.click('button:has-text("Aplicaciones móviles")')
     const hidden = page.locator('input[name="serviceInterest"]')
-    await expect(hidden).toHaveValue('E-commerce')
+    await expect(hidden).toHaveValue('Aplicaciones móviles')
+  })
+
+  test('?servicio=<slug> preselects that service', async ({ page }) => {
+    await page.goto('/contacto?servicio=modernizacion-de-sistemas')
+    // Depende de la hidratación (useEffect): margen extra para máquinas cargadas.
+    await expect(page.locator('input[name="serviceInterest"]')).toHaveValue('Modernización de sistemas', { timeout: 15_000 })
+    await expect(page.locator('button[aria-pressed="true"]')).toHaveText('Modernización de sistemas')
+  })
+
+  test('unknown ?servicio= leaves nothing selected', async ({ page }) => {
+    await page.goto('/contacto?servicio=landing')
+    await expect(page.locator('input[name="serviceInterest"]')).toHaveValue('')
   })
 
   test('form shows success message on valid submission (mocked)', async ({ page }) => {

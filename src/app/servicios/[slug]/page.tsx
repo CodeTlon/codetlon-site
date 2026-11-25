@@ -10,6 +10,7 @@ import { TLDRBox } from '@/components/ui/TLDRBox'
 import { ShareButton } from '@/components/ui/ShareButton'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { SITE_URL } from '@/lib/constants'
+import { fosPhases } from '@/lib/fos-phases'
 import Link from 'next/link'
 
 export async function generateStaticParams() {
@@ -28,10 +29,17 @@ export async function generateMetadata(
   const params = await props.params;
   const service = getServiceBySlug(params.slug)
   if (!service) return {}
+  const url = `${SITE_URL}/servicios/${service.slug}`
   return {
-    title: `${service.name} a medida — ${service.level} | CodeTlon`,
+    // El template del layout agrega "| CodeTlon".
+    title: `${service.name} en Córdoba, Argentina`,
     description: service.shortDescription,
-    alternates: { canonical: `${SITE_URL}/servicios/${service.slug}` },
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${service.name} | CodeTlon`,
+      description: service.shortDescription,
+      url,
+    },
   }
 }
 
@@ -47,18 +55,25 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
     service.problemStatement,
     `Incluye ${service.whatYouGet.length} entregables: desde ${service.whatYouGet[0]?.toLowerCase()} hasta ${service.whatYouGet[service.whatYouGet.length - 1]?.toLowerCase()}.`,
     `Stack: ${service.techStack.slice(0, 4).join(', ')}.`,
-    `Proceso en ${service.timeline.length} etapas, nivel ${service.level} de nuestro catálogo de servicios.`,
+    `Trabajamos con el FOS Method: ${fosPhases.length} etapas, del descubrimiento al lanzamiento.`,
   ]
 
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: service.name,
-    description: service.shortDescription,
+    serviceType: service.name,
+    description: service.longDescription,
     provider: {
       '@type': 'Organization',
       name: 'CodeTlon Software Factory',
       url: SITE_URL,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Córdoba',
+        addressRegion: 'Córdoba',
+        addressCountry: 'AR',
+      },
     },
     url: `${SITE_URL}/servicios/${service.slug}`,
     areaServed: { '@type': 'Country', name: 'Argentina' },
@@ -143,7 +158,7 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
         </div>
       </section>
 
-      {/* Stack + Timeline */}
+      {/* Stack + Proceso (fases FOS, sin duraciones) */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-16">
 
@@ -173,19 +188,19 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
                 Proceso
               </h2>
             </div>
-            <div className="border-t border-white/[0.04]">
-              {service.timeline.map((t, i) => (
-                <div key={t.step} className="flex items-start gap-6 py-5 border-b border-white/[0.04]">
-                  <span className="font-display italic text-2xl text-[#ffb690]/30 shrink-0 leading-none mt-0.5">
-                    {String(i + 1).padStart(2, '0')}
+            <ol className="border-t border-white/[0.04]">
+              {fosPhases.map((phase) => (
+                <li key={phase.number} className="flex items-start gap-6 py-5 border-b border-white/[0.04]">
+                  <span className="font-display italic text-2xl text-[#ffb690]/50 shrink-0 leading-none mt-0.5" aria-hidden="true">
+                    {phase.number}
                   </span>
                   <div>
-                    <p className="font-body text-sm font-medium text-foreground/70">{t.step}</p>
-                    <p className="font-body text-xs text-foreground/30 mt-1">{t.duration}</p>
+                    <p className="font-body text-sm font-medium text-foreground/70">{phase.title}</p>
+                    <p className="font-body text-xs text-foreground/50 mt-1 leading-relaxed">{phase.summary}</p>
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ol>
             <Link
               href="/proceso"
               className="group inline-flex items-center gap-2 mt-6 font-body text-sm text-foreground/50 hover:text-[#ffb690] transition-colors duration-500"
@@ -220,9 +235,11 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
                     className="group flex items-center justify-between py-7 border-b border-white/[0.04] hover:bg-white/[0.01] transition-colors duration-500"
                   >
                     <div className="flex items-baseline gap-6">
-                      <span className="font-body text-xs text-[#ffb690]/40 group-hover:text-[#ffb690] transition-colors duration-500 uppercase tracking-[0.15em]">
-                        {r.level}
-                      </span>
+                      <r.icon
+                        className="w-5 h-5 shrink-0 self-center text-[#ffb690]/50 group-hover:text-[#ffb690] transition-colors duration-500"
+                        strokeWidth={1.5}
+                        aria-hidden="true"
+                      />
                       <span className="font-display text-xl text-foreground/70 group-hover:text-foreground transition-colors duration-500">
                         {r.name}
                       </span>
@@ -239,8 +256,8 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
       )}
 
       <CTABanner
-        headline={`¿Necesitás un ${service.name}?`}
-        ctaLabel="Hablemos de tu proyecto"
+        headline={`Hablemos de tu proyecto de ${service.name.toLowerCase()}.`}
+        ctaLabel="INICIAR CONSULTA"
         ctaHref={`/contacto?servicio=${service.slug}`}
       />
     </>

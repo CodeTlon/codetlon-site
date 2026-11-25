@@ -34,11 +34,14 @@ export default defineConfig({
       },
     },
   ],
-  // Start dev server automatically when running tests locally
-  webServer: {
-    command: 'npm run dev',
-    url: 'http://localhost:3000',
-    reuseExistingServer: !process.env.CI,
-    timeout: 120 * 1000,
-  },
+  // Sin PLAYWRIGHT_BASE_URL levanta el dev server en :3000. Con PLAYWRIGHT_BASE_URL se usa ese
+  // servidor ya levantado (ej. `next start -p 41300` en la VPS, puertos por cuenta).
+  webServer: process.env.PLAYWRIGHT_BASE_URL
+    ? undefined
+    : {
+        command: 'npm run dev',
+        url: 'http://localhost:3000',
+        reuseExistingServer: !process.env.CI,
+        timeout: 120 * 1000,
+      },
 })

@@ -53,7 +53,7 @@ export function Footer() {
               />
             </Link>
             <p className="font-body text-sm text-foreground/65 leading-relaxed max-w-sm font-light text-left">
-              Software Factory en Córdoba, Argentina. Combinamos diseño de vanguardia con tecnología robusta para construir el futuro digital que tu negocio merece.
+              Software Factory en Córdoba, Argentina. Desarrollamos software a medida, sitios web, apps móviles y automatizaciones para empresas y negocios de cualquier rubro.
             </p>
             
             <div className="flex items-center gap-5">

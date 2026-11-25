@@ -118,5 +118,5 @@ npm run test:e2e:report
 
 ### WhatsApp button not working
 1. Check `NEXT_PUBLIC_WHATSAPP_NUMBER` in `.env.local`
-2. Format must include country code: `+5493511234567` (no spaces)
+2. Format must include country code: `+5493518922024` (no spaces)
 3. Verify in `src/lib/constants.ts` → `WHATSAPP_CTA_URL`

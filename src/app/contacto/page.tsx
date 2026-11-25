@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { ContactForm } from '@/components/sections/ContactForm'
+import { Suspense } from 'react'
+import { ContactForm, ContactFormFromQuery } from '@/components/sections/ContactForm'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { AnimateIn } from '@/components/ui/AnimateIn'
 import { ParticleField } from '@/components/ui/ParticleField'
@@ -44,9 +45,9 @@ const contactPageSchema = {
 }
 
 export const metadata: Metadata = {
-  title: 'Contacto | CodeTlon Software Factory',
+  title: 'Contacto',
   description:
-    'Contanos de tu proyecto. Respondemos en menos de 48hs. Formulario, WhatsApp o Instagram — elegí el canal que prefieras.',
+    'Contanos qué necesita tu negocio: software a medida, web, apps móviles o automatización. Respondemos en menos de 48 horas hábiles por el canal que prefieras.',
   alternates: { canonical: `${SITE_URL}/contacto` },
 }
 
@@ -82,7 +83,10 @@ export default function ContactoPage() {
 
             {/* Formulario */}
             <AnimateIn delay={100} className="w-full">
-              <ContactForm />
+              {/* Suspense: useSearchParams (preselección ?servicio=) sin volver dinámica la página */}
+              <Suspense fallback={<ContactForm />}>
+                <ContactFormFromQuery />
+              </Suspense>
             </AnimateIn>
 
             {/* Canales Secundarios (Solo Íconos siempre debajo del form) */}

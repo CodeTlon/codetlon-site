@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { NAV_LINKS, INSTAGRAM_URL, WHATSAPP_CTA_URL } from '@/lib/constants'
+import { NAV_LINKS, INSTAGRAM_URL, WHATSAPP_CTA_URL, WHATSAPP_NUMBER, WHATSAPP_DISPLAY } from '@/lib/constants'
 
 // --- Iconos ---
 
@@ -103,10 +103,10 @@ export function Footer() {
                 info@codetlon.com.ar
               </a>
               <a
-                href="tel:+5493518922024"
+                href={`tel:${WHATSAPP_NUMBER}`}
                 className="font-body text-sm text-foreground/65 hover:text-foreground transition-colors duration-500 w-fit"
               >
-                +54 9 351 892 2024
+                {WHATSAPP_DISPLAY}
               </a>
             </div>
           </div>

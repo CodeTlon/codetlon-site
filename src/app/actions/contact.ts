@@ -106,7 +106,7 @@ export async function sendContact(
     from: `${process.env.RESEND_FROM_NAME ?? 'CodeTlon'} <${process.env.RESEND_FROM_EMAIL ?? 'onboarding@resend.dev'}>`,
     to: process.env.NOTIFICATIONS_EMAIL ?? 'info@codetlon.com.ar',
     replyTo: email,
-    subject: `🟠 Nuevo lead: ${name}${serviceInterest ? ` · ${serviceInterest}` : ''}`,
+    subject: `Nuevo lead: ${name}${serviceInterest ? ` · ${serviceInterest}` : ''}`,
     html: `
 <!DOCTYPE html>
 <html lang="es">

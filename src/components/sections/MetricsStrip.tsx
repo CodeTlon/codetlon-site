@@ -9,7 +9,7 @@ const businessMetrics = [
 
 export function MetricsStrip() {
   return (
-    <section className="py-24 bg-[#050505]" aria-label="Nuestros Estándares">
+    <section className="py-24" aria-label="Nuestros Estándares">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="border-y border-white/[0.04] py-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0 lg:divide-x divide-white/[0.04]">
@@ -19,7 +19,7 @@ export function MetricsStrip() {
                   <span className="font-display text-6xl lg:text-7xl italic text-foreground/20 font-light mb-4 tracking-tighter group-hover:text-[#ffb690] transition-colors duration-500">
                     {m.value}
                   </span>
-                  <span className="font-body text-sm font-light text-foreground/50 text-balance max-w-[220px]">
+                  <span className="font-body text-sm font-light text-foreground/65 text-balance max-w-[220px]">
                     {m.label}
                   </span>
                 </div>

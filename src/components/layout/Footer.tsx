@@ -36,7 +36,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-background border-t border-white/[0.04] pt-24 pb-12 transition-colors duration-500">
+    <footer className="relative z-10 bg-background border-t border-white/[0.04] pt-24 pb-28 md:pb-12 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
@@ -52,7 +52,7 @@ export function Footer() {
                 className="w-28 md:w-36 h-auto opacity-90 group-hover:opacity-100 transition-opacity duration-500"
               />
             </Link>
-            <p className="font-body text-sm text-foreground/50 leading-relaxed max-w-sm font-light text-left">
+            <p className="font-body text-sm text-foreground/65 leading-relaxed max-w-sm font-light text-left">
               Software Factory en Córdoba, Argentina. Combinamos diseño de vanguardia con tecnología robusta para construir el futuro digital que tu negocio merece.
             </p>
             
@@ -82,7 +82,7 @@ export function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="font-body text-sm text-foreground/50 hover:text-foreground transition-colors duration-500 w-fit"
+                  className="font-body text-sm text-foreground/65 hover:text-foreground transition-colors duration-500 w-fit"
                 >
                   {link.label}
                 </Link>
@@ -98,13 +98,13 @@ export function Footer() {
             <div className="flex flex-col gap-4">
               <a
                 href="mailto:info@codetlon.com.ar"
-                className="font-body text-sm text-foreground/50 hover:text-foreground transition-colors duration-500 w-fit underline-offset-4 hover:underline"
+                className="font-body text-sm text-foreground/65 hover:text-foreground transition-colors duration-500 w-fit underline-offset-4 hover:underline"
               >
                 info@codetlon.com.ar
               </a>
               <a
                 href="tel:+5493518922024"
-                className="font-body text-sm text-foreground/50 hover:text-foreground transition-colors duration-500 w-fit"
+                className="font-body text-sm text-foreground/65 hover:text-foreground transition-colors duration-500 w-fit"
               >
                 +54 9 351 892 2024
               </a>
@@ -114,9 +114,23 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/[0.04] pt-10 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="font-body text-[10px] md:text-[11px] text-foreground/30 tracking-[0.15em] uppercase text-left w-full">
+          <p className="font-body text-[10px] md:text-[11px] text-foreground/30 tracking-[0.15em] uppercase text-left">
             © {currentYear} CODETLON SOFTWARE FACTORY. TODOS LOS DERECHOS RESERVADOS.
           </p>
+          <nav className="flex items-center gap-5">
+            <Link
+              href="/privacidad"
+              className="font-body text-[10px] md:text-[11px] text-foreground/40 hover:text-foreground/70 tracking-[0.15em] uppercase transition-colors duration-500"
+            >
+              Privacidad
+            </Link>
+            <Link
+              href="/terminos"
+              className="font-body text-[10px] md:text-[11px] text-foreground/40 hover:text-foreground/70 tracking-[0.15em] uppercase transition-colors duration-500"
+            >
+              Términos
+            </Link>
+          </nav>
         </div>
 
       </div>

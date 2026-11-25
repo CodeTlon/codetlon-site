@@ -93,6 +93,7 @@ export function Header() {
               href={link.href}
               onClick={() => setMenuOpen(false)}
               aria-current={pathname === link.href ? 'page' : undefined}
+              tabIndex={menuOpen ? undefined : -1}
               className={cn(
                 'font-display text-xl capitalize transition-colors duration-500',
                 pathname === link.href ? 'text-[#ffb690] italic' : 'text-foreground/60 hover:text-foreground'

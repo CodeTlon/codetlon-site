@@ -28,13 +28,23 @@ test.describe('Navigation', () => {
   test('all pages load without errors', async ({ page }) => {
     const routes = ['/', '/nosotros', '/servicios', '/proceso', '/contacto']
     for (const route of routes) {
-      const response = await page.goto(route)
+      // webServer runs `next dev`: the first hit to a fresh route triggers a
+      // just-in-time compile + Fast Refresh, which can interrupt a goto fired
+      // right after another one. Retry once if Playwright reports the navigation
+      // got interrupted by Fast Refresh's full reload.
+      let response
+      try {
+        response = await page.goto(route, { waitUntil: 'domcontentloaded' })
+      } catch (err) {
+        if (!String(err).includes('interrupted by another navigation')) throw err
+        response = await page.goto(route, { waitUntil: 'domcontentloaded' })
+      }
       expect(response?.status()).toBe(200)
     }
   })
 
   test('service detail pages load', async ({ page }) => {
-    const response = await page.goto('/servicios/landing-page')
+    const response = await page.goto('/servicios/landing')
     expect(response?.status()).toBe(200)
     await expect(page.locator('h1')).toBeVisible()
   })

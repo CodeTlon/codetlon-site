@@ -19,12 +19,16 @@ Next.js 14 (App Router, `src/`) · TypeScript · Tailwind · Shadcn/base-ui · R
 | Estilos globales / paleta / fuentes | `tailwind.config.ts` + `src/app/layout.tsx` + `src/app/globals.css` |
 | Datos de contacto / links globales | `src/lib/constants.ts` |
 | Analytics | `src/components/GoogleAnalytics.tsx` + `NEXT_PUBLIC_GA_ID` |
+| Loading skeleton de una ruta | `src/components/PageSkeleton.tsx` (compartido) + el `loading.tsx` de esa ruta en `src/app/` |
+| Error boundary de una ruta | `src/components/ErrorFallback.tsx` (compartido) + el `error.tsx` de esa ruta; `src/app/global-error.tsx` es aparte (self-contained, sin Header/Footer) |
+| Headers de seguridad | `next.config.mjs` → `securityHeaders` (HSTS, X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy) |
 
 ## Dónde NO meterse sin pensar
-- `next.config.mjs` — image formats / remotePatterns. Cambiar mal rompe `<Image>`.
+- `next.config.mjs` — image formats / remotePatterns / `securityHeaders`. Cambiar mal rompe `<Image>` o afloja el baseline de seguridad (ver `security-owasp.md` §5 en `codetlon-cloud`).
 - `tailwind.config.ts` — tokens compartidos por toda la UI.
 - `src/app/actions/contact.ts` — el form es Resend-only **a propósito**; no reintroducir Supabase sin pedido.
 - `.env` / `.env.example` — si agregás una var, actualizá ambos + README + Vercel.
+- `src/app/global-error.tsx` — reemplaza el `<html>`/`<body>` entero si el root layout falla; no puede importar nada del árbol normal (Header, ErrorFallback, Tailwind classes asumidas). Estilos inline a propósito.
 
 ## Flujo de datos
 - Servicios: estáticos en `src/lib/services-data.ts` (sin DB). `servicios/[slug]` resuelve por slug de ahí.

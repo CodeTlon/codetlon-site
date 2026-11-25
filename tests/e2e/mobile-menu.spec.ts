@@ -14,15 +14,17 @@ test.describe('Mobile Menu', () => {
     if ((viewport?.width ?? 1280) >= 768) return
 
     await page.goto('/')
-    const hamburger = page.locator('button[aria-label="Abrir menú"]')
+    const toggle = page.locator('button[aria-label="Abrir menú"]')
 
-    // Open
-    await hamburger.click()
-    await expect(page.locator('nav[aria-label="Mobile navigation"]')).toBeVisible()
+    // Open — same button, its label flips to "Cerrar menú"
+    await toggle.click()
+    await expect(page.locator('nav[aria-label="Menú móvil"]')).toBeVisible()
 
-    // Close
+    // Close — the menu wrapper collapses via max-height (CSS transition) and is
+    // marked aria-hidden; the inner <nav> keeps a non-zero bounding box during/after
+    // the clip, so assert on the wrapper's aria-hidden state rather than its visibility.
     await page.locator('button[aria-label="Cerrar menú"]').click()
-    await expect(page.locator('nav[aria-label="Mobile navigation"]')).not.toBeVisible()
+    await expect(page.locator('#mobile-menu')).toHaveAttribute('aria-hidden', 'true')
   })
 
   test('navigation works from mobile menu', async ({ page, viewport }) => {
@@ -32,7 +34,7 @@ test.describe('Mobile Menu', () => {
     const hamburger = page.locator('button[aria-label="Abrir menú"]')
     await hamburger.click()
 
-    await page.locator('nav[aria-label="Mobile navigation"] a[href="/servicios"]').click()
+    await page.locator('nav[aria-label="Menú móvil"] a[href="/servicios"]').click()
     await expect(page).toHaveURL('/servicios')
   })
 

@@ -41,9 +41,7 @@ const phases = [
 
 export function FOSMethod() {
   return (
-    <section className="relative py-32 bg-[#050505]" aria-label="FOS Method">
-      {/* Subtle central aura */}
-      <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-[#ffb690] opacity-[0.02] rounded-full blur-[120px] pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+    <section className="relative py-32" aria-label="FOS Method">
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
 
@@ -59,7 +57,7 @@ export function FOSMethod() {
               El sistema{' '}
               <em className="font-display italic text-[#ffb690] font-light">FOS.</em>
             </h2>
-            <p className="font-body text-lg text-foreground/40 leading-relaxed font-light text-balance">
+            <p className="font-body text-lg text-foreground/65 leading-relaxed font-light text-balance">
               Factory Operating System. El proceso que seguimos en cada proyecto, sin excepciones.
               Predecible, documentado y orientado a resultados.
             </p>
@@ -76,7 +74,7 @@ export function FOSMethod() {
                 <h3 className="font-body text-xl font-medium text-foreground mb-3">
                   {phase.title}
                 </h3>
-                <p className="font-body text-sm font-light text-foreground/50 leading-relaxed">
+                <p className="font-body text-sm font-light text-foreground/65 leading-relaxed">
                   {phase.description}
                 </p>
               </div>

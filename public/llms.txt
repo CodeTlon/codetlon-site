@@ -1,0 +1,44 @@
+# CodeTlon Software Factory
+
+> CodeTlon es una software factory basada en Córdoba, Argentina, que diseña y desarrolla sitios web, ecommerce, dashboards con usuarios y automatizaciones a medida. Trabaja con un catálogo de 9 niveles de servicio (L1 a L9) y una metodología propia llamada FOS Method (Factory Operating System), con stack curado: Next.js, TypeScript, Tailwind CSS, Supabase y despliegue en Vercel o VPS con Docker.
+
+CodeTlon no vende plantillas ni paquetes cerrados: cada proyecto se cotiza según nivel de servicio y alcance real después de una etapa inicial de Descubrimiento sin costo. El equipo opera 100% remoto y atiende clientes en toda Argentina y el exterior.
+
+## Empresa
+
+- Nombre legal: CodeTlon Software Factory
+- Ubicación: Córdoba, Argentina (operación 100% remota)
+- Sitio web: https://codetlon.com
+- Email: info@codetlon.com.ar
+- Instagram: https://www.instagram.com/codetlon/
+- LinkedIn: https://www.linkedin.com/company/codetlon
+- Facebook: https://www.facebook.com/profile.php?id=61576536284674
+
+## Páginas clave
+
+- [Home](https://codetlon.com/): resumen de capacidades, metodología FOS Method y proyectos en producción.
+- [Servicios](https://codetlon.com/servicios): catálogo completo de los 9 niveles de servicio (L1 a L9), de landing pages a sitios con IA integrada.
+- [Proceso](https://codetlon.com/proceso): el FOS Method — las 6 etapas de cada proyecto (Descubrimiento, Propuesta, Diseño, Desarrollo, Revisión, Lanzamiento) más el Plan de Evolución Continua post-lanzamiento.
+- [Nosotros](https://codetlon.com/nosotros): equipo, valores y stack técnico completo.
+- [Contacto](https://codetlon.com/contacto): formulario de contacto, WhatsApp, email y redes sociales.
+
+## Catálogo de servicios (niveles)
+
+- [L1 — Landing de Alta Conversión](https://codetlon.com/servicios/landing): página única optimizada para convertir, con formulario y SEO desde el día uno.
+- [L2 — Marketing Site](https://codetlon.com/servicios/marketing-site): sitio multipágina institucional con navegación global y SEO por página.
+- [L3 — Dashboard con Usuarios](https://codetlon.com/servicios/dashboard-usuarios): aplicación web con autenticación, roles y panel CRUD.
+- [L4 — Ecommerce](https://codetlon.com/servicios/ecommerce): tienda online con catálogo, carrito y pagos vía MercadoPago o Stripe.
+- [L5 — Sitio + Automatización](https://codetlon.com/servicios/sitio-automatizacion): sitio web combinado con workflows automáticos en n8n self-hosted.
+- [L6 — Sitio Estático](https://codetlon.com/servicios/sitio-estatico): sitio informativo con export estático, sin base de datos ni backend.
+- [L7 — Refactor a Nuestro Stack](https://codetlon.com/servicios/refactor): migración de un sitio existente (WordPress, PHP, React legacy) a Next.js + Tailwind + Supabase.
+- [L8 — Solo Automatización](https://codetlon.com/servicios/automatizacion): n8n self-hosted en VPS para automatizar procesos de negocio existentes.
+- [L9 — Sitio + IA Integrada](https://codetlon.com/servicios/ia-integrada): integración de chatbots y asistentes con Claude API o GPT sobre un sitio existente.
+
+## Stack técnico
+
+Next.js, TypeScript, Tailwind CSS, Shadcn/UI, Supabase (PostgreSQL + Auth), Resend, n8n, Docker, Vercel, Playwright (testing E2E).
+
+## Optional
+
+- [Términos y condiciones](https://codetlon.com/terminos)
+- [Política de privacidad](https://codetlon.com/privacidad)

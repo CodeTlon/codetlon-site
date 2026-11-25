@@ -10,38 +10,36 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Kinetic Editorial — Design System
-        background: "#0e1516",
-        foreground: "#e8ddd4",
+        // Void/Cosmos — Design System (colores CodeTlon)
+        background: "#0a0f10",      // void
+        foreground: "#e8ddd4",      // bone
         primary: {
-          DEFAULT: "#ffb690",
+          DEFAULT: "#ffb690",        // peach — único color de acción
           container: "#4f1e00",
           foreground: "#552100",
         },
         secondary: {
-          DEFAULT: "#a4cddb",
+          DEFAULT: "#a4cddb",        // celeste — acento decorativo / partículas
           container: "#254e5a",
           foreground: "#053540",
         },
         surface: {
-          lowest: "#080f10",
-          low: "#161d1e",
-          DEFAULT: "#0e1516",
-          container: "#1a2122",
-          high: "#242b2c",
-          highest: "#2f3637",
+          lowest: "#060a0b",
+          low: "#0d1213",
+          DEFAULT: "#0a0f10",
+          container: "#121819",
+          high: "#1a2122",
+          highest: "#232a2b",
         },
       },
       fontFamily: {
-        display: ["var(--font-newsreader)", "Georgia", "serif"],
+        // Sistema de una sola familia: el peso y el tracking hacen el trabajo.
+        display: ["var(--font-inter)", "system-ui", "sans-serif"],
         body: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
-      backdropBlur: {
-        glass: "20px",
-      },
       backgroundImage: {
-        "gradient-cta": "linear-gradient(135deg, #ffb690 0%, #4f1e00 100%)",
-        "gradient-hero": "linear-gradient(180deg, #080f10 0%, #0e1516 100%)",
+        "gradient-cta": "#ffb690",
+        "gradient-hero": "#0a0f10",
       },
       // Animaciones agregadas para el Acordeón
       keyframes: {

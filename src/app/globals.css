@@ -3,14 +3,17 @@
 @tailwind utilities;
 
 @layer base {
+  /* ─── Void/Cosmos design system — single typeface (Inter), peach as sole
+         authority color, hairline borders on a near-black void. No glass,
+         no gradients, no elevation. Colores CodeTlon. ─── */
   :root {
-    --background: #0e1516;
-    --foreground: #e8ddd4;
+    --background: #0a0f10;       /* void — leve tinte teal, no negro puro */
+    --foreground: #e8ddd4;       /* bone — texto primario cálido */
     --border: rgb(255 255 255 / 0.08);
-    --input: #2f3637;
-    --ring: #ffb690;
-    --radius: 0.75rem;
-    --font-display: var(--font-newsreader);
+    --input: #141a1b;
+    --ring: #ffb690;            /* peach — único color de acción */
+    --radius: 1.5rem;           /* 24px — geometría pill del sistema */
+    --font-display: var(--font-inter);
     --font-body: var(--font-inter);
   }
 
@@ -19,21 +22,25 @@
   }
 
   html {
-    background-color: #0e1516;
+    background-color: #0a0f10;
     color: #e8ddd4;
     scroll-behavior: smooth;
   }
 
   body {
-    background-color: #0e1516;
+    background-color: #0a0f10;
     color: #e8ddd4;
     font-family: var(--font-inter), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Display = misma familia, el peso fino (200/300) y el tracking negativo
+     hacen el trabajo. "Etched in light" sobre el void. */
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-newsreader), Georgia, serif;
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -41,16 +48,25 @@
   .text-balance {
     text-wrap: balance;
   }
+  /* Display ultra-fino: la firma del sistema a tamaños grandes (≥48px). */
+  .display-thin {
+    font-weight: 200;
+    letter-spacing: -0.04em;
+  }
+  /* "glass" ahora es un hairline plano sobre el void — sin blur ni elevación.
+     Se mantiene el nombre para no romper los componentes que lo usan. */
   .glass {
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    background-color: rgb(26 33 34 / 0.8);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: rgb(255 255 255 / 0.02);
   }
+  /* El único relleno cromático del sistema: peach plano, sin degradé. */
   .gradient-cta {
-    background: linear-gradient(135deg, #ffb690 0%, #c85a00 100%);
+    background: #ffb690;
   }
+  /* El hero es void puro — la profundidad viene de las partículas, no de un fondo. */
   .gradient-hero {
-    background: linear-gradient(180deg, #080f10 0%, #0e1516 100%);
+    background: #0a0f10;
   }
 }
 

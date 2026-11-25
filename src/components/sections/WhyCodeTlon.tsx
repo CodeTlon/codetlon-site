@@ -4,21 +4,21 @@ import { AnimateIn } from '@/components/ui/AnimateIn'
 const differentials = [
   {
     icon: Zap,
-    title: 'Desarrollo Nativo',
+    title: 'Hecho a medida',
     description:
-      'Construimos desde cero. Sin plantillas, sin gestores genéricos ni limitaciones. Código limpio y propietario que te da control absoluto.',
+      'Construimos sobre tus procesos reales, sin plantillas ni constructores genéricos. El código queda en tu propiedad y lo podés seguir manteniendo con quien quieras.',
   },
   {
     icon: Code2,
-    title: 'Arquitectura Premium',
+    title: 'Tecnología adecuada',
     description:
-      'Implementamos la misma tecnología que impulsa a las empresas líderes. Rendimiento superior, máxima seguridad y escalabilidad garantizada.',
+      'Elegimos la tecnología según el problema, no al revés: web, mobile, backend o automatización. Priorizamos seguridad, rendimiento y que el sistema pueda crecer con tu negocio.',
   },
   {
     icon: RefreshCw,
     title: 'Evolución Continua',
     description:
-      'El despliegue es solo el comienzo. Trabajamos como tu brazo tecnológico a largo plazo, asegurando que tu ecosistema itere junto con el mercado.',
+      'El lanzamiento es solo el comienzo. Acompañamos tu sistema con mantenimiento, soporte y mejoras para que evolucione junto con tu negocio.',
   },
 ]
 
@@ -44,9 +44,9 @@ export function WhyCodeTlon() {
               </span>
             </div>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] tracking-tight text-balance">
-              No somos una agencia{' '}
+              Un solo equipo para{' '}
               {/* CAMBIO: Volvemos al crema/naranja (#ffb690) para el italic, igual que en el Hero */}
-              <em className="font-display italic text-[#ffb690] font-light drop-shadow-sm">tradicional.</em>
+              <em className="font-display italic text-[#ffb690] font-light drop-shadow-sm">todo tu software.</em>
             </h2>
           </div>
 

@@ -4,27 +4,27 @@ import { JsonLd } from '@/components/seo/JsonLd'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 
 // FAQ complementaria a la de /proceso (esa cubre "cómo trabajamos" paso a paso).
-// Esta responde las preguntas de decisión previas al contacto: precio, stack, nivel de servicio, propiedad, soporte.
+// Esta responde las preguntas de decisión previas al contacto: precio, qué solución, stack, propiedad, soporte.
 const faqs = [
   {
     q: '¿Cuánto cuesta un proyecto con CodeTlon?',
-    a: 'Depende del nivel de servicio (L1 a L9) y el alcance real de tu proyecto: una landing no cuesta lo mismo que un ecommerce con pagos integrados. No trabajamos con paquetes cerrados — armamos una propuesta a medida después de la etapa de Descubrimiento, sin costo ni compromiso.',
+    a: 'Depende del alcance real: un sitio institucional no cuesta lo mismo que un sistema a medida o una app móvil integrada con tus sistemas. No trabajamos con paquetes cerrados: armamos una propuesta a medida después de la etapa de Descubrimiento, sin costo ni compromiso.',
   },
   {
-    q: '¿Cómo sé qué nivel de servicio necesito?',
-    a: 'Nuestro catálogo va de L1 (landing de alta conversión) a L9 (sitio con IA integrada), y cada nivel suma capacidades sobre el anterior: autenticación, ecommerce, automatización con n8n o inteligencia artificial. Si no estás seguro, contanos tu objetivo y te recomendamos el nivel correcto — no el más caro.',
+    q: '¿Cómo sé qué solución necesito?',
+    a: 'No hace falta que lo sepas de antemano. Contanos qué querés resolver y en la etapa de Descubrimiento analizamos tus procesos y lo que ya tenés para recomendarte el camino adecuado: un sistema a medida, un sitio web, una app móvil, automatizaciones, la modernización de un sistema existente o una combinación. Te recomendamos lo que tu negocio necesita, no lo más caro.',
   },
   {
     q: '¿Con qué tecnologías trabajan?',
-    a: 'Next.js, TypeScript y Tailwind CSS como base en todos los proyectos, sumando Supabase para autenticación y base de datos, Resend para emails transaccionales y despliegue en Vercel o VPS con Docker según el caso. Es un stack curado, no elegimos herramienta nueva por cada cliente.',
+    a: 'Elegimos la tecnología según el proyecto. En web, Next.js, React, TypeScript y Tailwind CSS; en mobile, React Native y Expo; en backend, Node.js, .NET / C#, Java, Python / FastAPI y Go; en datos, PostgreSQL, Supabase, SQL Server y Redis; en automatización e IA, n8n, WhatsApp Business API, OpenRouter, LangChain y LangGraph; y para calidad e infraestructura, Playwright, Docker, Cloudflare, Vercel y servidores propios.',
   },
   {
     q: '¿El código y el diseño quedan en propiedad del cliente?',
-    a: 'Sí. Al finalizar el proyecto entregamos el repositorio completo en GitHub y toda la documentación técnica. El código es tuyo — podés seguir manteniéndolo con tu propio equipo o continuar trabajando con nosotros en el Plan de Evolución Continua.',
+    a: 'Sí. Al finalizar el proyecto entregamos el repositorio completo y toda la documentación técnica. El código es tuyo: podés seguir manteniéndolo con tu propio equipo o continuar trabajando con nosotros en el servicio de mantenimiento y soporte.',
   },
   {
     q: '¿Qué pasa si necesito cambios después del lanzamiento?',
-    a: 'El lanzamiento no cierra la relación. Ofrecemos un Plan de Evolución Continua con monitoreo, actualizaciones de seguridad y mejoras iterativas — y para cambios puntuales, cotizamos por alcance sin obligarte a un contrato de mantenimiento fijo.',
+    a: 'El lanzamiento no cierra la relación. Ofrecemos mantenimiento y soporte con monitoreo, copias de seguridad, actualizaciones de seguridad y mejoras; y para cambios puntuales, cotizamos por alcance sin obligarte a un contrato de mantenimiento fijo.',
   },
 ]
 

@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import { services } from '../../src/lib/services-data'
 
 test.describe('Navigation', () => {
   test('logo navigates to home', async ({ page }) => {
@@ -44,9 +45,18 @@ test.describe('Navigation', () => {
   })
 
   test('service detail pages load', async ({ page }) => {
-    const response = await page.goto('/servicios/landing')
-    expect(response?.status()).toBe(200)
-    await expect(page.locator('h1')).toBeVisible()
+    for (const service of services) {
+      const response = await page.goto(`/servicios/${service.slug}`, { waitUntil: 'domcontentloaded' })
+      expect(response?.status()).toBe(200)
+      await expect(page.locator('h1')).toContainText(service.name)
+    }
+  })
+
+  test('servicios lists every service with a link to its detail', async ({ page }) => {
+    await page.goto('/servicios')
+    for (const service of services) {
+      await expect(page.locator(`main a[href="/servicios/${service.slug}"]`).first()).toBeVisible()
+    }
   })
 
   test('footer links are present', async ({ page }) => {

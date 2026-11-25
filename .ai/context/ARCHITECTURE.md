@@ -71,9 +71,9 @@ Más: `actions/contact.ts` (Server Action), `sitemap.ts`, `robots.ts`, `not-foun
 `src/middleware.ts`, no hay `src/app/api/**`, cero archivos `route.ts` en todo `src/`, no hay
 rutas `admin`/`dashboard`/`login`. Es intencional — es un sitio de marketing puro, sin usuarios.
 
-La única mención de "auth"/"roles" en el código es **copy de marketing**: `services-data.ts`
-describe un tier de servicio ("L5") que CodeTlon *vende a sus clientes* ("Supabase Auth, roles de
-usuario, dashboard CRUD") — no es algo implementado en este sitio.
+La única mención de "usuarios"/"roles" en el código es **copy de marketing**: `services-data.ts`
+describe lo que CodeTlon *vende a sus clientes* (ej. "Usuarios, roles y permisos" en Software a
+medida) — no es algo implementado en este sitio.
 
 Si en el futuro se agrega cualquier endpoint o panel con datos sensibles, la enforcement de
 auth/autorización tiene que vivir **server-side** (Server Action o `route.ts`), nunca solo en un

@@ -20,20 +20,19 @@ Sirve tráfico real en `https://codetlon.com.ar`. Reglas no negociables:
   `.ai/context/ARCHITECTURE.md` para el detalle verificado.
 - Antes de citar cualquier dato de este repo como cierto (versión de Next, estado de un fix,
   qué está en producción), preferí verificarlo (`package.json`, `git`, `npm audit`) sobre confiar
-  ciegamente en un doc — varios de los docs existentes (`README.md`, `ARCHITECTURE.md`, `TASKS.md`,
-  `public/llms.txt`) están desincronizados del código real. Ver
+  ciegamente en un doc — los docs legacy se sincronizaron en v1.4.0, pero el código manda. Ver
   `.ai/context/KNOWN_ISSUES.md`.
 
 ## Qué es esto
 
-Sitio institucional de CodeTlon (agencia de software), tipo **L2 — marketing site multipágina**.
+Sitio institucional de CodeTlon (software factory), **marketing site multipágina**. Catálogo de
+6 servicios (desde v1.4.0; antes niveles L1–L9 con slugs que hoy redirigen 301).
 No es una app con usuarios/login — es un sitio de presentación de servicios con un formulario de
 contacto que manda email. Ver `.ai/context/PROJECT.md`.
 
 ## Stack (verificado, no el que dicen los docs legacy)
 
-- **Next.js 16.3.3** (App Router) — ojo: `README.md`/`ARCHITECTURE.md` dicen "14", `.claude/CLAUDE.md`
-  dice "15". El real, instalado, es 16.3.3 (`package.json`).
+- **Next.js 16.3.3** (App Router). Docs alineados desde v1.4.0.
 - TypeScript, Tailwind CSS, Shadcn/UI (base-ui), Lucide React.
 - Fuente única: Inter vía `next/font` (peso 200 para display + body). No hay serif.
 - Sin base de datos ni Supabase. Los restos (dependencia, env vars de ejemplo, CSP/`remotePatterns`,

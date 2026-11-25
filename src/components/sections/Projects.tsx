@@ -34,9 +34,9 @@ export function Projects() {
           </div>
         </AnimateIn>
 
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (
-            <AnimateIn key={project.url} delay={150 * (i + 1)} variant="fade">
+            <AnimateIn key={project.url} delay={100 * (i + 1)} variant="fade">
               <a
                 href={project.url}
                 target="_blank"

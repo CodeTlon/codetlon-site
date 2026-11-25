@@ -44,9 +44,9 @@ const contactPageSchema = {
 }
 
 export const metadata: Metadata = {
-  title: 'Contacto | CodeTlon Software Factory',
+  title: 'Contacto',
   description:
-    'Contanos de tu proyecto. Respondemos en menos de 48hs. Formulario, WhatsApp o Instagram — elegí el canal que prefieras.',
+    'Contanos qué necesita tu negocio: software a medida, web, apps móviles o automatización. Respondemos en menos de 48 horas hábiles por el canal que prefieras.',
   alternates: { canonical: `${SITE_URL}/contacto` },
 }
 

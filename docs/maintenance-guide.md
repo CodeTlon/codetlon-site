@@ -21,10 +21,11 @@
 1. Open `src/lib/services-data.ts`
 2. Add a new object to the `services` array following the existing TypeScript interface
 3. Set a unique `slug` (URL-safe, kebab-case)
-4. Assign the correct `level` (L1–L9)
-5. Fill `whatYouGet[]`, `techStack[]`, `timeline[]`, `relatedSlugs[]`
+4. Pick a Lucide `icon`
+5. Fill `whatYouGet[]`, `techStack[]`, `relatedSlugs[]` (no durations/levels — see `.ai/context/DECISIONS.md`)
+5b. If you rename or remove a published slug, add a 301 in `next.config.mjs` (`legacyServiceRedirects`)
 6. The page `/servicios/[slug]` will be automatically generated at build time
-7. Update `src/components/sections/ServicesTeaser.tsx` if needed (currently shows all services)
+7. Home (`ServicesTeaser`), `/servicios` (`ServicesGrid`), sitemap, JSON-LD and the contact form options update automatically
 8. Redeploy: `git commit -m "feat: add [service-name] service" && git push`
 
 ---
@@ -118,5 +119,5 @@ npm run test:e2e:report
 
 ### WhatsApp button not working
 1. Check `NEXT_PUBLIC_WHATSAPP_NUMBER` in `.env.local`
-2. Format must include country code: `+5493511234567` (no spaces)
+2. Format must include country code: `+5493518922024` (no spaces)
 3. Verify in `src/lib/constants.ts` → `WHATSAPP_CTA_URL`

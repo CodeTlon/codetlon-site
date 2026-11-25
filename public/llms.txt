@@ -1,44 +1,50 @@
 # CodeTlon Software Factory
 
-> CodeTlon es una software factory basada en Córdoba, Argentina, que diseña y desarrolla sitios web, ecommerce, dashboards con usuarios y automatizaciones a medida. Trabaja con un catálogo de 9 niveles de servicio (L1 a L9) y una metodología propia llamada FOS Method (Factory Operating System), con stack curado: Next.js, TypeScript, Tailwind CSS, Supabase y despliegue en Vercel o VPS con Docker.
+> CodeTlon es una software factory en Córdoba, Argentina. Desarrollamos la tecnología que tu negocio necesita: software a medida, desarrollo web, aplicaciones móviles, automatización de procesos e integraciones, modernización de sistemas existentes y mantenimiento. Trabajamos con empresas y negocios de cualquier rubro, con una metodología propia llamada FOS Method (Factory Operating System).
 
-CodeTlon no vende plantillas ni paquetes cerrados: cada proyecto se cotiza según nivel de servicio y alcance real después de una etapa inicial de Descubrimiento sin costo. El equipo opera 100% remoto y atiende clientes en toda Argentina y el exterior.
+CodeTlon no vende plantillas ni paquetes cerrados: cada proyecto se cotiza según su alcance real después de una etapa inicial de Descubrimiento sin costo. El código y la documentación quedan en propiedad del cliente. El equipo opera de forma remota y atiende clientes en toda Argentina y el exterior.
 
 ## Empresa
 
-- Nombre legal: CodeTlon Software Factory
-- Ubicación: Córdoba, Argentina (operación 100% remota)
-- Sitio web: https://codetlon.com
+- Nombre: CodeTlon Software Factory
+- Ubicación: Córdoba, Argentina (operación remota)
+- Sitio web: https://codetlon.com.ar
 - Email: info@codetlon.com.ar
+- WhatsApp: +54 9 351 892 2024
 - Instagram: https://www.instagram.com/codetlon/
 - LinkedIn: https://www.linkedin.com/company/codetlon
 - Facebook: https://www.facebook.com/profile.php?id=61576536284674
 
 ## Páginas clave
 
-- [Home](https://codetlon.com/): resumen de capacidades, metodología FOS Method y proyectos en producción.
-- [Servicios](https://codetlon.com/servicios): catálogo completo de los 9 niveles de servicio (L1 a L9), de landing pages a sitios con IA integrada.
-- [Proceso](https://codetlon.com/proceso): el FOS Method — las 6 etapas de cada proyecto (Descubrimiento, Propuesta, Diseño, Desarrollo, Revisión, Lanzamiento) más el Plan de Evolución Continua post-lanzamiento.
-- [Nosotros](https://codetlon.com/nosotros): equipo, valores y stack técnico completo.
-- [Contacto](https://codetlon.com/contacto): formulario de contacto, WhatsApp, email y redes sociales.
+- [Home](https://codetlon.com.ar/): servicios, metodología FOS Method, estándares de trabajo y proyectos en producción.
+- [Servicios](https://codetlon.com.ar/servicios): catálogo de los 6 servicios.
+- [Proceso](https://codetlon.com.ar/proceso): el FOS Method, las 6 etapas de cada proyecto (Descubrimiento, Propuesta, Diseño, Desarrollo, Revisión, Lanzamiento).
+- [Nosotros](https://codetlon.com.ar/nosotros): equipo, valores y stack técnico completo.
+- [Contacto](https://codetlon.com.ar/contacto): formulario de contacto, WhatsApp, email y redes sociales.
 
-## Catálogo de servicios (niveles)
+## Servicios
 
-- [L1 — Landing de Alta Conversión](https://codetlon.com/servicios/landing): página única optimizada para convertir, con formulario y SEO desde el día uno.
-- [L2 — Marketing Site](https://codetlon.com/servicios/marketing-site): sitio multipágina institucional con navegación global y SEO por página.
-- [L3 — Dashboard con Usuarios](https://codetlon.com/servicios/dashboard-usuarios): aplicación web con autenticación, roles y panel CRUD.
-- [L4 — Ecommerce](https://codetlon.com/servicios/ecommerce): tienda online con catálogo, carrito y pagos vía MercadoPago o Stripe.
-- [L5 — Sitio + Automatización](https://codetlon.com/servicios/sitio-automatizacion): sitio web combinado con workflows automáticos en n8n self-hosted.
-- [L6 — Sitio Estático](https://codetlon.com/servicios/sitio-estatico): sitio informativo con export estático, sin base de datos ni backend.
-- [L7 — Refactor a Nuestro Stack](https://codetlon.com/servicios/refactor): migración de un sitio existente (WordPress, PHP, React legacy) a Next.js + Tailwind + Supabase.
-- [L8 — Solo Automatización](https://codetlon.com/servicios/automatizacion): n8n self-hosted en VPS para automatizar procesos de negocio existentes.
-- [L9 — Sitio + IA Integrada](https://codetlon.com/servicios/ia-integrada): integración de chatbots y asistentes con Claude API o GPT sobre un sitio existente.
+- [Software a medida](https://codetlon.com.ar/servicios/software-a-medida): sistemas diseñados desde cero según los procesos y objetivos de tu negocio, escalables y seguros.
+- [Desarrollo web](https://codetlon.com.ar/servicios/desarrollo-web): sitios institucionales, plataformas web y tiendas online modernas, rápidas y adaptadas a todos los dispositivos.
+- [Aplicaciones móviles](https://codetlon.com.ar/servicios/aplicaciones-moviles): apps para Android e iOS integradas con tus sistemas y servicios.
+- [Automatización e integraciones](https://codetlon.com.ar/servicios/automatizacion-e-integraciones): automatización de tareas repetitivas y conexión entre WhatsApp, correo, planillas, CRM, pagos, facturación e inteligencia artificial.
+- [Modernización de sistemas](https://codetlon.com.ar/servicios/modernizacion-de-sistemas): actualización, migración o rediseño de sistemas existentes para mejorar rendimiento, seguridad y experiencia de uso.
+- [Mantenimiento y soporte](https://codetlon.com.ar/servicios/mantenimiento-y-soporte): hosting, copias de seguridad, monitoreo, actualizaciones y soporte técnico continuo.
+
+## Proyectos en producción
+
+- [Marcovich Barbería](https://marcovichbarber.com.ar): reservas online, panel de administración y bot de WhatsApp con recordatorios automáticos.
+- [GC² Entrenamiento](https://gc2entrenamientoderesistencia.com.ar): plataforma con CMS interno para planes, coaches y blog.
+- [Grúas InGlobal](https://gruasinglobal.com): sitio migrado de PHP legacy a Next.js, con CMS propio y agenda de grúas como PWA con vista kiosco para TV.
+- [InGlobal Agenda](https://apps.apple.com/ar/app/inglobal-agenda/id6810508533): app móvil para gestionar la agenda de grúas, operarios y empresas.
+- [Recovery Parts Academy](https://recoverypartsacademy.com.ar): sitio de academia con CMS y campus virtual con roles.
 
 ## Stack técnico
 
-Next.js, TypeScript, Tailwind CSS, Shadcn/UI, Supabase (PostgreSQL + Auth), Resend, n8n, Docker, Vercel, Playwright (testing E2E).
+Web: Next.js, React, TypeScript, Tailwind CSS. Mobile: React Native, Expo. Backend: Node.js, .NET / C#, Java, Python / FastAPI, Go. Datos: PostgreSQL, Supabase, SQL Server, Redis. Automatización e IA: n8n, WhatsApp Business API, OpenRouter, LangChain, LangGraph. Calidad e infraestructura: Playwright, Docker, Cloudflare, Vercel, servidores propios (VPS).
 
 ## Optional
 
-- [Términos y condiciones](https://codetlon.com/terminos)
-- [Política de privacidad](https://codetlon.com/privacidad)
+- [Términos y condiciones](https://codetlon.com.ar/terminos)
+- [Política de privacidad](https://codetlon.com.ar/privacidad)

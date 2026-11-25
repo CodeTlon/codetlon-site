@@ -1,14 +1,19 @@
 import { AnimateIn } from '@/components/ui/AnimateIn'
 
+// Subconjunto representativo. El stack completo, agrupado, está en /nosotros y en el FAQ del home.
 const techs = [
   'Next.js',
+  'React',
+  'React Native',
   'TypeScript',
-  'Tailwind CSS',
-  'Supabase',
-  'Vercel',
+  'Node.js',
+  '.NET',
+  'Java',
+  'Python',
+  'PostgreSQL',
+  'Docker',
   'n8n',
-  'Playwright',
-  'Resend',
+  'LangChain',
 ]
 
 export function LogoStrip() {

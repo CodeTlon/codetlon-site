@@ -3,8 +3,7 @@
 ## Qué es
 
 Sitio institucional de **CodeTlon**, una agencia de software. No es un producto para terceros —
-es la propia vidriera de la agencia. Tipo **L2 — marketing site multipágina** (clasificación
-interna de CodeTlon para sus propios entregables).
+es la propia vidriera de la agencia. Marketing site multipágina.
 
 ## Para quién
 
@@ -14,8 +13,9 @@ de software.
 
 ## Qué problema resuelve
 
-- Presenta el catálogo de servicios de CodeTlon en tiers (`L1`–`L9`, ver `DOMAIN.md`), desde sitios
-  simples hasta aplicaciones con auth/roles/dashboard.
+- Presenta el catálogo de 6 servicios de CodeTlon (software a medida, web, apps móviles,
+  automatización e integraciones, modernización, mantenimiento; ver `DOMAIN.md`). Hasta v1.3.6 era
+  un catálogo de 9 niveles L1–L9.
 - Explica el proceso/metodología de trabajo ("Método FOS").
 - Muestra proyectos reales ya en producción hechos por la agencia (prueba social, sección "En
   Producción" del home).

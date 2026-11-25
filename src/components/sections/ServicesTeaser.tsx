@@ -1,16 +1,10 @@
 import { AnimateIn } from '@/components/ui/AnimateIn'
 import Link from 'next/link'
-
-const capabilities = [
-  { number: '01', name: 'Desarrollo a Medida', slug: 'servicios' },
-  { number: '02', name: 'Diseño de Interfaces (UX/UI)', slug: 'servicios' },
-  { number: '03', name: 'Arquitectura Escalable', slug: 'servicios' },
-  { number: '04', name: 'Ecosistemas Web', slug: 'servicios' },
-]
+import { services } from '@/lib/services-data'
 
 export function ServicesTeaser() {
   return (
-    <section className="py-24 md:py-32" aria-label="Nuestras Capacidades">
+    <section className="py-24 md:py-32" aria-label="Nuestros servicios">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         <AnimateIn>
@@ -18,38 +12,42 @@ export function ServicesTeaser() {
             <div className="flex items-center gap-4 mb-8">
               <div className="w-8 h-[1px] bg-[#ffb690]/40" />
               <span className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
-                Nuestras Capacidades
+                Nuestros Servicios
               </span>
             </div>
 
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground leading-[1.1] tracking-tight mb-6 text-balance">
-              El ecosistema exacto que tu idea{' '}
-              <em className="font-display italic text-[#ffb690] font-light">necesita.</em>
+              Todo el software de tu negocio,{' '}
+              <em className="font-display italic text-[#ffb690] font-light">un solo equipo.</em>
             </h2>
 
             <p className="font-body text-lg text-foreground/65 leading-relaxed font-light text-balance">
-              No trabajamos con plantillas cerradas. Analizamos el objetivo de tu negocio y combinamos
-              nuestras herramientas para construir la solución definitiva.
+              Trabajamos con empresas y negocios de cualquier rubro. Partimos de lo que necesitás
+              resolver y elegimos la solución adecuada: un sistema nuevo, una app, una integración o
+              la modernización de lo que ya tenés.
             </p>
           </div>
         </AnimateIn>
 
         <div className="border-t border-white/[0.04]">
-          {capabilities.map((cap, i) => (
-            <AnimateIn key={cap.number} delay={i * 70}>
+          {services.map((service, i) => (
+            <AnimateIn key={service.slug} delay={i * 70}>
               <Link
-                href={`/${cap.slug}`}
-                className="group flex flex-col sm:flex-row sm:items-center justify-between py-8 md:py-10 border-b border-white/[0.04] hover:bg-white/[0.01] transition-colors duration-500"
+                href={`/servicios/${service.slug}`}
+                className="group flex flex-col md:flex-row md:items-center justify-between gap-3 md:gap-12 py-8 md:py-10 border-b border-white/[0.04] hover:bg-white/[0.01] transition-colors duration-500"
               >
-                <div className="flex items-baseline gap-6 md:gap-12">
+                <div className="flex items-baseline gap-6 md:gap-12 md:w-5/12 shrink-0">
                   <span className="font-body text-sm font-medium text-foreground/30 group-hover:text-[#ffb690] transition-colors duration-500">
-                    {cap.number}
+                    {String(i + 1).padStart(2, '0')}
                   </span>
                   <span className="font-display text-2xl md:text-4xl text-foreground/70 group-hover:text-foreground transition-colors duration-500">
-                    {cap.name}
+                    {service.name}
                   </span>
                 </div>
-                <span className="hidden sm:block font-body text-sm text-[#ffb690] opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+                <span className="font-body text-sm md:text-base text-foreground/50 leading-relaxed font-light pl-12 md:pl-0 md:flex-1 text-pretty">
+                  {service.shortDescription}
+                </span>
+                <span className="hidden md:block shrink-0 font-body text-sm text-[#ffb690] opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
                   Saber más →
                 </span>
               </Link>

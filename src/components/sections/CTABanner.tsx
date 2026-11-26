@@ -14,7 +14,7 @@ export function CTABanner({
 }: CTABannerProps) {
   return (
     <section
-      className="relative py-16 md:py-20 flex items-center justify-center bg-[#ffb690] overflow-hidden"
+      className="relative py-16 md:py-20 flex items-center justify-center bg-primary overflow-hidden"
       aria-label="Llamado a la acción"
     >
       {/* Textura de ruido sutil para dar profundidad al naranja */}
@@ -24,13 +24,13 @@ export function CTABanner({
       />
 
       {/* Brillo interno para que el naranja no sea plano */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-black/5 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-tr from-black/5 to-transparent pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
           
           <AnimateIn variant="fade" className="w-full lg:max-w-2xl text-center lg:text-left">
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl text-[#0e1516] leading-[1.05] tracking-tight text-balance">
+            <h2 className="font-display text-4xl sm:text-5xl sm:leading-[var(--text-5xl--line-height)] lg:text-6xl lg:leading-[var(--text-6xl--line-height)] text-[#0e1516] leading-[1.05] tracking-tight text-balance">
               {headline}
             </h2>
           </AnimateIn>
@@ -39,7 +39,7 @@ export function CTABanner({
             {/* Botón adaptado al estilo Tech/Pro del Hero */}
             <Link
               href={ctaHref}
-              className="group relative flex items-center justify-center gap-8 px-8 py-5 bg-[#0e1516] text-[#ffb690] overflow-hidden w-full sm:w-auto shadow-2xl shadow-black/10"
+              className="group relative flex items-center justify-center gap-8 px-8 py-5 bg-[#0e1516] text-primary overflow-hidden w-full sm:w-auto shadow-2xl shadow-black/10"
             >
               {/* Animación de fondo (swipe hacia arriba con una capa sutil clara) */}
               <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />

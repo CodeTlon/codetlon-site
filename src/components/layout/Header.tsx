@@ -25,7 +25,7 @@ export function Header() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
-        scrolled ? 'bg-background/90 backdrop-blur-md py-4 border-b border-white/[0.04] shadow-sm' : 'bg-transparent py-6'
+        scrolled ? 'bg-background/90 backdrop-blur-md py-4 border-b border-white/4 shadow-xs' : 'bg-transparent py-6'
       )}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -54,7 +54,7 @@ export function Header() {
                   aria-current={pathname === link.href ? 'page' : undefined}
                   className={cn(
                     'font-body text-sm font-medium capitalize transition-colors duration-500',
-                    pathname === link.href ? 'text-[#ffb690]' : 'text-foreground/70 hover:text-foreground'
+                    pathname === link.href ? 'text-primary' : 'text-foreground/70 hover:text-foreground'
                   )}
                 >
                   {link.label}
@@ -68,7 +68,7 @@ export function Header() {
               aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
               aria-expanded={menuOpen}
               aria-controls="mobile-menu"
-              className="md:hidden text-foreground/70 hover:text-[#ffb690] transition-colors p-1"
+              className="md:hidden text-foreground/70 hover:text-primary transition-colors p-1"
             >
               {menuOpen ? <X size={26} strokeWidth={1.5} /> : <Menu size={26} strokeWidth={1.5} />}
             </button>
@@ -83,7 +83,7 @@ export function Header() {
         aria-hidden={!menuOpen}
         className={cn(
           'md:hidden absolute top-full left-0 w-full overflow-hidden transition-all duration-500 bg-background/95 backdrop-blur-xl',
-          menuOpen ? 'max-h-screen border-t border-white/[0.04] py-8' : 'max-h-0 py-0'
+          menuOpen ? 'max-h-screen border-t border-white/4 py-8' : 'max-h-0 py-0'
         )}
       >
         <nav className="flex flex-col gap-6 px-6" aria-label="Menú móvil">
@@ -96,7 +96,7 @@ export function Header() {
               tabIndex={menuOpen ? undefined : -1}
               className={cn(
                 'font-display text-xl capitalize transition-colors duration-500',
-                pathname === link.href ? 'text-[#ffb690] italic' : 'text-foreground/60 hover:text-foreground'
+                pathname === link.href ? 'text-primary italic' : 'text-foreground/60 hover:text-foreground'
               )}
             >
               {link.label}

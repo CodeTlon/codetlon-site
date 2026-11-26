@@ -46,7 +46,7 @@ export default function NosotrosPage() {
         title={
           <>
             Construimos software{' '}
-            <em className="italic text-[#ffb690] font-light">que escala.</em>
+            <em className="italic text-primary font-light">que escala.</em>
           </>
         }
         subtitle="Software Factory en Córdoba, Argentina. Desarrollamos software a medida, web, apps móviles y automatizaciones para empresas y negocios de cualquier rubro, con una metodología propia y la misma exigencia en cada proyecto."
@@ -57,7 +57,7 @@ export default function NosotrosPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-12">
           <AnimateIn delay={300} threshold={0.4}>
             <div className="flex items-center gap-4 mb-16">
-              <div className="w-8 h-[1px] bg-[#ffb690]/30" />
+              <div className="w-8 h-px bg-primary/30" />
               <h2 className="font-body text-xs font-medium text-foreground/40 uppercase tracking-[0.2em]">
                 Valores fundamentales
               </h2>
@@ -65,9 +65,9 @@ export default function NosotrosPage() {
 
             <div className="border-t border-white/10">
               {valores.map((v, i) => (
-                <div key={v.title} className="group flex flex-col md:flex-row md:items-start gap-4 md:gap-16 py-12 md:py-16 border-b border-white/10 hover:bg-white/[0.01] transition-colors duration-500">
+                <div key={v.title} className="group flex flex-col md:flex-row md:items-start gap-4 md:gap-16 py-12 md:py-16 border-b border-white/10 hover:bg-white/1 transition-colors duration-500">
                   <div className="flex flex-col md:w-5/12 shrink-0">
-                    <span className="font-body text-[10px] font-bold text-white/20 group-hover:text-[#ffb690] transition-colors duration-500 tracking-[0.2em] mb-4">
+                    <span className="font-body text-[10px] font-bold text-white/20 group-hover:text-primary transition-colors duration-500 tracking-[0.2em] mb-4">
                       {`0${i + 1} // PRINCIPIO`}
                     </span>
                     <h3 className="font-display text-3xl md:text-4xl text-foreground/80 group-hover:translate-x-2 group-hover:text-foreground transition-all duration-500">
@@ -89,14 +89,14 @@ export default function NosotrosPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <AnimateIn>
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-8 h-[1px] bg-[#ffb690]/30" />
+              <div className="w-8 h-px bg-primary/30" />
               <span className="font-body text-xs font-medium text-foreground/40 uppercase tracking-[0.2em]">
                 Stack técnico
               </span>
             </div>
             <h2 className="font-display text-4xl sm:text-5xl text-foreground tracking-tight mb-6">
               No es aleatorio.{' '}
-              <em className="italic text-[#ffb690] font-light">Es deliberado.</em>
+              <em className="italic text-primary font-light">Es deliberado.</em>
             </h2>
             <p className="font-body text-lg text-foreground/65 font-light max-w-xl mb-20 text-pretty">
               Elegimos cada herramienta según el problema: rendimiento, seguridad, comunidad y
@@ -108,7 +108,7 @@ export default function NosotrosPage() {
             {Object.entries(stack).map(([category, techs], i) => (
               <AnimateIn key={category} delay={i * 50}>
                 <div className="group flex flex-col md:flex-row md:items-center gap-6 md:gap-16 py-10 border-b border-white/10">
-                  <span className="font-body text-xs font-bold text-[#ffb690]/50 uppercase tracking-[0.2em] md:w-48 shrink-0 group-hover:text-[#ffb690] transition-colors duration-500">
+                  <span className="font-body text-xs font-bold text-primary/50 uppercase tracking-[0.2em] md:w-48 shrink-0 group-hover:text-primary transition-colors duration-500">
                     {category}
                   </span>
                   <div className="flex flex-wrap gap-x-8 gap-y-4">
@@ -136,7 +136,7 @@ export default function NosotrosPage() {
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
               
               <div>
-                <span className="font-body text-xs font-bold text-[#ffb690]/50 uppercase tracking-[0.2em]">
+                <span className="font-body text-xs font-bold text-primary/50 uppercase tracking-[0.2em]">
                   Base operativa
                 </span>
                 <p className="font-display text-4xl text-foreground mt-4">Córdoba, Argentina</p>
@@ -149,7 +149,7 @@ export default function NosotrosPage() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 text-foreground/40 hover:text-[#ffb690] transition-colors duration-500"
+                className="group flex items-center gap-4 text-foreground/40 hover:text-primary transition-colors duration-500"
               >
                 <span className="font-body text-sm font-bold uppercase tracking-[0.2em]">
                   Seguinos en Instagram

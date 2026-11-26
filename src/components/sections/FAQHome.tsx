@@ -48,19 +48,19 @@ export function FAQHome() {
       <div className="max-w-4xl mx-auto px-6 lg:px-8">
         <AnimateIn>
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-8 h-[1px] bg-[#ffb690]/40" />
+            <div className="w-8 h-px bg-primary/40" />
             <span className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
               Antes de escribirnos
             </span>
           </div>
-          <h2 className="font-display text-4xl md:text-5xl text-foreground leading-[1.1] tracking-tight mb-6 text-balance">
+          <h2 className="font-display text-4xl md:text-5xl md:leading-[var(--text-5xl--line-height)] text-foreground leading-[1.1] tracking-tight mb-6 text-balance">
             Preguntas{' '}
-            <em className="font-display italic text-[#ffb690] font-light">frecuentes.</em>
+            <em className="font-display italic text-primary font-light">frecuentes.</em>
           </h2>
           <p className="font-body text-base text-foreground/60 leading-relaxed font-light mb-12 max-w-2xl">
             Lo que más nos preguntan antes de iniciar un proyecto. Para el paso a paso de cómo
             trabajamos una vez que arrancamos, mirá el{' '}
-            <Link href="/proceso" className="text-[#ffb690] hover:underline underline-offset-4">
+            <Link href="/proceso" className="text-primary hover:underline underline-offset-4">
               FOS Method
             </Link>
             .
@@ -74,7 +74,7 @@ export function FAQHome() {
                 value={`home-faq-${i}`}
                 className="border-b border-white/10 transition-colors duration-500"
               >
-                <AccordionTrigger className="font-display text-lg md:text-xl text-foreground/75 hover:text-foreground py-6 hover:no-underline data-open:text-[#ffb690] text-left transition-colors duration-500">
+                <AccordionTrigger className="font-display text-lg md:text-xl text-foreground/75 hover:text-foreground py-6 hover:no-underline data-open:text-primary text-left transition-colors duration-500">
                   {faq.q}
                 </AccordionTrigger>
                 <AccordionContent className="font-body text-base text-foreground/65 leading-relaxed font-light text-pretty pb-6 pt-1">

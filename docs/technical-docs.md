@@ -52,7 +52,7 @@ src/
 │   │   ├── CTABanner.tsx
 │   │   ├── ServicesGrid.tsx
 │   │   ├── PageHero.tsx        # Reusable page header
-│   │   └── ContactForm.tsx     # 'use client', useFormState + useFormStatus
+│   │   └── ContactForm.tsx     # 'use client', useActionState + useFormStatus
 │   ├── ui/                     # Custom Shadcn-based UI primitives
 │   │   ├── GradientButton.tsx
 │   │   ├── GhostButton.tsx
@@ -107,7 +107,7 @@ src/
 ```
 User fills form (/contacto)
   → ContactForm.tsx (client component)
-  → useFormState(sendContact) from react-dom
+  → useActionState(sendContact) from react
   → Server Action: src/app/actions/contact.ts
       ├── Zod validation (contactSchema)
       ├── Supabase INSERT → contact_leads (service_role, bypasses RLS)
@@ -136,5 +136,5 @@ All 9 service pages (`/servicios/[slug]`) are statically generated at build time
 - **Instagram icon**: `lucide-react` (current version) doesn't export `Instagram`. Using inline SVG in `Header.tsx` and `Footer.tsx`.
 - **next.config.mjs**: Uses `.mjs` (not `.ts`) — historical Next.js 14 requirement, kept on Next 16 (Bug #20).
 - **viewport export**: Always separate from `metadata` in `layout.tsx` App Router rule since Next.js 14, still valid on 16 (Bug #1).
-- **useFormState**: Must import from `react-dom` not `react` (project convention since Next.js 14; Bug #4).
+- **useActionState**: imported from `react` since React 19 (v1.5.0). It replaced `useFormState` from `react-dom` (Bug #4); `useFormStatus` still comes from `react-dom`.
 - **Server Action signature**: First param must be `prevState: unknown` (Bug #5).

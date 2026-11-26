@@ -32,7 +32,7 @@ contacto que manda email. Ver `.ai/context/PROJECT.md`.
 
 ## Stack (verificado, no el que dicen los docs legacy)
 
-- **Next.js 16.3.3** (App Router). Docs alineados desde v1.4.0.
+- **Next.js 16.4.6** (App Router), React 19, Tailwind 4 (tokens en `@theme` de `globals.css`), ESLint 9 flat config. Docs alineados desde v1.4.0; stack alineado al estándar en v1.5.0.
 - TypeScript, Tailwind CSS, Shadcn/UI (base-ui), Lucide React.
 - Fuente única: Inter vía `next/font` (peso 200 para display + body). No hay serif.
 - Sin base de datos ni Supabase. Los restos (dependencia, env vars de ejemplo, CSP/`remotePatterns`,
@@ -58,7 +58,7 @@ npm run test:e2e      # Playwright E2E
 ## Convenciones críticas
 
 - **Tailwind only** — sin `styled-jsx`, sin CSS-in-JS.
-- Formularios: `useFormState` de `react-dom` + Server Action con firma `(prevState, formData)`.
+- Formularios: `useActionState` de `react` (React 19) + Server Action con firma `(prevState, formData)`.
   Validación con Zod **enforced server-side** dentro de la action (no solo en el cliente) — así
   está hecho en `contact.ts`, seguí el mismo patrón para cualquier form nuevo.
 - Fuentes solo vía `next/font`. Un solo color de acción: durazno `#ffb690`. Sin glass, sin

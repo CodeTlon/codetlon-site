@@ -43,7 +43,7 @@ export default function GraciasPage() {
             href={WHATSAPP_CTA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 gradient-cta text-[#552100] font-body font-semibold px-6 py-3 rounded-full hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 gradient-cta text-primary-foreground font-body font-semibold px-6 py-3 rounded-full hover:opacity-90 transition-opacity"
           >
             <MessageCircle size={16} />
             Escribinos por WhatsApp

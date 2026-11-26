@@ -36,7 +36,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="relative z-10 bg-background border-t border-white/[0.04] pt-24 pb-28 md:pb-12 transition-colors duration-500">
+    <footer className="relative z-10 bg-background border-t border-white/4 pt-24 pb-28 md:pb-12 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
@@ -57,16 +57,16 @@ export function Footer() {
             </p>
             
             <div className="flex items-center gap-5">
-              <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Seguinos en Instagram" className="text-foreground/40 hover:text-[#ffb690] transition-all duration-500">
+              <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Seguinos en Instagram" className="text-foreground/40 hover:text-primary transition-all duration-500">
                 <InstagramIcon />
               </a>
-              <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="Seguinos en Facebook" className="text-foreground/40 hover:text-[#ffb690] transition-all duration-500">
+              <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" aria-label="Seguinos en Facebook" className="text-foreground/40 hover:text-primary transition-all duration-500">
                 <FacebookIcon />
               </a>
-              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="Seguinos en LinkedIn" className="text-foreground/40 hover:text-[#ffb690] transition-all duration-500">
+              <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="Seguinos en LinkedIn" className="text-foreground/40 hover:text-primary transition-all duration-500">
                 <LinkedInIcon />
               </a>
-              <a href={WHATSAPP_CTA_URL} target="_blank" rel="noopener noreferrer" aria-label="Contactanos por WhatsApp" className="text-foreground/40 hover:text-[#ffb690] transition-all duration-500">
+              <a href={WHATSAPP_CTA_URL} target="_blank" rel="noopener noreferrer" aria-label="Contactanos por WhatsApp" className="text-foreground/40 hover:text-primary transition-all duration-500">
                 <WhatsAppIcon />
               </a>
             </div>
@@ -74,7 +74,7 @@ export function Footer() {
 
           {/* Navegación */}
           <div className="flex flex-col items-start">
-            <h3 className="font-body text-[11px] font-bold uppercase tracking-[0.25em] text-[#ffb690]/80 mb-8">
+            <h3 className="font-body text-[11px] font-bold uppercase tracking-[0.25em] text-primary/80 mb-8">
               Navegación
             </h3>
             <nav className="flex flex-col gap-4">
@@ -92,7 +92,7 @@ export function Footer() {
 
           {/* Contacto */}
           <div className="flex flex-col items-start">
-            <h3 className="font-body text-[11px] font-bold uppercase tracking-[0.25em] text-[#ffb690]/80 mb-8">
+            <h3 className="font-body text-[11px] font-bold uppercase tracking-[0.25em] text-primary/80 mb-8">
               Contacto
             </h3>
             <div className="flex flex-col gap-4">
@@ -113,7 +113,7 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/[0.04] pt-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="border-t border-white/4 pt-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <p className="font-body text-[10px] md:text-[11px] text-foreground/30 tracking-[0.15em] uppercase text-left">
             © {currentYear} CODETLON SOFTWARE FACTORY. TODOS LOS DERECHOS RESERVADOS.
           </p>

@@ -15,12 +15,12 @@ export function PageHero({ title, subtitle }: PageHeroProps) {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-4xl">
 
-          <h1 className="font-display display-thin text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-foreground leading-[1.05] text-balance anim-fade-up anim-d1">
+          <h1 className="font-display display-thin text-5xl sm:text-6xl sm:leading-[var(--text-6xl--line-height)] md:text-7xl md:leading-[var(--text-7xl--line-height)] lg:text-[5.5rem] text-foreground leading-[1.05] text-balance anim-fade-up anim-d1">
             {title}
           </h1>
           
           {subtitle && (
-            <p className="font-body text-lg sm:text-xl text-foreground/70 mt-8 max-w-2xl leading-relaxed font-light text-pretty anim-fade-up anim-d2">
+            <p className="font-body text-lg sm:text-xl sm:leading-[var(--text-xl--line-height)] text-foreground/70 mt-8 max-w-2xl leading-relaxed font-light text-pretty anim-fade-up anim-d2">
               {subtitle}
             </p>
           )}

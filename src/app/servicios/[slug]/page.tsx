@@ -108,7 +108,7 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
       {/* Descripción + Para quién */}
       <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 border-t border-white/[0.04] pt-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 border-t border-white/4 pt-16">
             <AnimateIn>
               <h2 className="font-body text-xs font-medium text-foreground/30 uppercase tracking-[0.2em] block mb-6">
                 Descripción
@@ -137,17 +137,17 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <AnimateIn>
             <div className="flex items-center gap-4 mb-16">
-              <div className="w-8 h-[1px] bg-[#ffb690]/40" />
+              <div className="w-8 h-px bg-primary/40" />
               <h2 className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
                 Qué incluye
               </h2>
             </div>
           </AnimateIn>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 max-w-3xl border-t border-white/[0.04]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 max-w-3xl border-t border-white/4">
             {service.whatYouGet.map((item, i) => (
               <AnimateIn key={item} delay={i * 40}>
-                <div className="flex items-start gap-4 py-5 border-b border-white/[0.04]">
-                  <span className="text-[#ffb690]/40 mt-0.5 shrink-0 text-sm">—</span>
+                <div className="flex items-start gap-4 py-5 border-b border-white/4">
+                  <span className="text-primary/40 mt-0.5 shrink-0 text-sm">—</span>
                   <span className="font-body text-sm text-foreground/60 leading-relaxed">
                     {item}
                   </span>
@@ -164,7 +164,7 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
 
           <AnimateIn>
             <div className="flex items-center gap-4 mb-10">
-              <div className="w-8 h-[1px] bg-[#ffb690]/40" />
+              <div className="w-8 h-px bg-primary/40" />
               <h2 className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
                 Stack técnico
               </h2>
@@ -173,7 +173,7 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
               {service.techStack.map((tech) => (
                 <span
                   key={tech}
-                  className="font-display italic text-xl text-foreground/40 hover:text-[#ffb690] transition-colors duration-500 cursor-default"
+                  className="font-display italic text-xl text-foreground/40 hover:text-primary transition-colors duration-500 cursor-default"
                 >
                   {tech}
                 </span>
@@ -183,15 +183,15 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
 
           <AnimateIn delay={100}>
             <div className="flex items-center gap-4 mb-10">
-              <div className="w-8 h-[1px] bg-[#ffb690]/40" />
+              <div className="w-8 h-px bg-primary/40" />
               <h2 className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
                 Proceso
               </h2>
             </div>
-            <ol className="border-t border-white/[0.04]">
+            <ol className="border-t border-white/4">
               {fosPhases.map((phase) => (
-                <li key={phase.number} className="flex items-start gap-6 py-5 border-b border-white/[0.04]">
-                  <span className="font-display italic text-2xl text-[#ffb690]/50 shrink-0 leading-none mt-0.5" aria-hidden="true">
+                <li key={phase.number} className="flex items-start gap-6 py-5 border-b border-white/4">
+                  <span className="font-display italic text-2xl text-primary/50 shrink-0 leading-none mt-0.5" aria-hidden="true">
                     {phase.number}
                   </span>
                   <div>
@@ -203,7 +203,7 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
             </ol>
             <Link
               href="/proceso"
-              className="group inline-flex items-center gap-2 mt-6 font-body text-sm text-foreground/50 hover:text-[#ffb690] transition-colors duration-500"
+              className="group inline-flex items-center gap-2 mt-6 font-body text-sm text-foreground/50 hover:text-primary transition-colors duration-500"
             >
               Ver el FOS Method completo
               <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
@@ -221,22 +221,22 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <AnimateIn>
               <div className="flex items-center gap-4 mb-12">
-                <div className="w-8 h-[1px] bg-[#ffb690]/40" />
+                <div className="w-8 h-px bg-primary/40" />
                 <h2 className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
                   También podrías necesitar
                 </h2>
               </div>
             </AnimateIn>
-            <div className="border-t border-white/[0.04]">
+            <div className="border-t border-white/4">
               {related.map((r, i) => (
                 <AnimateIn key={r.slug} delay={i * 60}>
                   <Link
                     href={`/servicios/${r.slug}`}
-                    className="group flex items-center justify-between py-7 border-b border-white/[0.04] hover:bg-white/[0.01] transition-colors duration-500"
+                    className="group flex items-center justify-between py-7 border-b border-white/4 hover:bg-white/1 transition-colors duration-500"
                   >
                     <div className="flex items-baseline gap-6">
                       <r.icon
-                        className="w-5 h-5 shrink-0 self-center text-[#ffb690]/50 group-hover:text-[#ffb690] transition-colors duration-500"
+                        className="w-5 h-5 shrink-0 self-center text-primary/50 group-hover:text-primary transition-colors duration-500"
                         strokeWidth={1.5}
                         aria-hidden="true"
                       />
@@ -244,7 +244,7 @@ export default async function ServiceDetailPage(props: { params: Promise<{ slug:
                         {r.name}
                       </span>
                     </div>
-                    <span className="text-foreground/20 group-hover:text-[#ffb690] group-hover:translate-x-1 transition-all duration-500 text-sm">
+                    <span className="text-foreground/20 group-hover:text-primary group-hover:translate-x-1 transition-all duration-500 text-sm">
                       →
                     </span>
                   </Link>

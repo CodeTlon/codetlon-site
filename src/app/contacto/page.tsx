@@ -71,9 +71,9 @@ export default function ContactoPage() {
 
           {/* Header */}
           <div className="mb-16 md:mb-24">
-            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] text-foreground tracking-tight max-w-4xl leading-[1.05] text-balance anim-fade-up anim-d1">
+            <h1 className="font-display text-5xl sm:text-6xl sm:leading-[var(--text-6xl--line-height)] md:text-7xl md:leading-[var(--text-7xl--line-height)] lg:text-[5.5rem] text-foreground tracking-tight max-w-4xl leading-[1.05] text-balance anim-fade-up anim-d1">
               ¿Tenés un proyecto{' '}
-              <em className="italic text-[#ffb690] font-light">en mente?</em>
+              <em className="italic text-primary font-light">en mente?</em>
             </h1>
           </div>
 
@@ -88,7 +88,7 @@ export default function ContactoPage() {
             {/* Canales Secundarios (Solo Íconos siempre debajo del form) */}
             <AnimateIn delay={200} className="w-full">
               <div className="border-t border-white/10 pt-8">
-                <p className="font-body text-xs font-bold text-[#ffb690]/50 uppercase tracking-[0.2em] mb-6">
+                <p className="font-body text-xs font-bold text-primary/50 uppercase tracking-[0.2em] mb-6">
                   Nuestras redes
                 </p>
                 
@@ -101,9 +101,9 @@ export default function ContactoPage() {
                       target={href.startsWith('mailto') ? undefined : '_blank'}
                       rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
                       aria-label={label}
-                      className="group flex items-center justify-center w-14 h-14 rounded-full bg-white/[0.02] border border-white/10 hover:border-[#ffb690]/40 hover:bg-[#ffb690]/5 transition-all duration-500"
+                      className="group flex items-center justify-center w-14 h-14 rounded-full bg-white/2 border border-white/10 hover:border-primary/40 hover:bg-primary/5 transition-all duration-500"
                     >
-                      <Icon className="w-5 h-5 text-foreground/50 group-hover:text-[#ffb690] transition-colors duration-500" strokeWidth={1.5} />
+                      <Icon className="w-5 h-5 text-foreground/50 group-hover:text-primary transition-colors duration-500" strokeWidth={1.5} />
                     </a>
                   ))}
                 </div>

@@ -18,14 +18,14 @@ export function EvolucionContinua() {
 
           <AnimateIn delay={150} threshold={0.3} className="lg:col-span-5 flex flex-col items-start">
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-8 h-[1px] bg-[#ffb690]/30" />
+              <div className="w-8 h-px bg-primary/30" />
               <span className="font-body text-xs font-medium text-foreground/40 uppercase tracking-[0.2em]">
                 Post-Lanzamiento
               </span>
             </div>
             <h2 className="font-display text-4xl sm:text-5xl text-foreground mb-6 tracking-tight">
               Evolución{' '}
-              <em className="font-display italic text-[#ffb690] font-light">Continua.</em>
+              <em className="font-display italic text-primary font-light">Continua.</em>
             </h2>
             <p className="font-body text-lg text-foreground/65 leading-relaxed font-light max-w-sm">
               El despliegue es solo el día uno. Tu ecosistema digital crece, muta y se adapta junto
@@ -37,7 +37,7 @@ export function EvolucionContinua() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
               {items.map((item, i) => (
                 <div key={i} className="flex flex-col gap-3 group">
-                  <span className="font-body text-xs font-medium text-[#ffb690]/20 uppercase tracking-[0.1em] group-hover:text-[#ffb690] transition-colors duration-500">
+                  <span className="font-body text-xs font-medium text-primary/20 uppercase tracking-widest group-hover:text-primary transition-colors duration-500">
                     Soporte // 0{i + 1}
                   </span>
                   <span className="font-body text-base text-foreground/70 leading-relaxed font-light">

@@ -48,7 +48,7 @@ export default function ServiciosPage() {
         title={
           <>
             Desarrollamos la tecnología que tu negocio{' '}
-            <em className="font-display italic text-[#ffb690] font-light">necesita.</em>
+            <em className="font-display italic text-primary font-light">necesita.</em>
           </>
         }
         subtitle="Sistemas desde cero, sitios y plataformas web, apps móviles, automatizaciones y la modernización de lo que ya tenés. Trabajamos con empresas y negocios de cualquier rubro."

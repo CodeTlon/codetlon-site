@@ -1,6 +1,98 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: #0a0f10;
+  --color-foreground: #e8ddd4;
+
+  --color-primary: #ffb690;
+  --color-primary-container: #4f1e00;
+  --color-primary-foreground: #552100;
+
+  --color-secondary: #a4cddb;
+  --color-secondary-container: #254e5a;
+  --color-secondary-foreground: #053540;
+
+  --color-surface-lowest: #060a0b;
+  --color-surface-low: #0d1213;
+  --color-surface: #0a0f10;
+  --color-surface-container: #121819;
+  --color-surface-high: #1a2122;
+  --color-surface-highest: #232a2b;
+
+  --font-display: var(--font-inter), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+
+  --background-image-gradient-cta: #ffb690;
+  --background-image-gradient-hero: #0a0f10;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@utility display-thin {
+  /* Display ultra-fino: la firma del sistema a tamaños grandes (≥48px). */
+  font-weight: 200;
+  letter-spacing: -0.04em;
+}
+
+@utility glass {
+  /* "glass" ahora es un hairline plano sobre el void — sin blur ni elevación.
+     Se mantiene el nombre para no romper los componentes que lo usan. */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background-color: rgb(255 255 255 / 0.02);
+}
+
+@utility gradient-cta {
+  /* El único relleno cromático del sistema: peach plano, sin degradé. */
+  background: #ffb690;
+}
+
+@utility gradient-hero {
+  /* El hero es void puro — la profundidad viene de las partículas, no de un fondo. */
+  background: #0a0f10;
+}
 
 @layer base {
   /* ─── Void/Cosmos design system — single typeface (Inter), peach as sole
@@ -41,32 +133,6 @@
     font-family: var(--font-inter), system-ui, sans-serif;
     font-weight: 300;
     letter-spacing: -0.02em;
-  }
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  /* Display ultra-fino: la firma del sistema a tamaños grandes (≥48px). */
-  .display-thin {
-    font-weight: 200;
-    letter-spacing: -0.04em;
-  }
-  /* "glass" ahora es un hairline plano sobre el void — sin blur ni elevación.
-     Se mantiene el nombre para no romper los componentes que lo usan. */
-  .glass {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background-color: rgb(255 255 255 / 0.02);
-  }
-  /* El único relleno cromático del sistema: peach plano, sin degradé. */
-  .gradient-cta {
-    background: #ffb690;
-  }
-  /* El hero es void puro — la profundidad viene de las partículas, no de un fondo. */
-  .gradient-hero {
-    background: #0a0f10;
   }
 }
 

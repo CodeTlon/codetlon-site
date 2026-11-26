@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import Link from 'next/link'
 
 const STORAGE_KEY = 'ct_cookie_consent'
@@ -18,25 +18,28 @@ declare global {
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID
 const gaActivo = Boolean(GA_ID && GA_ID !== PLACEHOLDER)
 
+const subscribeNoop = () => () => {}
+
+function leerEleccionGuardada() {
+  try {
+    const prev = localStorage.getItem(STORAGE_KEY)
+    return prev === 'granted' || prev === 'denied'
+  } catch {
+    return false
+  }
+}
+
 /**
  * Banner de consentimiento de cookies. Liviano, sin dependencias.
  * Guarda la elección en localStorage y actualiza GA4 (Consent Mode v2);
  * el default 'denied' lo setea GoogleAnalytics.tsx antes del config.
  */
 export function CookieConsent() {
-  const [visible, setVisible] = useState(false)
+  // En el server no hay localStorage: se asume que ya eligió y el banner aparece recién en el cliente.
+  const yaEligio = useSyncExternalStore(subscribeNoop, leerEleccionGuardada, () => true)
+  const [cerrado, setCerrado] = useState(false)
+  const visible = gaActivo && !yaEligio && !cerrado
   const aceptarRef = useRef<HTMLButtonElement>(null)
-
-  useEffect(() => {
-    if (!gaActivo) return
-    let prev: string | null = null
-    try {
-      prev = localStorage.getItem(STORAGE_KEY)
-    } catch {
-      prev = null
-    }
-    if (prev !== 'granted' && prev !== 'denied') setVisible(true)
-  }, [])
 
   useEffect(() => {
     if (visible) aceptarRef.current?.focus()
@@ -54,7 +57,7 @@ export function CookieConsent() {
       ad_user_data: choice,
       ad_personalization: choice,
     })
-    setVisible(false)
+    setCerrado(true)
   }
 
   if (!visible) return null

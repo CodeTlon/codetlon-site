@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState, useSyncExternalStore } from 'react'
 import { Share2, Check, Link2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -12,15 +12,18 @@ interface ShareButtonProps {
   className?: string
 }
 
+const subscribeNoop = () => () => {}
+
 // Web Share API (móvil / navegadores compatibles) con fallback a copiar el link.
 export function ShareButton({ title, text, url, className }: ShareButtonProps) {
   const [copied, setCopied] = useState(false)
-  // Se resuelve post-mount para evitar mismatch de hidratación (SSR no conoce navigator.share).
-  const [canNativeShare, setCanNativeShare] = useState(false)
-
-  useEffect(() => {
-    setCanNativeShare(typeof navigator !== 'undefined' && typeof navigator.share === 'function')
-  }, [])
+  // En el server (y en la hidratación) vale false; en el cliente se lee navigator.share.
+  // useSyncExternalStore evita el mismatch de hidratación sin setState dentro de un efecto.
+  const canNativeShare = useSyncExternalStore(
+    subscribeNoop,
+    () => typeof navigator.share === 'function',
+    () => false,
+  )
 
   const handleShare = async () => {
     const shareUrl = url ?? window.location.href

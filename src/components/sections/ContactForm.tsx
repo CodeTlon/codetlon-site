@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useFormState, useFormStatus } from 'react-dom'
+import { useActionState, useState, useSyncExternalStore } from 'react'
+import { useFormStatus } from 'react-dom'
 import { CheckCircle2, AlertCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { sendContact } from '@/app/actions/contact'
@@ -10,6 +10,13 @@ import { SERVICE_INTEREST_OPTIONS, getServiceBySlug } from '@/lib/services-data'
 
 // Los 6 servicios del catálogo + "Otro / no estoy seguro" (mismo enum que valida Zod en el server).
 const PROJECT_TYPES = SERVICE_INTEREST_OPTIONS
+
+const subscribeNoop = () => () => {}
+
+function readPreselectedType() {
+  const slug = new URLSearchParams(window.location.search).get('servicio')
+  return (slug && getServiceBySlug(slug)?.name) || ''
+}
 
 function SubmitButton() {
   const { pending } = useFormStatus()
@@ -28,17 +35,14 @@ function SubmitButton() {
 }
 
 export function ContactForm() {
-  const [selectedType, setSelectedType] = useState<string>('')
+  const [chosenType, setSelectedType] = useState<string>('')
 
   // Preselecciona el servicio cuando se llega desde /servicios/<slug> (?servicio=<slug>).
-  // Se lee en un efecto (no con useSearchParams + Suspense) para que la página siga estática
-  // sin remontar el form: así no se pierde una elección que el usuario ya haya hecho.
-  useEffect(() => {
-    const slug = new URLSearchParams(window.location.search).get('servicio')
-    const service = slug ? getServiceBySlug(slug) : undefined
-    if (service) setSelectedType((current) => current || service.name)
-  }, [])
-  const [state, formAction] = useFormState(sendContact, null)
+  // Se lee de window.location en el cliente (no con useSearchParams + Suspense) para que la
+  // página siga estática; la elección del usuario siempre gana sobre la preselección.
+  const preselectedType = useSyncExternalStore(subscribeNoop, readPreselectedType, () => '')
+  const selectedType = chosenType || preselectedType
+  const [state, formAction] = useActionState(sendContact, null)
 
   if (state?.success) {
     return (

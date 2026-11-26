@@ -16,7 +16,7 @@
 - **Deploy:** Vercel
 
 ## Stack
-- Next.js 16.4.6 (App Router) + TypeScript + Tailwind CSS + Shadcn/UI (base-ui) + Lucide React
+- Next.js 16.4.6 (App Router) + React 19 + TypeScript + Tailwind CSS 4 + Shadcn/UI (base-ui) + Lucide React
 - Supabase: **no** — dependencia, env vars y CSP/remotePatterns removidos; el form NO escribe a DB (ver `actions/contact.ts`)
 - Resend: **sí** — formulario de contacto envía email, sin almacenamiento
 - Analytics: Google Analytics 4 vía `next/script` (`NEXT_PUBLIC_GA_ID`)
@@ -67,7 +67,7 @@ Ver `.env.example` para el listado completo.
 
 ## Diseño — Decisiones Clave
 - **Estilo general (void/cosmos):** canvas negro casi puro (`#0a0f10`, leve tinte teal), **un solo color de acción = durazno `#ffb690`**, tipografía Inter ultra-fina (peso 200, tracking negativo) para display, bordes hairline, geometría pill (radius 24px), **sin glass / sin gradientes / sin sombras / sin elevación**. Partículas (`ParticleField`) como firma visual en todas las páginas. Colores CodeTlon; estructura del referente "Dala".
-  - Tokens en `tailwind.config.ts` + `globals.css`. Las utilidades `.glass`/`.gradient-cta`/`.gradient-hero` se conservan por nombre pero ahora son planas (hairline / peach sólido / void sólido).
+  - Tokens en el `@theme` de `globals.css` (Tailwind 4, sin `tailwind.config.ts`). Las utilidades `.glass`/`.gradient-cta`/`.gradient-hero` se conservan por nombre pero ahora son planas (hairline / peach sólido / void sólido).
 - **Secciones home:** HeroHome → LogoStrip → ServicesTeaser → FOSMethod → WhyCodeTlon → MetricsStrip ("Nuestros estándares") → Projects → FAQHome → CTABanner. Las secciones son transparentes (sin `bg-*` opaco) para que el campo de partículas global se vea a través — "todo flota sobre el void". Excepción: `CTABanner` (relleno peach invertido).
 - **Íconos:** Lucide React. WhatsApp → SVG inline.
 
@@ -75,7 +75,7 @@ Ver `.env.example` para el listado completo.
 - El formulario de contacto **solo manda email vía Resend** — la inserción a Supabase fue removida a propósito (`actions/contact.ts` lo deja documentado). No reintroducir Supabase salvo pedido explícito.
 - Estructura con `src/` y alias `@/*` → `./src/*`.
 - GA4 se carga con `next/script` en el layout — gobernado por `NEXT_PUBLIC_GA_ID`.
-- Reglas FOS: Tailwind only (sin styled-jsx), `useFormState` de `react-dom`, Server Action con `(prevState, formData)`, fuentes vía `next/font`, viewport separado de metadata.
+- Reglas FOS: Tailwind only (sin styled-jsx), `useActionState` de `react`, Server Action con `(prevState, formData)`, fuentes vía `next/font`, viewport separado de metadata.
 
 ## Comandos Rápidos
 ```bash
@@ -102,6 +102,7 @@ npm run test:e2e     # Playwright E2E
 | 2026-10-02 | chore/remove-supabase-leftovers | v1.3.5 — chore: se quitan restos de Supabase (sin uso en código): dep `@supabase/supabase-js`, env vars de `.env.example`, `*.supabase.co` en CSP `img-src` y `remotePatterns`, `exclude: supabase` en tsconfig. Sin backend propio (solo Server Action Resend) → sigue en Vercel. Build verde. |
 | 2026-11-25 | feature/dev1-posicionamiento-2026 | v1.4.0 — Nuevo posicionamiento: 6 servicios en lugar de L1–L9 (`level`/`timeline`/`color` fuera, `icon` nuevo), redirects 301 de los 9 slugs viejos, `fos-phases.ts` compartido sin duraciones, hero/FAQ/stack/estándares nuevos, `/servicios` lista el catálogo, form con enum Zod + preselección `?servicio=`, WhatsApp real, 3 proyectos nuevos, fix títulos duplicados, `llms.txt` y docs legacy sincronizados. Borrados `CoreCapabilities`, `ServiceChip`, `MetricCard`. Build verde, E2E 81/81 (mobile/tablet emulados en Chromium). Sin mergear. |
 | 2026-10-02 | docs/ai-context-sin-supabase | v1.3.6 — docs: `AGENTS.md` + `.ai/context/` al día tras quitar Supabase (v1.3.5). Sin cambios de código. Build verde. |
+| 2026-11-26 | feature/dev1-stack-estandar | v1.5.0 — React 19, ESLint 9 flat config y Tailwind 4 (tokens en `@theme` de `globals.css`). Quirk: en Tailwind 4 `leading-*` gana sobre `md:text-*`; se agregó `md:leading-[var(--text-*--line-height)]` para conservar el render. `useActionState` y `useSyncExternalStore` en vez de `setState` en efectos. E2E 81/81 y diff píxel a píxel contra v1.4.1. |
 <!-- Agregar fila al finalizar cada sesión de mantenimiento -->
 ---
 

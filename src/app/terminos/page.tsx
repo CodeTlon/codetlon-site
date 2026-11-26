@@ -16,7 +16,7 @@ export default function TerminosPage() {
       <h1 className="font-display text-4xl md:text-5xl text-foreground mb-4">Términos y Condiciones</h1>
       <p className="font-body text-sm text-foreground/50 mb-12">Última actualización: {ACTUALIZADO}</p>
 
-      <div className="font-body text-foreground/75 leading-relaxed space-y-10 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:text-foreground [&_h2]:mb-3 [&_a]:text-[#ffb690] [&_a]:underline [&_a]:underline-offset-4">
+      <div className="font-body text-foreground/75 leading-relaxed space-y-10 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:text-foreground [&_h2]:mb-3 [&_a]:text-primary [&_a]:underline [&_a]:underline-offset-4">
         <section>
           <h2>Aceptación</h2>
           <p>

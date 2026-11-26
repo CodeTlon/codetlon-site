@@ -22,12 +22,12 @@ export function Projects() {
         <AnimateIn variant="fade" className="w-full">
           <div className="mb-16 md:mb-20 max-w-2xl">
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-8 h-[1px] bg-white/20" />
+              <div className="w-8 h-px bg-white/20" />
               <SectionLabel className="text-white/50">En Producción</SectionLabel>
             </div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] tracking-tight text-balance">
+            <h2 className="font-display text-4xl md:text-5xl md:leading-[var(--text-5xl--line-height)] lg:text-6xl lg:leading-[var(--text-6xl--line-height)] text-white leading-[1.1] tracking-tight text-balance">
               Proyectos que ya están{' '}
-              <em className="font-display italic text-[#ffb690] font-light drop-shadow-sm">
+              <em className="font-display italic text-primary font-light drop-shadow-xs">
                 online.
               </em>
             </h2>
@@ -41,23 +41,23 @@ export function Projects() {
                 href={project.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block h-full focus:outline-none focus:ring-2 focus:ring-[#ffb690]/50 rounded-2xl"
+                className="group block h-full focus:outline-hidden focus:ring-2 focus:ring-primary/50 rounded-2xl"
                 aria-label={`Visitar ${project.name} (se abre en una pestaña nueva)`}
               >
-                <GlassCard className="h-full flex flex-col transition-all duration-500 group-hover:border-[#ffb690]/40 group-hover:-translate-y-1">
+                <GlassCard className="h-full flex flex-col transition-all duration-500 group-hover:border-primary/40 group-hover:-translate-y-1">
                   <div className="flex items-start justify-between gap-4">
-                    <SectionLabel className="text-[#ffb690]">{project.category}</SectionLabel>
+                    <SectionLabel className="text-primary">{project.category}</SectionLabel>
                     <ArrowUpRight
-                      className="size-5 shrink-0 text-foreground/30 transition-colors duration-500 group-hover:text-[#ffb690]"
+                      className="size-5 shrink-0 text-foreground/30 transition-colors duration-500 group-hover:text-primary"
                       aria-hidden="true"
                     />
                   </div>
 
-                  <h3 className="font-display text-2xl md:text-3xl text-white mt-4 mb-3 leading-tight">
+                  <h3 className="font-display text-2xl md:text-3xl md:leading-[var(--text-3xl--line-height)] text-white mt-4 mb-3 leading-tight">
                     {project.name}
                   </h3>
 
-                  <p className="font-body text-sm md:text-base text-foreground/60 leading-relaxed flex-1">
+                  <p className="font-body text-sm md:text-base md:leading-[var(--text-base--line-height)] text-foreground/60 leading-relaxed flex-1">
                     {project.description}
                   </p>
 
@@ -65,14 +65,14 @@ export function Projects() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="font-body text-[11px] font-medium text-foreground/40 uppercase tracking-wider border border-white/[0.06] rounded-full px-3 py-1"
+                        className="font-body text-[11px] font-medium text-foreground/40 uppercase tracking-wider border border-white/6 rounded-full px-3 py-1"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <span className="font-body text-sm text-foreground/50 mt-6 transition-colors duration-500 group-hover:text-[#ffb690]">
+                  <span className="font-body text-sm text-foreground/50 mt-6 transition-colors duration-500 group-hover:text-primary">
                     {projectDisplayUrl(project)}
                   </span>
                 </GlassCard>

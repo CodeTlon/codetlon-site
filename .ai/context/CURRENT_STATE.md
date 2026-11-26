@@ -1,5 +1,11 @@
 # CURRENT_STATE.md
 
+## Actualización 2026-11-26 — v1.5.0 (rama `feature/dev1-stack-estandar`)
+
+- React 19, ESLint 9 (flat config) y Tailwind 4: el sitio queda en el estándar de la flota.
+- Render igual al de v1.4.1: comparación píxel a píxel de 9 páginas en desktop y mobile.
+- E2E 81/81 con mobile/tablet emulados en Chromium. Promovida a `dev` y `test`; el PR a `main` lo decide Mateo.
+
 ## Actualización 2026-11-25 — v1.4.0 (rama `feature/dev1-posicionamiento-2026`, sin mergear)
 
 - Catálogo: 6 servicios generales en lugar de L1–L9; los 9 slugs viejos responden **301** al

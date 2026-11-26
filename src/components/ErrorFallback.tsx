@@ -32,7 +32,7 @@ export function ErrorFallback({ reset, title = 'Algo salió mal', message }: Err
       <div className="flex flex-wrap items-center justify-center gap-4">
         <button
           onClick={reset}
-          className="font-body rounded-full bg-[#ffb690] px-6 py-3 text-sm font-medium text-[#0e1516] transition-opacity duration-500 hover:opacity-90"
+          className="font-body rounded-full bg-primary px-6 py-3 text-sm font-medium text-[#0e1516] transition-opacity duration-500 hover:opacity-90"
         >
           Reintentar
         </button>

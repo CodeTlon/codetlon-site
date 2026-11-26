@@ -5,8 +5,9 @@
 - **Tailwind only** — nunca `styled-jsx` ni otro CSS-in-JS.
 - Diseño "void/cosmos": canvas casi negro (`#0a0f10`), un solo color de acción (durazno `#ffb690`),
   Inter como única familia tipográfica (peso 200 para display), sin glass/gradientes/sombras,
-  geometría pill (radius 24px), bordes hairline. Tokens en `tailwind.config.ts` + `globals.css`.
-- Formularios: `useFormState` de `react-dom` + Server Action con firma `(prevState, formData)`.
+  geometría pill (radius 24px), bordes hairline. Tokens en el `@theme` de `globals.css` (Tailwind 4).
+- Formularios: `useActionState` de `react` + Server Action con firma `(prevState, formData)`.
+- Tailwind 4: si un elemento tiene `leading-*` y un `md:text-*`, el `leading` gana en todos los breakpoints (en v3 lo pisaba el tamaño). Para el interlineado del tamaño, agregar `md:leading-[var(--text-*--line-height)]`.
   Validación Zod **server-side dentro de la action**, no solo en el cliente — seguí el patrón de
   `src/app/actions/contact.ts`.
 - Fuentes solo vía `next/font`. `viewport` separado de `metadata` en cada página.

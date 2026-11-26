@@ -7,8 +7,8 @@ desincronizados (ver `KNOWN_ISSUES.md` #6).
 ## Stack real
 
 - **Next.js 16.4.6** (App Router), TypeScript, Tailwind CSS, Shadcn/UI (base-ui), Lucide React.
-- React 18. `eslint-config-next` está pineado en `15.5.24` (un minor atrás de `next`, mismatch
-  menor de tooling, no rompe nada).
+- React 19, Tailwind 4 (tokens en `@theme` de `src/app/globals.css`, `@tailwindcss/postcss`),
+  ESLint 9 con flat config (`eslint.config.mjs`, `eslint-config-next` 16.4.6). Desde v1.5.0.
 - `src/` con alias `@/*` → `./src/*`.
 - Package manager: **npm** (`package-lock.json`, no hay `pnpm-lock.yaml` ni `yarn.lock`).
 
@@ -82,7 +82,7 @@ simplemente no hay auth todavía, pero es la primera cosa a verificar si alguna 
 
 ## Flujo del formulario de contacto (único efecto server-side del sitio)
 
-`src/app/actions/contact.ts` (Server Action, patrón `useFormState` + `(prevState, formData)`):
+`src/app/actions/contact.ts` (Server Action, patrón `useActionState` + `(prevState, formData)`):
 
 1. Rate limit in-memory por IP (`Map`, 5 requests / 10 min) — **no distribuido**: cada instancia
    serverless de Vercel tiene su propio `Map`, así que no protege contra un atacante que golpea

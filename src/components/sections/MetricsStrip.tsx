@@ -18,12 +18,12 @@ export function MetricsStrip() {
         >
           Nuestros estándares
         </h2>
-        <div className="border-y border-white/[0.04] py-16">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0 lg:divide-x divide-white/[0.04]">
+        <div className="border-y border-white/4 py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-0 lg:divide-x divide-white/4">
             {standards.map((m, i) => (
               <AnimateIn key={m.value} delay={i * 80}>
                 <div className="flex flex-col items-center text-center px-4 group">
-                  <span className="font-display text-6xl lg:text-7xl italic text-foreground/50 font-light mb-4 tracking-tighter group-hover:text-[#ffb690] transition-colors duration-500">
+                  <span className="font-display text-6xl lg:text-7xl italic text-foreground/50 font-light mb-4 tracking-tighter group-hover:text-primary transition-colors duration-500">
                     {m.value}
                   </span>
                   <span className="font-body text-sm font-light text-foreground/65 text-balance max-w-[220px]">

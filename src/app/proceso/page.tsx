@@ -66,7 +66,7 @@ export default function ProcesoPage() {
         title={
           <>
             El{' '}
-            <em className="italic text-[#ffb690] font-light">FOS Method</em>
+            <em className="italic text-primary font-light">FOS Method</em>
           </>
         }
         subtitle="Factory Operating System. El proceso que seguimos en cada proyecto, sin excepciones. Predecible, documentado y orientado a resultados."
@@ -81,7 +81,7 @@ export default function ProcesoPage() {
                 <div className="group flex flex-col lg:flex-row items-start lg:items-center gap-8 lg:gap-16 py-12 md:py-16 border-b border-white/10 transition-all duration-500">
                   
                   <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-12 w-full lg:w-5/12 shrink-0">
-                    <span className="font-display italic text-6xl md:text-7xl text-white/5 group-hover:text-[#ffb690] transition-colors duration-500 leading-none">
+                    <span className="font-display italic text-6xl md:text-7xl md:leading-[var(--text-7xl--line-height)] text-white/5 group-hover:text-primary transition-colors duration-500 leading-none">
                       {phase.number}
                     </span>
                     <h2 className="font-display text-3xl text-foreground group-hover:translate-x-2 transition-transform duration-500">
@@ -98,7 +98,7 @@ export default function ProcesoPage() {
                   <div className="w-full lg:w-3/12 flex flex-col gap-3">
                     {phase.deliverables.map((d) => (
                       <div key={d} className="flex items-start gap-3">
-                        <div className="w-1 h-1 bg-[#ffb690]/40 mt-[9px] shrink-0 group-hover:bg-[#ffb690] transition-colors duration-500" />
+                        <div className="w-1 h-1 bg-primary/40 mt-[9px] shrink-0 group-hover:bg-primary transition-colors duration-500" />
                         <span className="font-body text-xs text-foreground/60 leading-relaxed group-hover:text-foreground/80 transition-colors duration-500">
                           {d}
                         </span>
@@ -118,8 +118,8 @@ export default function ProcesoPage() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
           <AnimateIn>
             <div className="flex items-center gap-4 mb-16">
-              <div className="w-10 h-[1px] bg-[#ffb690]/50" />
-              <span className="font-body text-xs sm:text-sm font-semibold text-[#ffb690] uppercase tracking-[0.25em]">
+              <div className="w-10 h-px bg-primary/50" />
+              <span className="font-body text-xs sm:text-sm font-semibold text-primary uppercase tracking-[0.25em]">
                 Post-Lanzamiento
               </span>
             </div>
@@ -131,14 +131,14 @@ export default function ProcesoPage() {
                 
                 {/* Mismo estilo de Número y Título */}
                 <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-12 w-full lg:w-5/12 shrink-0">
-                  <span className="font-display italic text-6xl md:text-7xl text-white/5 group-hover:text-[#ffb690] transition-colors duration-500 leading-none">
+                  <span className="font-display italic text-6xl md:text-7xl md:leading-[var(--text-7xl--line-height)] text-white/5 group-hover:text-primary transition-colors duration-500 leading-none">
                     07
                   </span>
                   <div className="flex flex-col">
                     <h2 className="font-display text-3xl text-foreground group-hover:translate-x-2 transition-transform duration-500 mb-2">
                       Continua
                     </h2>
-                    <span className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-[#ffb690]/60">
+                    <span className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-primary/60">
                       Duración // Permanente
                     </span>
                   </div>
@@ -155,7 +155,7 @@ export default function ProcesoPage() {
                 <div className="w-full lg:w-3/12 flex flex-col gap-3">
                   {continuoItems.map((item) => (
                     <div key={item} className="flex items-start gap-3">
-                      <div className="w-1 h-1 bg-[#ffb690]/40 mt-[9px] shrink-0 group-hover:bg-[#ffb690] transition-colors duration-500" />
+                      <div className="w-1 h-1 bg-primary/40 mt-[9px] shrink-0 group-hover:bg-primary transition-colors duration-500" />
                       <span className="font-body text-xs text-foreground/60 leading-relaxed group-hover:text-foreground/80 transition-colors duration-500">
                         {item}
                       </span>
@@ -174,7 +174,7 @@ export default function ProcesoPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <AnimateIn>
             <div className="flex items-center gap-4 mb-16">
-              <div className="w-8 h-[1px] bg-[#ffb690]/40" />
+              <div className="w-8 h-px bg-primary/40" />
               <h2 className="font-body text-xs font-medium text-foreground/50 uppercase tracking-[0.2em]">
                 Preguntas frecuentes
               </h2>
@@ -188,9 +188,9 @@ export default function ProcesoPage() {
                 <AccordionItem
                   value={`faq-${i}`}
                   // 2. Cambiamos data-[state=open] por data-open
-                  className="border-b border-white/10 data-[state-open]:border-[#ffb690]/20 transition-colors duration-500"
+                  className="border-b border-white/10 data-state-open:border-primary/20 transition-colors duration-500"
                 >
-                  <AccordionTrigger className="font-display text-xl md:text-2xl text-foreground/75 hover:text-foreground py-8 hover:no-underline data-open:text-[#ffb690] text-left transition-colors duration-500">
+                  <AccordionTrigger className="font-display text-xl md:text-2xl text-foreground/75 hover:text-foreground py-8 hover:no-underline data-open:text-primary text-left transition-colors duration-500">
                     {faq.q}
                   </AccordionTrigger>
 

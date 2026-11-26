@@ -38,15 +38,15 @@ export function WhyCodeTlon() {
           <div className="mb-16 md:mb-24 max-w-2xl mt-8">
             <div className="flex items-center gap-4 mb-8">
               {/* CAMBIO: Acentos en blanco/crema sobre el fondo oscuro */}
-              <div className="w-8 h-[1px] bg-white/20" />
+              <div className="w-8 h-px bg-white/20" />
               <span className="font-body text-xs font-bold text-white/50 uppercase tracking-[0.2em]">
                 Nuestra Diferencia
               </span>
             </div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1] tracking-tight text-balance">
+            <h2 className="font-display text-4xl md:text-5xl md:leading-[var(--text-5xl--line-height)] lg:text-6xl lg:leading-[var(--text-6xl--line-height)] text-white leading-[1.1] tracking-tight text-balance">
               Por qué elegir{' '}
               {/* CAMBIO: Volvemos al crema/naranja (#ffb690) para el italic, igual que en el Hero */}
-              <em className="font-display italic text-[#ffb690] font-light drop-shadow-sm">CodeTlon.</em>
+              <em className="font-display italic text-primary font-light drop-shadow-xs">CodeTlon.</em>
             </h2>
           </div>
 

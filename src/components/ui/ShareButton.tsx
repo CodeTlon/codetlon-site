@@ -53,14 +53,14 @@ export function ShareButton({ title, text, url, className }: ShareButtonProps) {
       onClick={handleShare}
       className={cn(
         'group inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-2.5 font-body text-xs font-semibold uppercase tracking-[0.15em] text-foreground/60 transition-all duration-300',
-        'hover:text-[#ffb690] hover:border-[#ffb690]/40 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffb690]/50',
+        'hover:text-primary hover:border-primary/40 active:scale-[0.98] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/50',
         className
       )}
       aria-label={copied ? 'Link copiado' : 'Compartir'}
     >
       {copied ? (
         <>
-          <Check size={14} className="text-[#ffb690]" />
+          <Check size={14} className="text-primary" />
           Link copiado
         </>
       ) : (

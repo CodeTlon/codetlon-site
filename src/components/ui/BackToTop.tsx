@@ -31,7 +31,7 @@ export function BackToTop() {
       tabIndex={visible ? 0 : -1}
       className={cn(
         'fixed bottom-6 right-6 z-40 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-background/90 backdrop-blur-md text-foreground/60 shadow-lg transition-all duration-300',
-        'hover:text-[#ffb690] hover:border-[#ffb690]/40 active:scale-[0.92] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffb690]/50',
+        'hover:text-primary hover:border-primary/40 active:scale-[0.92] focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-primary/50',
         'md:bottom-8 md:right-8',
         visible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-3 pointer-events-none'
       )}

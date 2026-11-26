@@ -70,13 +70,13 @@ export function CookieConsent() {
       onKeyDown={(e) => {
         if (e.key === 'Escape') decidir('denied')
       }}
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-white/[0.08] bg-surface-container/95 px-4 py-4 backdrop-blur-glass sm:px-6"
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-white/8 bg-surface-container/95 px-4 py-4 backdrop-blur-glass sm:px-6"
     >
       <div className="mx-auto flex max-w-5xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="font-body text-sm text-foreground/70">
           Usamos cookies analíticas para entender cómo se usa el sitio y mejorarlo. Podés aceptarlas o
           rechazarlas. Más info en nuestra{' '}
-          <Link href="/privacidad" className="font-semibold text-[#ffb690] underline underline-offset-4">
+          <Link href="/privacidad" className="font-semibold text-primary underline underline-offset-4">
             política de privacidad
           </Link>
           .

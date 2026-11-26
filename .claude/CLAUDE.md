@@ -16,7 +16,7 @@
 - **Deploy:** Vercel
 
 ## Stack
-- Next.js 16.3.3 (App Router) + TypeScript + Tailwind CSS + Shadcn/UI (base-ui) + Lucide React
+- Next.js 16.4.6 (App Router) + TypeScript + Tailwind CSS + Shadcn/UI (base-ui) + Lucide React
 - Supabase: **no** — dependencia, env vars y CSP/remotePatterns removidos; el form NO escribe a DB (ver `actions/contact.ts`)
 - Resend: **sí** — formulario de contacto envía email, sin almacenamiento
 - Analytics: Google Analytics 4 vía `next/script` (`NEXT_PUBLIC_GA_ID`)

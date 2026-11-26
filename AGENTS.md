@@ -32,7 +32,7 @@ contacto que manda email. Ver `.ai/context/PROJECT.md`.
 
 ## Stack (verificado, no el que dicen los docs legacy)
 
-- **Next.js 16.3.3** (App Router). Docs alineados desde v1.4.0.
+- **Next.js 16.4.6** (App Router). Docs alineados desde v1.4.0.
 - TypeScript, Tailwind CSS, Shadcn/UI (base-ui), Lucide React.
 - Fuente única: Inter vía `next/font` (peso 200 para display + body). No hay serif.
 - Sin base de datos ni Supabase. Los restos (dependencia, env vars de ejemplo, CSP/`remotePatterns`,

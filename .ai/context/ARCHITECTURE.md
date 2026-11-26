@@ -6,7 +6,7 @@ desincronizados (ver `KNOWN_ISSUES.md` #6).
 
 ## Stack real
 
-- **Next.js 16.3.3** (App Router), TypeScript, Tailwind CSS, Shadcn/UI (base-ui), Lucide React.
+- **Next.js 16.4.6** (App Router), TypeScript, Tailwind CSS, Shadcn/UI (base-ui), Lucide React.
 - React 18. `eslint-config-next` está pineado en `15.5.24` (un minor atrás de `next`, mismatch
   menor de tooling, no rompe nada).
 - `src/` con alias `@/*` → `./src/*`.

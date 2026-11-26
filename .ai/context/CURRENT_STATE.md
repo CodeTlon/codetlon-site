@@ -4,7 +4,7 @@
 
 - Catálogo: 6 servicios generales en lugar de L1–L9; los 9 slugs viejos responden **301** al
   servicio nuevo (`next.config.mjs`).
-- Docs legacy sincronizados con el código (Next 16.3.3, dominio `.com.ar`, `TASKS.md` real):
+- Docs legacy sincronizados con el código (Next 16.4.6, dominio `.com.ar`, `TASKS.md` real):
   `KNOWN_ISSUES.md` #6 resuelto, salvo `.env.example` (número de ejemplo falso, bloqueado para el agente).
 - Producción sigue en v1.3.6 hasta que Mateo apruebe el PR a `main`.
 - E2E: 81/81 en la VPS con los viewports mobile/tablet **emulados en Chromium** (WebKit no instalable
@@ -25,7 +25,7 @@ copia de `README.md`/`TASKS.md` (que están atrasados, ver `KNOWN_ISSUES.md`).
 - Commit real corriendo en producción: **`72e8b0d`** (alias `codetlon.com.ar` confirmado vía
   `vercel inspect`). Coincide con `origin/main` y con el HEAD de la rama de trabajo local al
   momento de esta auditoría.
-- Next.js **16.3.3** (no 14, no 15 — los docs legacy están atrasados).
+- Next.js **16.4.6** (no 14, no 15 — los docs legacy están atrasados).
 - Dominio real: `https://codetlon.com.ar` (con `www`). `https://codetlon.com` (sin `.ar`) da
   NXDOMAIN — confirmado por el propio equipo en el commit `72e8b0d`. Al momento del audit
   (2026-09-18) el fix de ese commit no había llegado a todos los lugares que hardcodeaban la URL
